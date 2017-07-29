@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "611778525794",
+    "firebase_url": "https://decisionkitchen.firebaseio.com",
+    "project_id": "decisionkitchen",
+    "storage_bucket": "decisionkitchen.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611778525794:android:62d700291316e882",
+        "android_client_info": {
+          "package_name": "com.decisionkitchen.decisionkitchen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611778525794-m4na63mkfnc28m6erfkajeqle1ntcv2a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXQudE3O2gGh8DMjYzVVS1adOyw2I9Moo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
