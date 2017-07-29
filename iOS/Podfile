@@ -1,0 +1,6 @@
+use_frameworks!
+
+target 'DecisionKitchen' do
+	pod 'FacebookCore'
+	pod 'FacebookLogin'
+end
