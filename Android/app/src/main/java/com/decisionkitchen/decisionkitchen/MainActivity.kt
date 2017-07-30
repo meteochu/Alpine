@@ -5,9 +5,13 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.support.constraint.ConstraintLayout
+import android.support.design.widget.CoordinatorLayout
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.Gravity
@@ -37,7 +41,11 @@ class MainActivity : AppCompatActivity() {
 
     internal var callbackManager: CallbackManager = CallbackManager.Factory.create()
 
-    private var user:FirebaseUser? = null;
+    private var user:FirebaseUser? = null
+
+    private var mRecyclerView:RecyclerView? = null
+    private var mAdapter:RecyclerView.Adapter<GroupAdapter.ViewHolder>? = null
+    private var mLayoutManager:RecyclerView.LayoutManager? = null
 
     private fun getActivity(): Activity {
         return this
@@ -53,66 +61,82 @@ class MainActivity : AppCompatActivity() {
         Log.e("test", "test")
         val uid:String = user.uid
         val ref:DatabaseReference = FirebaseDatabase.getInstance().getReference("groups")
-        ref.addListenerForSingleValueEvent( object : ValueEventListener {
+        ref.addValueEventListener( object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
-                var scrollView:ScrollView = getActivity().findViewById(R.id.groups) as ScrollView
+                var groups:List<Group> = ArrayList<Group>()
 
-                if (!snapshot.hasChildren()) {
-                    val noChats: TextView = TextView(getActivity())
-                    noChats.setText(R.string.no_groups_text)
-                    noChats.setPadding(0, 20, 0, 0)
-                    noChats.gravity = Gravity.CENTER
-                    noChats.textSize = 20f
+                if (!snapshot.hasChildren())
+                    return
 
-                    scrollView.removeAllViews()
-                    scrollView.addView(noChats)
-
-                } else {
-                    val groups = snapshot.children
-                    val layout = LinearLayout(getContext())
-                    val layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-                    layout.layoutParams = layoutParams
-                    for (data in groups) {
-                        val groupLayout = LinearLayout(layout.context)
-                        groupLayout.orientation = LinearLayout.VERTICAL
-                        val groupLayoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-                        groupLayout.layoutParams = groupLayoutParams
-                        val title = TextView(layout.context)
-
-                        val group = data.getValue(Group::class.java)
-                        title.text = group!!.name
-                        title.textSize = 20f
-                        title.width
-                        title.setTextColor(Color.BLACK)
-                        title.setPadding(0, 5, 0, 15)
-                        groupLayout.addView(title)
-
-                        val password = TextView(layout.context)
-                        password.text = group.password
-                        password.textSize = 13f
-                        password.setPadding(0, 5, 0, 15)
-                        password.setTextColor(Color.GRAY)
-                        groupLayout.addView(password)
-
-                        val divider = LinearLayout(layout.context)
-                        val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 2)
-                        divider.setBackgroundColor(Color.BLACK)
-                        divider.layoutParams = params
-                        groupLayout.addView(divider)
-
-                        layout.addView(groupLayout)
-                        groupLayout.setOnClickListener(object : View.OnClickListener {
-                            override fun onClick(v: View?) {
-                                goTest(data.key)
-                            }
-                        })
+                val data = snapshot.children
+                for (point in data) {
+                    val group = point.getValue(Group::class.java)
+                    if (group != null) {
+                        groups += group
                     }
-                    scrollView.removeAllViews()
-                    scrollView.addView(layout)
                 }
 
-                var linearLayout:LinearLayout = LinearLayout(getContext())
+                mAdapter = GroupAdapter(groups, mRecyclerView)
+                mRecyclerView!!.adapter = mAdapter;
+
+//                var scrollView:ScrollView = getActivity().findViewById(R.id.groups) as ScrollView
+//
+//                if (!snapshot.hasChildren()) {
+//                    val noChats: TextView = TextView(getActivity())
+//                    noChats.setText(R.string.no_groups_text)
+//                    noChats.setPadding(0, 20, 0, 0)
+//                    noChats.gravity = Gravity.CENTER
+//                    noChats.textSize = 20f
+//
+//                    scrollView.removeAllViews()
+//                    scrollView.addView(noChats)
+//
+//                } else {
+//                    val groups = snapshot.children
+//                    val layout = LinearLayout(getContext())
+//                    val layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+//                    layout.layoutParams = layoutParams
+//                    for (data in groups) {
+//                        val groupLayout = LinearLayout(layout.context)
+//                        groupLayout.orientation = LinearLayout.VERTICAL
+//                        val groupLayoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+//                        groupLayout.layoutParams = groupLayoutParams
+//                        val title = TextView(layout.context)
+//
+//                        val group = data.getValue(Group::class.java)
+//                        title.text = group!!.name
+//                        title.textSize = 20f
+//                        title.width
+//                        title.setTextColor(Color.BLACK)
+//                        title.setPadding(0, 5, 0, 15)
+//                        groupLayout.addView(title)
+//
+//                        val password = TextView(layout.context)
+//                        password.text = group.password
+//                        password.textSize = 13f
+//                        password.setPadding(0, 5, 0, 15)
+//                        password.setTextColor(Color.GRAY)
+//                        groupLayout.addView(password)
+//
+//                        val divider = LinearLayout(layout.context)
+//                        val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 2)
+//                        divider.setBackgroundColor(Color.BLACK)
+//                        divider.layoutParams = params
+//                        groupLayout.addView(divider)
+//
+//                        layout.addView(groupLayout)
+//                        groupLayout.setOnClickListener(object : View.OnClickListener {
+//                            override fun onClick(v: View?) {
+//                                goTest(data.key)
+//                            }
+//                        })
+//                    }
+//                    scrollView.removeAllViews()
+//                    scrollView.addView(layout)
+//                }
+//
+//                var linearLayout:LinearLayout = LinearLayout(getContext())
 
             }
 
@@ -214,6 +238,20 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
+
+        mRecyclerView = findViewById(R.id.my_recycler_view) as RecyclerView
+        mRecyclerView!!.setHasFixedSize(true)
+
+        val rParams:LinearLayout.LayoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
+        mRecyclerView!!.layoutParams = rParams
+
+        mLayoutManager = LinearLayoutManager(getContext())
+        mRecyclerView!!.layoutManager = mLayoutManager
+
+        mLayoutManager!!.setMeasuredDimension(CoordinatorLayout.LayoutParams.MATCH_PARENT, CoordinatorLayout.LayoutParams.MATCH_PARENT)
+
+        mAdapter = GroupAdapter(ArrayList<Group>(), mRecyclerView)
+        mRecyclerView!!.adapter = mAdapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
