@@ -1,15 +1,22 @@
 package com.decisionkitchen.decisionkitchen
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.util.Log
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.LinearLayout
+import android.widget.ScrollView
+import android.widget.TextView
 import android.widget.Toast
 import com.facebook.*
 
@@ -18,6 +25,7 @@ import com.facebook.login.LoginResult
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.*
+import com.google.firebase.database.*
 
 import java.util.Arrays
 
@@ -28,13 +36,88 @@ class MainActivity : AppCompatActivity() {
 
     internal var callbackManager: CallbackManager = CallbackManager.Factory.create()
 
-    private fun loadData(user: FirebaseUser) {
+    private var user:FirebaseUser? = null;
 
-        Toast.makeText(applicationContext, user.email + " " + user.uid,
-                Toast.LENGTH_SHORT).show();
+    private fun getActivity(): Activity {
+        return this
+    }
 
-        Log.w("test", user.uid);
+    private fun getContext(): Context {
+        return this
+    }
 
+    private fun loadData(user: FirebaseUser?) {
+
+        if (user == null) return
+        Log.e("test", "test")
+        val uid:String = user.uid
+        val ref:DatabaseReference = FirebaseDatabase.getInstance().getReference("groups")
+        ref.addListenerForSingleValueEvent( object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                var scrollView:ScrollView = getActivity().findViewById(R.id.groups) as ScrollView
+
+                if (!snapshot.hasChildren()) {
+                    val noChats: TextView = TextView(getActivity())
+                    noChats.setText(R.string.no_groups_text)
+                    noChats.setPadding(0, 20, 0, 0)
+                    noChats.gravity = Gravity.CENTER
+                    noChats.textSize = 20f
+
+                    scrollView.removeAllViews()
+                    scrollView.addView(noChats)
+
+                } else {
+                    val groups = snapshot.children
+                    val layout = LinearLayout(getContext())
+                    val layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+                    layout.layoutParams = layoutParams
+                    for (data in groups) {
+                        val groupLayout = LinearLayout(layout.context)
+                        groupLayout.orientation = LinearLayout.VERTICAL
+                        val groupLayoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+                        groupLayout.layoutParams = groupLayoutParams
+                        val title = TextView(layout.context)
+                        val group = data.getValue(Group::class.java)
+                        title.text = data.key
+                        title.textSize = 20f
+                        title.width
+                        title.setTextColor(Color.BLACK)
+                        title.setPadding(0, 5, 0, 15)
+                        groupLayout.addView(title)
+                        val password = TextView(layout.context)
+                        password.text = group!!.password
+                        password.textSize = 13f
+                        password.setPadding(0, 5, 0, 15)
+                        password.setTextColor(Color.GRAY)
+                        groupLayout.addView(password)
+
+                        val divider = LinearLayout(layout.context)
+                        val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 2)
+                        divider.setBackgroundColor(Color.BLACK)
+                        divider.layoutParams = params
+                        groupLayout.addView(divider)
+
+                        layout.addView(groupLayout)
+                        groupLayout.setOnClickListener(object : View.OnClickListener {
+                            override fun onClick(v: View?) {
+                                goTest(data.key)
+                            }
+                        })
+                    }
+                    scrollView.removeAllViews()
+                    scrollView.addView(layout)
+                }
+
+                var linearLayout:LinearLayout = LinearLayout(getContext())
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("error loading: ", error.toString())
+            }
+
+        })
     }
 
     private fun handleFacebookAccessToken(token: AccessToken) {
@@ -50,7 +133,8 @@ class MainActivity : AppCompatActivity() {
                             Toast.LENGTH_SHORT).show();
 
 
-                    val user:FirebaseUser? = mAuth.currentUser;
+                    user = mAuth.currentUser;
+
 
                     if(user != null) loadData(user);
 
@@ -125,9 +209,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     /** Called when the user touches the button  */
-    fun goTest(view: View) {
+    fun goTest(group: String) {
         val intent:Intent = Intent(getBaseContext(), GroupActivity::class.java)
-        intent.putExtra("GROUP_ID", "test")
+        intent.putExtra("GROUP_ID", group)
         startActivity(intent)
     }
 
