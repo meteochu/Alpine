@@ -24,4 +24,6 @@
     <string name="title_activity_game">GameActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="group_hint">Group Name (not case-sensitive)</string>
+    <string name="group_pass_hint">Group Password</string>
 </resources>
