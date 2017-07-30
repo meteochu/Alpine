@@ -16,6 +16,8 @@ class GroupsViewController: UITableViewController {
     
     private var groups: [Group] = []
     
+    private var selectedIndex: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(GroupDetailCell.self)
@@ -30,6 +32,7 @@ class GroupsViewController: UITableViewController {
                         var group = try decoder.decode(Group.self, from: data)
                         group.name = key
                         self.groups.append(group)
+                        GameController.shared.addRestaurants(from: group)
                     }
                     self.tableView.reloadData()
                 } catch {
@@ -59,7 +62,17 @@ class GroupsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        self.selectedIndex = indexPath.row
+        self.performSegue(withIdentifier: "showGroupConversation", sender: self)
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showGroupConversation" {
+            if let destination = segue.destination as? GroupConversationViewController {
+                destination.group = self.groups[selectedIndex]
+            }
+        }
+    }
+    
 }
 
