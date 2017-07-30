@@ -213,7 +213,13 @@
                             <outlet property="delegate" destination="tav-7Q-1Vl" id="NRt-le-gCA"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Lobby" id="igJ-Z9-l9j"/>
+                    <navigationItem key="navigationItem" title="Lobby" id="igJ-Z9-l9j">
+                        <barButtonItem key="leftBarButtonItem" title="Leave" id="bfq-nq-gZe">
+                            <connections>
+                                <action selector="didSelectLeaveButton:" destination="tav-7Q-1Vl" id="dGf-8n-krm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="8aQ-VU-DHj" kind="show" identifier="beginGameStage1" id="W2U-0S-lLQ"/>
                     </connections>
@@ -257,38 +263,106 @@
                                     <action selector="didSelectCheckmark:" destination="8aQ-VU-DHj" eventType="touchUpInside" id="e0a-O7-DPR"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lsT-BS-2Vm">
-                                <rect key="frame" x="16" y="229" width="343" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="3CS-F0-1Nt"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="$"/>
-                                    <segment title="$$"/>
-                                    <segment title="$$$"/>
-                                    <segment title="$$$$"/>
-                                </segments>
-                            </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Your Preference..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbc-ot-sq9">
                                 <rect key="frame" x="0.0" y="96" width="375" height="29"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="R8b-Xy-ChR">
+                                <rect key="frame" x="16" y="229" width="343" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1v3-XI-h3e">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
+                                        <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.64795815944671631" green="0.29372888803482056" blue="0.78241205215454102" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="contentEdgeInsets" minX="4" minY="0.0" maxX="4" maxY="0.0"/>
+                                        <state key="normal" title="$">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="didSelectMoneyButton:" destination="8aQ-VU-DHj" eventType="touchUpInside" id="CNO-rk-SZ2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0vz-dR-aV0">
+                                        <rect key="frame" x="88" y="0.0" width="79.5" height="40"/>
+                                        <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.64795815944671631" green="0.29372888803482056" blue="0.78241205215454102" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="contentEdgeInsets" minX="4" minY="0.0" maxX="4" maxY="0.0"/>
+                                        <state key="normal" title="$$">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="didSelectMoneyButton:" destination="8aQ-VU-DHj" eventType="touchUpInside" id="Jo7-t2-98r"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u3w-TG-H4k">
+                                        <rect key="frame" x="175.5" y="0.0" width="80" height="40"/>
+                                        <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.64795815944671631" green="0.29372888803482056" blue="0.78241205215454102" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="contentEdgeInsets" minX="4" minY="0.0" maxX="4" maxY="0.0"/>
+                                        <state key="normal" title="$$$">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="didSelectMoneyButton:" destination="8aQ-VU-DHj" eventType="touchUpInside" id="axr-0c-8XC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEY-Jl-Hgk">
+                                        <rect key="frame" x="263.5" y="0.0" width="79.5" height="40"/>
+                                        <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.64795815944671631" green="0.29372888803482056" blue="0.78241205215454102" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="contentEdgeInsets" minX="4" minY="0.0" maxX="4" maxY="0.0"/>
+                                        <state key="normal" title="$$$$">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="didSelectMoneyButton:" destination="8aQ-VU-DHj" eventType="touchUpInside" id="igz-JU-hzQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="QDG-jr-pF7"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="R8b-Xy-ChR" firstAttribute="top" secondItem="dak-ss-bqn" secondAttribute="bottom" constant="40" id="3kO-Wl-wz6"/>
                             <constraint firstItem="tNV-TL-zvb" firstAttribute="centerX" secondItem="vGW-Y7-baM" secondAttribute="centerX" id="4Ui-rl-NhV"/>
                             <constraint firstAttribute="trailing" secondItem="dak-ss-bqn" secondAttribute="trailing" constant="16" id="5Re-wl-1wg"/>
+                            <constraint firstItem="tNV-TL-zvb" firstAttribute="top" secondItem="R8b-Xy-ChR" secondAttribute="bottom" constant="20" id="Frg-kF-J7l"/>
                             <constraint firstItem="vbc-ot-sq9" firstAttribute="top" secondItem="Oj5-4A-dhC" secondAttribute="bottom" constant="32" id="IvE-T9-MSo"/>
                             <constraint firstItem="dak-ss-bqn" firstAttribute="top" secondItem="vbc-ot-sq9" secondAttribute="bottom" constant="16" id="K4S-IC-kNb"/>
                             <constraint firstItem="vbc-ot-sq9" firstAttribute="leading" secondItem="vGW-Y7-baM" secondAttribute="leading" id="MgI-Xu-rLi"/>
+                            <constraint firstItem="R8b-Xy-ChR" firstAttribute="leading" secondItem="dak-ss-bqn" secondAttribute="leading" id="SUu-nC-WgN"/>
                             <constraint firstAttribute="trailing" secondItem="vbc-ot-sq9" secondAttribute="trailing" id="YMa-j9-W3E"/>
-                            <constraint firstItem="tNV-TL-zvb" firstAttribute="top" secondItem="lsT-BS-2Vm" secondAttribute="bottom" constant="32" id="YZW-ZS-Bsr"/>
-                            <constraint firstItem="lsT-BS-2Vm" firstAttribute="trailing" secondItem="dak-ss-bqn" secondAttribute="trailing" id="b8P-QH-f1e"/>
                             <constraint firstItem="dak-ss-bqn" firstAttribute="leading" secondItem="vGW-Y7-baM" secondAttribute="leading" constant="16" id="bHV-As-oAx"/>
-                            <constraint firstItem="lsT-BS-2Vm" firstAttribute="leading" secondItem="dak-ss-bqn" secondAttribute="leading" id="g46-92-Y3Z"/>
-                            <constraint firstItem="lsT-BS-2Vm" firstAttribute="top" secondItem="dak-ss-bqn" secondAttribute="bottom" constant="40" id="jNg-D1-CXB"/>
+                            <constraint firstItem="R8b-Xy-ChR" firstAttribute="trailing" secondItem="dak-ss-bqn" secondAttribute="trailing" id="hcQ-VE-4OS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Stage 1" id="hdv-A8-GTP">

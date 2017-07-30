@@ -26,6 +26,9 @@ class GameLobbyViewController: UITableViewController {
         tableView.allowsMultipleSelection = true
     }
     
+    @IBAction func didSelectLeaveButton(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }

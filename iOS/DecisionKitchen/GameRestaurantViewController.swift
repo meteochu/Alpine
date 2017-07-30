@@ -11,11 +11,18 @@ import UIKit
 class GameRestaurantViewController: UIViewController {
     
     var restaurant: String = ""
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    var selectedIndexes: [Int] = []
+    
+    
+    @IBAction func didSelectMoneyButton(_ sender: UIButton) {
+        if let index = selectedIndexes.index(of: sender.tag) {
+            sender.backgroundColor = UIColor(white: 220/255.0, alpha: 1.0)
+            selectedIndexes.remove(at: index)
+        } else {
+            sender.backgroundColor = UIColor(red: 165/255.0, green: 75/255.0, blue: 200/255.0, alpha: 1.0)
+            selectedIndexes.append(sender.tag)
+        }
     }
     
     @IBAction func textFieldDidChange(_ sender: UITextField) {
