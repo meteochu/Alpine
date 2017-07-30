@@ -604,7 +604,7 @@ We'll let you know when everyone else responds!</string>
                     </view>
                     <navigationItem key="navigationItem" title="Submitted!" id="Mcc-kX-3NO"/>
                     <connections>
-                        <outlet property="homeButton" destination="hT2-qK-eiF" id="NgJ-EO-biM"/>
+                        <outlet property="homeButton" destination="hT2-qK-eiF" id="QzO-ug-Uzq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DDk-Mj-MHU" userLabel="First Responder" sceneMemberID="firstResponder"/>

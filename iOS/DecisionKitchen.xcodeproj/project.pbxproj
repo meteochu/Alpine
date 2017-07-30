@@ -33,6 +33,7 @@
 		A1B051171F2D9121005828CB /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B051161F2D9121005828CB /* DataController.swift */; };
 		A1B051191F2D92BF005828CB /* GroupConversationFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B051181F2D92BF005828CB /* GroupConversationFlowLayout.swift */; };
 		A1B3BA041F2D3DE000BA3871 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B3BA031F2D3DE000BA3871 /* OnboardingViewController.swift */; };
+		A1BD8A4D1F2E5C5C00B1D287 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD8A4C1F2E5C5C00B1D287 /* Location.swift */; };
 		A1C916301F2D51C7008B703C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1C9162F1F2D51AA008B703C /* GoogleService-Info.plist */; };
 		A1F9DF5E1F2D69FD00D1129F /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9DF5D1F2D69FD00D1129F /* Group.swift */; };
 		A1F9DF621F2D6CEF00D1129F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9DF611F2D6CEF00D1129F /* Category.swift */; };
@@ -78,6 +79,7 @@
 		A1B051161F2D9121005828CB /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		A1B051181F2D92BF005828CB /* GroupConversationFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupConversationFlowLayout.swift; sourceTree = "<group>"; };
 		A1B3BA031F2D3DE000BA3871 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		A1BD8A4C1F2E5C5C00B1D287 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		A1C9162F1F2D51AA008B703C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A1F9DF5D1F2D69FD00D1129F /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		A1F9DF611F2D6CEF00D1129F /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			children = (
 				A1F9DF611F2D6CEF00D1129F /* Category.swift */,
 				A1F9DF6E1F2D7F4A00D1129F /* Game.swift */,
+				A1BD8A4C1F2E5C5C00B1D287 /* Location.swift */,
 				A1467FCE1F2E4B9900D4C718 /* GameResponse.swift */,
 				A1F9DF5D1F2D69FD00D1129F /* Group.swift */,
 				A1F9DF701F2D807C00D1129F /* Order.swift */,
@@ -413,6 +416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1467FCB1F2E43A400D4C718 /* UIColor+Theme.swift in Sources */,
+				A1BD8A4D1F2E5C5C00B1D287 /* Location.swift in Sources */,
 				A1467FB61F2DD5CA00D4C718 /* UIImageView+Initials.swift in Sources */,
 				A1467FBC1F2DF4E100D4C718 /* GameLobbyViewController.swift in Sources */,
 				A1467FC91F2E052700D4C718 /* CategoryItemCell.swift in Sources */,

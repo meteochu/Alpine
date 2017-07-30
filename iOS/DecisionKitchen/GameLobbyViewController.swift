@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreLocation
 
-class GameLobbyViewController: UITableViewController {
+class GameLobbyViewController: UITableViewController, CLLocationManagerDelegate {
 
     var group: Group! {
         didSet {
@@ -21,11 +22,17 @@ class GameLobbyViewController: UITableViewController {
     
     var response: GameResponse!
     
+    private var locationManager: CLLocationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self)
         tableView.register(UserDetailCell.self)
         tableView.allowsMultipleSelection = true
+        
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
     }
     
     @IBAction func didSelectLeaveButton(_ sender: UIBarButtonItem) {
@@ -73,5 +80,17 @@ class GameLobbyViewController: UITableViewController {
         }
     }
     
+    // MARK: - Location
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let last = locations.last else {
+            return
+        }
+        let location = Location(longitude: last.coordinate.longitude, latitude: last.coordinate.latitude)
+        self.response.deviceLocation = location
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        // do nothing ¯\_(ツ)_/¯ 
+    }
 
 }

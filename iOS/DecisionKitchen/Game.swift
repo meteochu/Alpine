@@ -8,14 +8,13 @@
 
 import Foundation
 
-struct Game: Codable {
+class Game: NSObject, Codable {
     
     var meta: Meta
     
     var rating: [UserID: Int]?
     
-    // TODO: Update to the current schema.. zzz
-    var responses: [UserID: [[Int]]]?
+    var responses: [UserID: Response]?
     
     var result: Result?
     
@@ -45,4 +44,22 @@ struct Game: Codable {
         }
     }
     
+    init(meta: Meta, rating: [UserID: Int]?, response: [UserID: Response]?, result: Result?) {
+        self.meta = meta
+        self.rating = rating
+        self.responses = response
+        self.result = result
+        super.init()
+    }
+    
+    struct Response: Codable {
+        
+        let location: Location
+        
+        let value: [[Int]]
+        
+    }
+    
 }
+
+
