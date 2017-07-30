@@ -188,7 +188,9 @@ class GroupActivity : Activity() {
 
         toolbar.setNavigationOnClickListener {
             groupRef.removeEventListener(groupListener)
-            applicationContext.startActivity(Intent(applicationContext, MainActivity::class.java))
+            val intent: Intent = Intent(applicationContext, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            applicationContext.startActivity(intent)
         }
 
         groupRef.addValueEventListener(groupListener)

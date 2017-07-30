@@ -34,7 +34,9 @@ class GameActivity : Activity() {
 
     fun render() {
         if (question == questions.size) {
-            applicationContext.startActivity(Intent(applicationContext, FinishedActivity::class.java))
+            val intent: Intent = Intent(applicationContext, FinishedActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            applicationContext.startActivity(intent)
         } else if (group != null && groupRef != null && qOrder != null && question != -1 && user != null && gameId != null) {
             val q = questions[question]
             (findViewById(R.id.question) as TextView).text = q.title
@@ -108,10 +110,12 @@ class GameActivity : Activity() {
                             }
                             Collections.shuffle(qOrder);
                             nextQuestion()
-                        } else {
-                            applicationContext.startActivity(Intent(applicationContext, MainActivity::class.java))
+                            return
                         }
                     }
+                    val intent: Intent = Intent(applicationContext, MainActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    applicationContext.startActivity(intent)
                 } else {
                     render()
                 }

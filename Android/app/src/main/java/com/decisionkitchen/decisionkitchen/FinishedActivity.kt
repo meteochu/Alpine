@@ -7,7 +7,9 @@ import android.view.View
 
 class FinishedActivity : Activity() {
     public fun goHome(view: View) {
-        applicationContext.startActivity(Intent(applicationContext, MainActivity::class.java))
+        val intent: Intent = Intent(applicationContext, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        applicationContext.startActivity(intent)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
