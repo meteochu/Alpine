@@ -104,7 +104,7 @@ class RestaurantActivity : Activity() {
                 cardContentLayout.addView(address)
 
 
-                val added = group!!.restaurants!!.containsKey(restaurant.id);
+                val added = group!!.restaurants != null && group!!.restaurants!!.containsKey(restaurant.id);
 
                 if (!added) {
                     var button = Button(cardContentLayout.context)

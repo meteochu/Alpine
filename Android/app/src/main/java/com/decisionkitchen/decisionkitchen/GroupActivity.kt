@@ -41,7 +41,8 @@ class GroupActivity : Activity() {
         setContentView(R.layout.activity_group)
 
         val database = FirebaseDatabase.getInstance()
-        val groupRef = database.getReference("groups/" + getIntent().getStringExtra("GROUP_ID"))
+
+        val groupRef = database.getReference("groups/" + intent.getStringExtra("GROUP_ID"))
 
         val toolbar : Toolbar = findViewById(R.id.toolbar) as Toolbar
         toolbar.title = "Loading..."

@@ -53,9 +53,23 @@
         </activity>
         <activity
             android:name=".GroupActivity"
-            android:label="Loading..." />
+            android:label="Loading...">
+        </activity>
         <activity android:name=".RestaurantActivity" />
-        <activity android:name=".SignUpActivity" />
+        <activity android:name=".SignUpActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http"
+                    android:host="decisionkitchen.app"
+                    android:pathPrefix="/group" />
+                <data android:scheme="https"
+                    android:host="decisionkitchen.app"
+                    android:pathPrefix="/group" />
+
+            </intent-filter>
+        </activity>
         <activity
             android:name=".GameActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
