@@ -100,17 +100,6 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder> 
 
         TextView blurbView = (TextView) holder.itemView.findViewById(R.id.blurb);
         blurbView.setText(getPreviewText(mGroups.get(position)));
-
-        RoundingParams roundingParams = RoundingParams.fromCornersRadius(7f);
-        roundingParams.setRoundAsCircle(true);
-        SimpleDraweeView profile = (SimpleDraweeView) holder.itemView.findViewById(R.id.chatp);
-        profile.setImageURI("http://www.freeiconspng.com/uploads/goose-png-pictures-4.png");
-        //profile.getHierarchy().setRoundingParams(roundingParams);
-        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(150, 150);
-        profile.setLayoutParams(params);
-        LinearLayout.LayoutParams marginParams = new LinearLayout.LayoutParams(profile.getLayoutParams());
-        marginParams.setMargins(50, 30, 50, 30);
-        profile.setLayoutParams(marginParams);
     }
 
     @Override
