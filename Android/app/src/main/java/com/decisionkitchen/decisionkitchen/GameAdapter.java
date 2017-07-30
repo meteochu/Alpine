@@ -45,7 +45,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(GameAdapter.ViewHolder holder, final int position) {
-        if (position == 0) {
+        if (holder.getAdapterPosition() == 0) {
             TextView option = (TextView) holder.itemView.findViewById(R.id.option);
             option.setText(question);
             option.setGravity(Gravity.CENTER_HORIZONTAL);
