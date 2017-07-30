@@ -214,8 +214,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val currentUser = mAuth.currentUser
-        if (currentUser == null) {
+        user = mAuth.currentUser
+        if (user == null) {
 
             LoginManager.getInstance().registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
                 override fun onSuccess(loginResult: LoginResult) {
@@ -235,23 +235,17 @@ class MainActivity : AppCompatActivity() {
 
             LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "email"))
         } else {
-            loadData(currentUser)
+            loadData(user)
         }
 
         setContentView(R.layout.activity_main)
         val toolbar = findViewById(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
 
-        val fab = findViewById(R.id.fab) as FloatingActionButton
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
-
         mRecyclerView = findViewById(R.id.my_recycler_view) as RecyclerView
         mRecyclerView!!.setHasFixedSize(true)
 
-        val rParams:LinearLayout.LayoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
+        val rParams:CoordinatorLayout.LayoutParams = CoordinatorLayout.LayoutParams(CoordinatorLayout.LayoutParams.MATCH_PARENT, CoordinatorLayout.LayoutParams.MATCH_PARENT)
         mRecyclerView!!.layoutParams = rParams
 
         mLayoutManager = LinearLayoutManager(getContext())
@@ -261,6 +255,12 @@ class MainActivity : AppCompatActivity() {
 
         mAdapter = GroupAdapter(ArrayList<Group>(), mRecyclerView, getMainActivity())
         mRecyclerView!!.adapter = mAdapter
+
+        val fab = findViewById(R.id.fab) as FloatingActionButton
+        fab.setOnClickListener { view ->
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
