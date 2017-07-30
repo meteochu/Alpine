@@ -33,7 +33,7 @@ class GroupConversationViewController: UICollectionViewController, UICollectionV
         usersHeaderController.view.frame = usersHeader.bounds
         usersHeaderController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         usersHeader.addSubview(usersHeaderController.view)
-        usersHeaderContorller.didMove(toParentViewController: self)
+        usersHeaderController.didMove(toParentViewController: self)
         
         let insets = UIEdgeInsets(top: 80, left: 0, bottom: 0, right: 0)
         self.collectionView!.contentInset = insets
