@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A114C7211F2D43D30080CD50 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A114C7201F2D43D30080CD50 /* TabBarController.swift */; };
 		A114C7231F2D43F20080CD50 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A114C7221F2D43F20080CD50 /* GroupsViewController.swift */; };
 		A114C7251F2D44100080CD50 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A114C7241F2D44100080CD50 /* SettingsViewController.swift */; };
 		A1467FAC1F2DB72900D4C718 /* UserHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FAB1F2DB72900D4C718 /* UserHeaderCell.swift */; };
@@ -41,7 +40,6 @@
 /* Begin PBXFileReference section */
 		3E68DFAD0CA157FD531C1092 /* Pods_DecisionKitchen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DecisionKitchen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9933283CA4CF7B2D3C4AC1AA /* Pods-DecisionKitchen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DecisionKitchen.release.xcconfig"; path = "Pods/Target Support Files/Pods-DecisionKitchen/Pods-DecisionKitchen.release.xcconfig"; sourceTree = "<group>"; };
-		A114C7201F2D43D30080CD50 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A114C7221F2D43F20080CD50 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		A114C7241F2D44100080CD50 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A114C7281F2D484D0080CD50 /* DecisionKitchen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DecisionKitchen.entitlements; sourceTree = "<group>"; };
@@ -140,7 +138,6 @@
 		A161B0861F2D39B500003C2B /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A114C7201F2D43D30080CD50 /* TabBarController.swift */,
 				A114C7221F2D43F20080CD50 /* GroupsViewController.swift */,
 				A1F9DF781F2D8A1400D1129F /* GroupConversationViewController.swift */,
 				A1467FB11F2DBA7A00D4C718 /* ConversationUsersHeaderController.swift */,
@@ -365,7 +362,6 @@
 				A1F9DF801F2D8E6600D1129F /* GameDetailCell.swift in Sources */,
 				A1467FAE1F2DB9DF00D4C718 /* UIImageView++.swift in Sources */,
 				A1467FB81F2DD8AF00D4C718 /* UIColor+Random.swift in Sources */,
-				A114C7211F2D43D30080CD50 /* TabBarController.swift in Sources */,
 				A1B051191F2D92BF005828CB /* GroupConversationFlowLayout.swift in Sources */,
 				A1F9DF621F2D6CEF00D1129F /* Category.swift in Sources */,
 				A17183281F2DB09B001D58AF /* User.swift in Sources */,
