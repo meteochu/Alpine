@@ -14,8 +14,8 @@ class GroupDetailCell: UITableViewCell {
         didSet {
             self.imageView?.setImage(for: group.name)
             self.textLabel?.text = group.name
-            if let games = group.games, let game = games.first, !games.isEmpty {
-                let restaurant = DataController.shared.restaurants[game.result.restaurantId]!.name
+            if let games = group.games, let game = games.first, !games.isEmpty, let result = game.result?.restaurantId {
+                let restaurant = DataController.shared.restaurants[result]!.name
                 if let endDate = game.meta.end {
                     self.detailTextLabel!.text = "Last Vote: \(restaurant) at \(DateFormatter.localizedString(from: endDate, dateStyle: .short, timeStyle: .short))"
                 } else {

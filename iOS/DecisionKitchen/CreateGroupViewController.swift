@@ -12,8 +12,14 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
     
     private var name: String = ""
     
+    private var password: String = ""
+    
     @IBAction func textFieldValueDidChange(_ sender: UITextField) {
-        name = sender.text!
+        if sender.tag == 0 {
+            name = sender.text!
+        } else if sender.tag == 1 {
+            password = sender.text!
+        }
     }
     
     @IBAction func didSelectDismiss(_ sender: UIBarButtonItem) {
@@ -21,7 +27,7 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
     }
     
     @IBAction func didSelectSaveButton(_ sender: UIBarButtonItem) {
-        DataController.shared.createGroup(named: name) { _ in
+        DataController.shared.createGroup(named: name, password: password) { _ in
             self.dismiss(animated: true, completion: nil)
         }
     }

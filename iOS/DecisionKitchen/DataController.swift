@@ -153,10 +153,10 @@ class DataController: NSObject {
         Database.database().reference().removeObserver(withHandle: handle)
     }
     
-    func createGroup(named name: String, callback: (Bool) -> Void) {
+    func createGroup(named name: String, password: String, callback: (Bool) -> Void) {
         let databaseRef = Database.database().reference()
         let uuid = UUID().uuidString
-        let group = Group(name: name, password: "flurry", members: [Auth.auth().currentUser!.uid],
+        let group = Group(name: name, password: password, members: [Auth.auth().currentUser!.uid],
                           restaurants: [:], games: [], id: uuid)
         if let encodedUser = try? encoder.encode(group),
             let json = try? JSONSerialization.jsonObject(with: encodedUser, options: []) {

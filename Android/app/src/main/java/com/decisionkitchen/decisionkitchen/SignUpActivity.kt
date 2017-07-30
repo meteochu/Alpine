@@ -45,7 +45,6 @@ class SignUpActivity : AppCompatActivity() {
                             return onBackPressed()
                         }
                     }
-
                     val members = ArrayList<String>()
                     members.add(uid as UserID)
                     val newRef = ref.push()

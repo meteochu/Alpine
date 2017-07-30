@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
-                android:text="Create a Group"
+                android:text="Create or Join a Group"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textColor="@color/cardview_light_background" />
@@ -72,7 +72,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/com_facebook_auth_dialog_background"
-                android:text="Next" />
+                android:text="Next"
+                android:onClick="submit"/>
         </LinearLayout>
 
     </ScrollView>
