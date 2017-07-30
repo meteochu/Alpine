@@ -42,6 +42,7 @@ class GroupActivity : Activity() {
 
                 val group : Group = dataSnapshot.getValue<Group>(Group::class.java)!!
                 val memberScrollView : HorizontalScrollView = findViewById(R.id.members) as HorizontalScrollView
+                memberScrollView.removeAllViews()
                 toolbar.title = group.name
 
                 findViewById(R.id.loader).visibility = View.INVISIBLE
@@ -50,47 +51,22 @@ class GroupActivity : Activity() {
 
                 val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
-                val layout = LinearLayout(getContext())
-                val layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-                layout.layoutParams = layoutParams
+                val memberLayout = LinearLayout(getContext())
+                val memberLayoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+                memberLayout.layoutParams = memberLayoutParams
+                memberLayout.orientation = LinearLayout.HORIZONTAL
                 for (member_id in group.members!!) {
-                    val groupLayout = LinearLayout(layout.context)
-                    groupLayout.orientation = LinearLayout.VERTICAL
-                    val groupLayoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-                    groupLayout.layoutParams = groupLayoutParams
-                    val title = TextView(layout.context)
-
-                  /*  val group = data.getValue(Group::class.java)
-
-                    title.text = group!!.name
-                    title.textSize = 20f
-                    title.width
-                    title.setTextColor(Color.BLACK)
-                    title.setPadding(0, 5, 0, 15)
-                    groupLayout.addView(title)
-
-                    val password = TextView(layout.context)
-                    password.text = group.password
-                    password.textSize = 13f
-                    password.setPadding(0, 5, 0, 15)
-                    password.setTextColor(Color.GRAY)
-                    groupLayout.addView(password)
-
-                    val divider = LinearLayout(layout.context)
-                    val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 2)
-                    divider.setBackgroundColor(Color.BLACK)
-                    divider.layoutParams = params
-                    groupLayout.addView(divider)
-
-                    layout.addView(groupLayout)
-                    groupLayout.setOnClickListener(object : View.OnClickListener {
-                        override fun onClick(v: View?) {
-                            goTest(data.key)
+                    database.getReference("users/" + member_id).addListenerForSingleValueEvent(object : ValueEventListener {
+                        override fun onDataChange(memberSnapshot: DataSnapshot) {
+                            val member : User = memberSnapshot.getValue<User>(User::class.java)!!
+                            val title = TextView(memberLayout.context)
+                            title.text = member.name
+                            memberLayout.addView(title)
                         }
-                    })*/
+                        override fun onCancelled(databaseError: DatabaseError) {}
+                    })
                 }
-                memberScrollView.removeAllViews()
-                memberScrollView.addView(layout)
+                memberScrollView.addView(memberLayout)
 
 
             }
