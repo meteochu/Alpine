@@ -122,7 +122,7 @@
                                                     <rect key="frame" x="16" y="4" width="343" height="35.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
                                                         <action selector="textFieldValueDidChange:" destination="DdB-Aw-WdC" eventType="editingChanged" id="dPl-ny-4yo"/>
                                                     </connections>
@@ -133,6 +133,35 @@
                                                 <constraint firstAttribute="trailing" secondItem="d5F-7i-Mwa" secondAttribute="trailing" constant="16" id="Qud-3M-bql"/>
                                                 <constraint firstAttribute="bottom" secondItem="d5F-7i-Mwa" secondAttribute="bottom" constant="4" id="cjG-lO-nKE"/>
                                                 <constraint firstItem="d5F-7i-Mwa" firstAttribute="top" secondItem="uYk-j5-jpp" secondAttribute="top" constant="4" id="h2p-qM-lRG"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Password" id="rPr-po-Z88">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="4ax-zC-JOj">
+                                        <rect key="frame" x="0.0" y="155.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4ax-zC-JOj" id="5IT-S8-rb1">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Password.." minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="QQg-6Q-9Gl">
+                                                    <rect key="frame" x="16" y="4" width="343" height="35.5"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
+                                                    <connections>
+                                                        <action selector="textFieldValueDidChange:" destination="DdB-Aw-WdC" eventType="editingChanged" id="ldW-aU-dDu"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="QQg-6Q-9Gl" secondAttribute="trailing" constant="16" id="EpG-bG-Dul"/>
+                                                <constraint firstItem="QQg-6Q-9Gl" firstAttribute="top" secondItem="5IT-S8-rb1" secondAttribute="top" constant="4" id="Qdh-P6-Nun"/>
+                                                <constraint firstItem="QQg-6Q-9Gl" firstAttribute="leading" secondItem="5IT-S8-rb1" secondAttribute="leading" constant="16" id="az4-T6-jmn"/>
+                                                <constraint firstAttribute="bottom" secondItem="QQg-6Q-9Gl" secondAttribute="bottom" constant="4" id="u4e-bC-Bk6"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -164,7 +193,6 @@
         <!--Lobby-->
         <scene sceneID="rbR-2a-WML">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4j0-t2-pdm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="tav-7Q-1Vl" customClass="GameLobbyViewController" customModule="DecisionKitchen" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="uSj-aP-54e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -190,6 +218,7 @@
                         <segue destination="8aQ-VU-DHj" kind="show" identifier="beginGameStage1" id="W2U-0S-lLQ"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4j0-t2-pdm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5009" y="-106"/>
         </scene>
