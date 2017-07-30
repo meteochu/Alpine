@@ -16,6 +16,11 @@
 		A1467FB41F2DC51B00D4C718 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FB31F2DC51B00D4C718 /* CreateGroupViewController.swift */; };
 		A1467FB61F2DD5CA00D4C718 /* UIImageView+Initials.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FB51F2DD5CA00D4C718 /* UIImageView+Initials.swift */; };
 		A1467FB81F2DD8AF00D4C718 /* UIColor+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FB71F2DD8AF00D4C718 /* UIColor+Random.swift */; };
+		A1467FBC1F2DF4E100D4C718 /* GameLobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FBB1F2DF4E100D4C718 /* GameLobbyViewController.swift */; };
+		A1467FC31F2DF5AD00D4C718 /* UserDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FC21F2DF5AD00D4C718 /* UserDetailCell.swift */; };
+		A1467FC51F2E00D800D4C718 /* GameRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FC41F2E00D800D4C718 /* GameRestaurantViewController.swift */; };
+		A1467FC71F2E050F00D4C718 /* GameCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FC61F2E050F00D4C718 /* GameCategoriesViewController.swift */; };
+		A1467FC91F2E052700D4C718 /* CategoryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FC81F2E052700D4C718 /* CategoryItemCell.swift */; };
 		A161B06F1F2D393200003C2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161B06E1F2D393200003C2B /* AppDelegate.swift */; };
 		A161B0761F2D393200003C2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A161B0741F2D393200003C2B /* Main.storyboard */; };
 		A161B0781F2D393200003C2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A161B0771F2D393200003C2B /* Assets.xcassets */; };
@@ -50,6 +55,11 @@
 		A1467FB31F2DC51B00D4C718 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		A1467FB51F2DD5CA00D4C718 /* UIImageView+Initials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Initials.swift"; sourceTree = "<group>"; };
 		A1467FB71F2DD8AF00D4C718 /* UIColor+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Random.swift"; sourceTree = "<group>"; };
+		A1467FBB1F2DF4E100D4C718 /* GameLobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLobbyViewController.swift; sourceTree = "<group>"; };
+		A1467FC21F2DF5AD00D4C718 /* UserDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailCell.swift; sourceTree = "<group>"; };
+		A1467FC41F2E00D800D4C718 /* GameRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRestaurantViewController.swift; sourceTree = "<group>"; };
+		A1467FC61F2E050F00D4C718 /* GameCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCategoriesViewController.swift; sourceTree = "<group>"; };
+		A1467FC81F2E052700D4C718 /* CategoryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemCell.swift; sourceTree = "<group>"; };
 		A161B06B1F2D393200003C2B /* DecisionKitchen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DecisionKitchen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A161B06E1F2D393200003C2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A161B0751F2D393200003C2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -102,6 +112,50 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A1467FBD1F2DF4E700D4C718 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A114C7241F2D44100080CD50 /* SettingsViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		A1467FBE1F2DF4EE00D4C718 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				A1B3BA031F2D3DE000BA3871 /* OnboardingViewController.swift */,
+			);
+			name = Onboarding;
+			sourceTree = "<group>";
+		};
+		A1467FBF1F2DF4FD00D4C718 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				A114C7221F2D43F20080CD50 /* GroupsViewController.swift */,
+				A1467FB31F2DC51B00D4C718 /* CreateGroupViewController.swift */,
+			);
+			name = Groups;
+			sourceTree = "<group>";
+		};
+		A1467FC01F2DF50200D4C718 /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				A1F9DF781F2D8A1400D1129F /* GroupConversationViewController.swift */,
+				A1467FB11F2DBA7A00D4C718 /* ConversationUsersHeaderController.swift */,
+			);
+			name = Conversation;
+			sourceTree = "<group>";
+		};
+		A1467FC11F2DF50600D4C718 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				A1467FBB1F2DF4E100D4C718 /* GameLobbyViewController.swift */,
+				A1467FC41F2E00D800D4C718 /* GameRestaurantViewController.swift */,
+				A1467FC61F2E050F00D4C718 /* GameCategoriesViewController.swift */,
+			);
+			name = Game;
+			sourceTree = "<group>";
+		};
 		A161B0621F2D393100003C2B = {
 			isa = PBXGroup;
 			children = (
@@ -138,12 +192,11 @@
 		A161B0861F2D39B500003C2B /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A114C7221F2D43F20080CD50 /* GroupsViewController.swift */,
-				A1F9DF781F2D8A1400D1129F /* GroupConversationViewController.swift */,
-				A1467FB11F2DBA7A00D4C718 /* ConversationUsersHeaderController.swift */,
-				A1467FB31F2DC51B00D4C718 /* CreateGroupViewController.swift */,
-				A1B3BA031F2D3DE000BA3871 /* OnboardingViewController.swift */,
-				A114C7241F2D44100080CD50 /* SettingsViewController.swift */,
+				A1467FBF1F2DF4FD00D4C718 /* Groups */,
+				A1467FC01F2DF50200D4C718 /* Conversation */,
+				A1467FC11F2DF50600D4C718 /* Game */,
+				A1467FBE1F2DF4EE00D4C718 /* Onboarding */,
+				A1467FBD1F2DF4E700D4C718 /* Settings */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -203,11 +256,13 @@
 		A1F9DF751F2D877C00D1129F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A1F9DF731F2D877500D1129F /* GroupDetailCell.swift */,
-				A1F9DF7E1F2D8E6600D1129F /* GameDetailCell.swift */,
-				A1467FAB1F2DB72900D4C718 /* UserHeaderCell.swift */,
-				A1B051181F2D92BF005828CB /* GroupConversationFlowLayout.swift */,
 				A1467FAF1F2DBA2900D4C718 /* ConversationUsersHeaderLayout.swift */,
+				A1B051181F2D92BF005828CB /* GroupConversationFlowLayout.swift */,
+				A1467FC81F2E052700D4C718 /* CategoryItemCell.swift */,
+				A1F9DF7E1F2D8E6600D1129F /* GameDetailCell.swift */,
+				A1F9DF731F2D877500D1129F /* GroupDetailCell.swift */,
+				A1467FC21F2DF5AD00D4C718 /* UserDetailCell.swift */,
+				A1467FAB1F2DB72900D4C718 /* UserHeaderCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -346,14 +401,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1467FB61F2DD5CA00D4C718 /* UIImageView+Initials.swift in Sources */,
+				A1467FBC1F2DF4E100D4C718 /* GameLobbyViewController.swift in Sources */,
+				A1467FC91F2E052700D4C718 /* CategoryItemCell.swift in Sources */,
 				A161B06F1F2D393200003C2B /* AppDelegate.swift in Sources */,
 				A1F9DF6F1F2D7F4A00D1129F /* Game.swift in Sources */,
 				A114C7231F2D43F20080CD50 /* GroupsViewController.swift in Sources */,
 				A114C7251F2D44100080CD50 /* SettingsViewController.swift in Sources */,
+				A1467FC31F2DF5AD00D4C718 /* UserDetailCell.swift in Sources */,
 				A1F9DF741F2D877500D1129F /* GroupDetailCell.swift in Sources */,
 				A1F9DF711F2D807C00D1129F /* Order.swift in Sources */,
 				A1F9DF5E1F2D69FD00D1129F /* Group.swift in Sources */,
 				A1467FB01F2DBA2900D4C718 /* ConversationUsersHeaderLayout.swift in Sources */,
+				A1467FC51F2E00D800D4C718 /* GameRestaurantViewController.swift in Sources */,
 				A1467FB41F2DC51B00D4C718 /* CreateGroupViewController.swift in Sources */,
 				A1F9DF641F2D76A100D1129F /* Reusable.swift in Sources */,
 				A1B3BA041F2D3DE000BA3871 /* OnboardingViewController.swift in Sources */,
@@ -361,6 +420,7 @@
 				A1467FB21F2DBA7A00D4C718 /* ConversationUsersHeaderController.swift in Sources */,
 				A1F9DF801F2D8E6600D1129F /* GameDetailCell.swift in Sources */,
 				A1467FAE1F2DB9DF00D4C718 /* UIImageView++.swift in Sources */,
+				A1467FC71F2E050F00D4C718 /* GameCategoriesViewController.swift in Sources */,
 				A1467FB81F2DD8AF00D4C718 /* UIColor+Random.swift in Sources */,
 				A1B051191F2D92BF005828CB /* GroupConversationFlowLayout.swift in Sources */,
 				A1F9DF621F2D6CEF00D1129F /* Category.swift in Sources */,

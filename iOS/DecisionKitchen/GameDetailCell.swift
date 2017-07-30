@@ -18,8 +18,12 @@ class GameDetailCell: UICollectionViewCell {
     var game: Game! {
         didSet {
             self.imageView.image = #imageLiteral(resourceName: "Utensils")
-            dateLabel.text = DateFormatter.localizedString(from: game.meta.start, dateStyle: .medium, timeStyle: .medium)
-            if let restaurant = DataController.shared.restaurants[game.result.restaurantId] {
+            if let end = game.meta.end {
+                dateLabel.text = DateFormatter.localizedString(from: end, dateStyle: .medium, timeStyle: .medium)
+            } else {
+                dateLabel.text = "The game is still ongoing..."
+            }
+            if let restaurantId = game.result?.restaurantId, let restaurant = DataController.shared.restaurants[restaurantId] {
                 nameLabel.text = restaurant.name
                 addressLabel.text = restaurant.address
             }
@@ -43,13 +47,13 @@ class GameDetailCell: UICollectionViewCell {
     }
     
     func commonInit() {
-        contentView.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0)
+        contentView.backgroundColor = UIColor(white: 0.98, alpha: 1)
         contentView.layer.cornerRadius = 8
         contentView.layer.shadowOffset = CGSize(width: 0, height: 2)
         contentView.layer.shadowRadius = 2
         contentView.layer.shadowOpacity = 0.15
         
-        imageView.backgroundColor = UIColor(white: 0.96, alpha: 1)
+        imageView.backgroundColor = UIColor(white: 0.92, alpha: 1)
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         
