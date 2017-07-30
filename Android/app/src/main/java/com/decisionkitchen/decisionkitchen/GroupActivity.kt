@@ -1,5 +1,6 @@
 package com.decisionkitchen.decisionkitchen
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -22,6 +23,10 @@ import com.facebook.drawee.view.SimpleDraweeView
 import com.google.firebase.auth.FirebaseAuth
 import com.facebook.drawee.generic.RoundingParams
 import com.github.kevinsawicki.timeago.TimeAgo
+import com.usebutton.sdk.ButtonContext
+import com.usebutton.sdk.ButtonDropin
+import com.usebutton.sdk.context.Location
+import com.usebutton.sdk.util.LocationProvider
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.format.DateTimeFormatter
@@ -40,6 +45,8 @@ class GroupActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        com.usebutton.sdk.Button.getButton(this).start();
 
         setContentView(R.layout.activity_group)
 
@@ -117,6 +124,9 @@ class GroupActivity : Activity() {
 
                 if (group!!.games != null) {
                     for (game in group!!.games!!) {
+
+                        Log.w("test", game.toString())
+
                         if (game.meta!!.end == null) {
                             if (game.responses != null && game.responses.containsKey(FirebaseAuth.getInstance().currentUser!!.uid)) {
                                 findViewById(R.id.create_game).visibility = View.GONE
@@ -129,55 +139,118 @@ class GroupActivity : Activity() {
                         }
 
 
-                        val restaurant = group!!.restaurants!![game.result!!.restaurant_id]!!
 
-                        val cardLayout = LinearLayout(mainContent.context)
-                        cardLayout.orientation = LinearLayout.HORIZONTAL
-                        cardLayout.gravity = Gravity.TOP
-                        cardLayout.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+                        val cardWrapper = LinearLayout(mainContent.context)
+                        cardWrapper.orientation = LinearLayout.VERTICAL
+                        cardWrapper.gravity = Gravity.TOP
+                        cardWrapper.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
 
-                        val profile = SimpleDraweeView(cardLayout.context)
-                        profile.setImageURI("https://unsplash.it/200")
-                        profile.hierarchy.roundingParams = roundingParams
-                        val params = ViewGroup.LayoutParams(230, 230)
-                        profile.layoutParams = params;
-                        val marginParams: LinearLayout.LayoutParams = LinearLayout.LayoutParams(profile.layoutParams);
-                        marginParams.setMargins(50, 50, 50, 50)
-                        profile.layoutParams = marginParams
-                        cardLayout.addView(profile)
 
-                        val cardContentLayout = LinearLayout(mainContent.context)
-                        cardContentLayout.orientation = LinearLayout.VERTICAL
-                        cardContentLayout.gravity = Gravity.TOP
-                        cardContentLayout.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-                        (cardContentLayout.layoutParams as LinearLayout.LayoutParams).setMargins(0, 50, 50, 50)
+                        val startDate = TextView(cardWrapper.context)
+                        startDate.text = DateTime(game.meta!!.end).toString(DateTimeFormat.shortDateTime())
+                        startDate.textSize = 13.0F
+                        startDate.typeface = Typeface.create("sans-serif", Typeface.BOLD)
+                        startDate.setTextColor(Color.rgb(0, 0, 0))
 
-                        val name = TextView(cardContentLayout.context)
-                        name.text = restaurant.name
-                        name.textSize = 20.0F
-                        name.typeface = Typeface.DEFAULT_BOLD
-                        name.setTextColor(Color.BLACK)
-                        name.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT)
-                        name.setPadding(0, 0, 0, 10)
-                        cardContentLayout.addView(name)
+                        val startDateParams: LinearLayout.LayoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT)
+                        startDateParams.setMargins(50, 50, 50, 0)
+                        startDate.layoutParams = startDateParams
+                        cardWrapper.addView(startDate)
 
-                        val address = TextView(cardContentLayout.context)
-                        address.text = restaurant.address
-                        address.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT)
-                        address.setPadding(0, 0, 0, 20)
-                        cardContentLayout.addView(address)
+                        val cardScrollWrapper = HorizontalScrollView(cardWrapper.context)
 
-                        val date = TextView(cardContentLayout.context)
-                        date.text = DateTime(game.meta!!.end).toString(DateTimeFormat.shortDateTime())
-                        date.textSize = 15.0F
-                        date.typeface = Typeface.create("sans-serif-light", Typeface.NORMAL)
-                        date.setTextColor(Color.rgb(150, 150, 150))
-                        date.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT)
-                        cardContentLayout.addView(date)
+                        val cardScrollWrapperInner = LinearLayout(mainContent.context)
+                        cardScrollWrapperInner.orientation = LinearLayout.HORIZONTAL
+                        cardScrollWrapperInner.gravity = Gravity.TOP
+                        cardScrollWrapperInner.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
 
-                        cardLayout.addView(cardContentLayout)
 
-                        mainContent.addView(cardLayout)
+                        for (j in (game.result!!).size - 1 downTo 0) {
+
+                            val restaurant = group!!.restaurants!![game.result!![j][0]]!!
+
+                            val cardLayout = LinearLayout(mainContent.context)
+                            cardLayout.orientation = LinearLayout.HORIZONTAL
+                            cardLayout.gravity = Gravity.TOP
+                            cardLayout.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+
+                            val profile = SimpleDraweeView(cardLayout.context)
+                            profile.setImageURI(if (restaurant.image != null) restaurant.image else "https://unsplash.it/200")
+                            profile.hierarchy.roundingParams = roundingParams
+                            val params = ViewGroup.LayoutParams(230, 230)
+                            profile.layoutParams = params;
+                            val marginParams: LinearLayout.LayoutParams = LinearLayout.LayoutParams(profile.layoutParams);
+                            marginParams.setMargins(50, 50, 50, 50)
+                            profile.layoutParams = marginParams
+                            cardLayout.addView(profile)
+
+                            val cardContentLayout = LinearLayout(mainContent.context)
+                            cardContentLayout.orientation = LinearLayout.VERTICAL
+                            cardContentLayout.gravity = Gravity.TOP
+                            cardContentLayout.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+                            (cardContentLayout.layoutParams as LinearLayout.LayoutParams).setMargins(0, 50, 50, 50)
+
+                            val name = TextView(cardContentLayout.context)
+                            name.text = restaurant.name
+                            name.textSize = 20.0F
+                            name.typeface = Typeface.DEFAULT_BOLD
+                            name.setTextColor(Color.BLACK)
+                            name.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT)
+                            name.setPadding(0, 0, 0, 10)
+                            cardContentLayout.addView(name)
+
+                            val address = TextView(cardContentLayout.context)
+                            address.text = restaurant.address
+                            address.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT)
+                            address.setPadding(0, 0, 0, 20)
+                            cardContentLayout.addView(address)
+/*
+                            val date = TextView(cardContentLayout.context)
+                            date.text = DateTime(game.meta!!.end).toString(DateTimeFormat.shortDateTime())
+                            date.textSize = 15.0F
+                            date.typeface = Typeface.create("sans-serif-light", Typeface.NORMAL)
+                            date.setTextColor(Color.rgb(150, 150, 150))
+                            date.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT)
+                            cardContentLayout.addView(date)*/
+
+                            val butt = ButtonDropin(cardContentLayout.context)
+                            butt.setButtonId("btn-749e2bd5d9e4a4c3")
+                            // Set Button Context
+                            val location : com.usebutton.sdk.context.Location = com.usebutton.sdk.context.Location(restaurant.name)
+                            location.setAddress(restaurant.address)
+                            location.setCity(restaurant.city)
+                            location.setState(restaurant.state)
+                            location.setZip(restaurant.zip)
+                            location.setName(restaurant.name)
+                            location.setCountry("USA")
+                            val context = ButtonContext.withSubjectLocation(location)
+
+                              // Provide the user's location if we have the permission to
+                            try {
+                                @SuppressLint("MissingPermission")
+                                val userLocation: android.location.Location? = com.usebutton.sdk.util.LocationProvider(applicationContext).bestLocation
+                                if (userLocation != null) {
+                                    context.setUserLocation(userLocation as com.usebutton.sdk.context.Location);
+                                }
+                            } catch (e: Exception) {
+
+                            }
+
+                              // Prepare the Button for display with our Context
+                            butt.prepareForDisplay(context);
+
+                            cardContentLayout.addView(butt)
+
+                            cardLayout.addView(cardContentLayout)
+
+                            cardScrollWrapperInner.addView(cardLayout)
+                        }
+
+                        cardScrollWrapper.addView(cardScrollWrapperInner)
+
+                        cardWrapper.addView(cardScrollWrapper)
+
+                        mainContent.addView(cardWrapper)
 
                     }
                 }

@@ -89,7 +89,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder> 
             return "Live demos amirite";
         }
 
-        return "Last vote: " + group.getRestaurants().get(recentGame.getResult().getRestaurant_id()).getName() + " at " + new DateTime(recentGame.getMeta().getEnd()).toString(DateTimeFormat.shortDateTime());
+        return "Last vote: " + group.getRestaurants().get(recentGame.getResult().get(recentGame.getResult().size() - 1).get(0)).getName() + " at " + new DateTime(recentGame.getMeta().getEnd()).toString(DateTimeFormat.shortDateTime());
 
     }
 
@@ -101,12 +101,12 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder> 
         TextView blurbView = (TextView) holder.itemView.findViewById(R.id.blurb);
         blurbView.setText(getPreviewText(mGroups.get(position)));
 
-        if (mGroups.get(position).getGames() != null && mGroups.get(position).getGames().get(0).getResult() != null && mGroups.get(position).getRestaurants().get(mGroups.get(position).getGames().get(0).getResult().getRestaurant_id()).getImage() != null) {
+        if (mGroups.get(position).getGames() != null && mGroups.get(position).getGames().get(0).getResult() != null && mGroups.get(position).getRestaurants().get(mGroups.get(position).getGames().get(0).getResult().get(mGroups.get(position).getGames().get(0).getResult().size() - 1).get(0)).getImage() != null) {
             SimpleDraweeView mSimpleDraweeView = (SimpleDraweeView) holder.itemView.findViewById(R.id.picture);
             RoundingParams roundingParams = new RoundingParams();
             roundingParams.setRoundAsCircle(true);
             mSimpleDraweeView.getHierarchy().setRoundingParams(roundingParams);
-            String imgUrl = mGroups.get(position).getRestaurants().get(mGroups.get(position).getGames().get(0).getResult().getRestaurant_id()).getImage();
+            String imgUrl = mGroups.get(position).getRestaurants().get(mGroups.get(position).getGames().get(0).getResult().get(mGroups.get(position).getGames().get(0).getResult().size() - 1).get(0)).getImage();
             Log.w("test", imgUrl);
             mSimpleDraweeView.setImageURI(imgUrl);
         } else {

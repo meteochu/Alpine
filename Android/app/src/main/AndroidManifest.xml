@@ -76,6 +76,7 @@
             android:label="@string/title_activity_game"
             android:theme="@style/FullscreenTheme" />
         <activity android:name=".FinishedActivity" />
+        <meta-data android:name="com.usebutton.applicationid" android:value="app-28295511f7c26c23"/>
     </application>
 
 </manifest>

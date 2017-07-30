@@ -20,15 +20,13 @@ data public class Restaurant(val address: String? = null,
 
 data public class GameMeta(val end: String? = null, val start: String? = null)
 
-data public class GameResult(val restaurant_id: RestaurantID? = null)
-
 data public class Response(val value: ArrayList<ArrayList<Int>>? = null, val location: HashMap<String, Double>? = null)
 
 data public class Game(
     val meta: GameMeta? = null,
     val rating: HashMap<UserID, Int>? = null,
     val responses: HashMap<UserID, Response>? = null,
-    val result: GameResult? = null)
+    val result: ArrayList<ArrayList<Any>>? = null)
 
 data public class Group(
     val password: String? = null,
