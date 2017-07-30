@@ -116,7 +116,7 @@ class GroupActivity : Activity() {
                             (findViewById(R.id.create_game) as TextView).setText(R.string.join_vote)
                             continue
                         }
-                        
+
 
                         val restaurant = group.restaurants!![game.result!!.restaurant_id]!!
 
