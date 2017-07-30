@@ -49,7 +49,7 @@ class SignUpActivity : AppCompatActivity() {
                     val members = ArrayList<String>()
                     members.add(uid as UserID)
                     val newRef = ref.push()
-                    val newGroup = Group(password, members, groupName, id = newRef.key)
+                    val newGroup = Group(password, members, groupName, HashMap(), newRef.key, ArrayList())
                     newRef.setValue(newGroup).addOnCompleteListener(object: OnCompleteListener<Void> {
                         override fun onComplete(p0: Task<Void>) {
                             onBackPressed()
