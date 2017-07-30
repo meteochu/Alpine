@@ -66,9 +66,9 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder> 
 
         if (isGameRunning) {
             FirebaseUser user = mMainActivity.getUser();
-            if (currentGame.getResponses() == null || currentGame.getRating() == null) {
+            if (currentGame.getResponses() == null) {
                 return mMainActivity.getResources().getString(R.string.not_voted_text);
-            } else if (!currentGame.getResponses().containsKey(user.getUid()) || !currentGame.getRating().containsKey(user.getUid())) {
+            } else if (!currentGame.getResponses().containsKey(user.getUid())) {
                 return mMainActivity.getResources().getString(R.string.not_voted_text);
             } else {
                 return mMainActivity.getResources().getString(R.string.voted_text);
