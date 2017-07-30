@@ -11,7 +11,14 @@ data public class Category(val name: String? = null, val type: String? = null, v
 
 data public class RestaurantOrder(val id: String? = null, val service: String? = null)
 
-data public class Restaurant(val address: String? = null, val name: String? = null, val id: RestaurantID? = null, val order: RestaurantOrder? = null)
+data public class Restaurant(val address: String? = null,
+                             val name: String? = null,
+                             val id: RestaurantID? = null,
+                             val order: RestaurantOrder? = null,
+                             val state: String? = null,
+                             val zip: String? = null,
+                             val city: String? = null,
+                             val image: String? = null)
 
 data public class GameMeta(val end: String? = null, val start: String? = null)
 
@@ -20,8 +27,8 @@ data public class GameResult(val restaurant_id: RestaurantID? = null)
 data public class Game(
     val categories: ArrayList<Category>? = null,
     val meta: GameMeta? = null,
-    val rating: HashMap<UserID, Integer>? = null,
-    val responses: HashMap<UserID, ArrayList<Integer>>? = null,
+    val rating: HashMap<UserID, Int>? = null,
+    val responses: HashMap<UserID, ArrayList<Int>>? = null,
     val result: GameResult? = null)
 
 data public class Group(

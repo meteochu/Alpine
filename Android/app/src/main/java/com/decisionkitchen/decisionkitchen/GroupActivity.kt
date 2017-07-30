@@ -76,15 +76,16 @@ class GroupActivity : Activity() {
                             val profile = SimpleDraweeView(userLayout.context)
                             profile.setImageURI(member.img)
                             profile.hierarchy.roundingParams = roundingParams
-                            val params = ViewGroup.LayoutParams(110, 110)
+                            val params = ViewGroup.LayoutParams(120, 120)
                             profile.layoutParams = params;
                             val marginParams: LinearLayout.LayoutParams = LinearLayout.LayoutParams(profile.layoutParams);
-                            marginParams.setMargins(50, 30, 50, 30)
+                            marginParams.setMargins(50, 30, 50, 20)
                             profile.layoutParams = marginParams
                             userLayout.addView(profile)
 
                             val name = TextView(userLayout.context)
                             name.text = member.first_name
+                            name.textSize = 11.0F
                             name.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT)
                             name.setPadding(0, 0, 0, 30)
                             userLayout.addView(name)
@@ -178,4 +179,11 @@ class GroupActivity : Activity() {
 
         groupRef.addValueEventListener(groupListener)
     }
+
+    public fun createGame(view: View) {
+        val intent:Intent = Intent(getBaseContext(), RestaurantActivity::class.java)
+        intent.putExtra("GROUP_ID", getIntent().getStringExtra("GROUP_ID"))
+        startActivity(intent)
+    }
+
 }
