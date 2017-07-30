@@ -1,6 +1,9 @@
+platform :ios, '10.3'
 use_frameworks!
 
 target 'DecisionKitchen' do
-	pod 'FacebookCore'
-	pod 'FacebookLogin'
+	pod 'Firebase/Core'
+    pod 'FirebaseUI/Facebook'
+    pod 'FacebookCore'
+    pod 'FacebookLogin'
 end
