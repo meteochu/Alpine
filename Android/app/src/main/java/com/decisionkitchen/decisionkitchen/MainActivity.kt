@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
                 val data = snapshot.children
                 for (point in data) {
                     val group = point.getValue(Group::class.java)
-                    if (group != null) {
+                    if (group != null && group.members!!.contains(user.uid)) {
                         groups += group
                     }
                 }
@@ -258,8 +258,9 @@ class MainActivity : AppCompatActivity() {
 
         val fab = findViewById(R.id.fab) as FloatingActionButton
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+            val intent: Intent = Intent(baseContext, SignUpActivity::class.java)
+            intent.putExtra("USER_ID", user!!.uid)
+            startActivity(intent)
         }
     }
 
@@ -273,7 +274,6 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle presses on the action bar items
         when (item.itemId) {
-            R.id.action_search -> return true
             R.id.action_signout -> {
                 LoginManager.getInstance().logOut()
                 applicationContext.startActivity(Intent(applicationContext, LoginActivity::class.java))
