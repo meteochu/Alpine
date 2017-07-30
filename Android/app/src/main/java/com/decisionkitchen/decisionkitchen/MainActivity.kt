@@ -23,6 +23,7 @@ import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
 import com.facebook.*
+import com.facebook.drawee.backends.pipeline.Fresco
 
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
