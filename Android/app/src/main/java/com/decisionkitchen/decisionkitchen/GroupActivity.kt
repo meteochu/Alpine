@@ -107,60 +107,61 @@ class GroupActivity : Activity() {
                 val mainContent : LinearLayout = findViewById(R.id.group_content) as LinearLayout
                 mainContent.removeAllViews()
 
-                for (game in group.games!!) {
+                if (group.games != null) {
+                    for (game in group.games) {
 
-                    val restaurant = group.restaurants!![game.result!!.restaurant_id]!!
+                        val restaurant = group.restaurants!![game.result!!.restaurant_id]!!
 
-                    val cardLayout = LinearLayout(mainContent.context)
-                    cardLayout.orientation = LinearLayout.HORIZONTAL
-                    cardLayout.gravity = Gravity.TOP
-                    cardLayout.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+                        val cardLayout = LinearLayout(mainContent.context)
+                        cardLayout.orientation = LinearLayout.HORIZONTAL
+                        cardLayout.gravity = Gravity.TOP
+                        cardLayout.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
 
-                    val profile = SimpleDraweeView(cardLayout.context)
-                    profile.setImageURI("https://unsplash.it/200")
-                    profile.hierarchy.roundingParams = roundingParams
-                    val params = ViewGroup.LayoutParams(230, 230)
-                    profile.layoutParams = params;
-                    val marginParams: LinearLayout.LayoutParams = LinearLayout.LayoutParams(profile.layoutParams);
-                    marginParams.setMargins(50, 50, 50, 50)
-                    profile.layoutParams = marginParams
-                    cardLayout.addView(profile)
+                        val profile = SimpleDraweeView(cardLayout.context)
+                        profile.setImageURI("https://unsplash.it/200")
+                        profile.hierarchy.roundingParams = roundingParams
+                        val params = ViewGroup.LayoutParams(230, 230)
+                        profile.layoutParams = params;
+                        val marginParams: LinearLayout.LayoutParams = LinearLayout.LayoutParams(profile.layoutParams);
+                        marginParams.setMargins(50, 50, 50, 50)
+                        profile.layoutParams = marginParams
+                        cardLayout.addView(profile)
 
-                    val cardContentLayout = LinearLayout(mainContent.context)
-                    cardContentLayout.orientation = LinearLayout.VERTICAL
-                    cardContentLayout.gravity = Gravity.TOP
-                    cardContentLayout.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-                    (cardContentLayout.layoutParams as LinearLayout.LayoutParams).setMargins(0,50, 50, 50)
+                        val cardContentLayout = LinearLayout(mainContent.context)
+                        cardContentLayout.orientation = LinearLayout.VERTICAL
+                        cardContentLayout.gravity = Gravity.TOP
+                        cardContentLayout.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+                        (cardContentLayout.layoutParams as LinearLayout.LayoutParams).setMargins(0, 50, 50, 50)
 
-                    val name = TextView(cardContentLayout.context)
-                    name.text = restaurant.name
-                    name.textSize = 20.0F
-                    name.typeface = Typeface.DEFAULT_BOLD
-                    name.setTextColor(Color.BLACK)
-                    name.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT)
-                    name.setPadding(0, 0, 0, 10)
-                    cardContentLayout.addView(name)
+                        val name = TextView(cardContentLayout.context)
+                        name.text = restaurant.name
+                        name.textSize = 20.0F
+                        name.typeface = Typeface.DEFAULT_BOLD
+                        name.setTextColor(Color.BLACK)
+                        name.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT)
+                        name.setPadding(0, 0, 0, 10)
+                        cardContentLayout.addView(name)
 
-                    val address = TextView(cardContentLayout.context)
-                    address.text = restaurant.address
-                    address.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT)
-                    address.setPadding(0, 0, 0, 20)
-                    cardContentLayout.addView(address)
+                        val address = TextView(cardContentLayout.context)
+                        address.text = restaurant.address
+                        address.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT)
+                        address.setPadding(0, 0, 0, 20)
+                        cardContentLayout.addView(address)
 
-                    val date = TextView(cardContentLayout.context)
-                    date.text = DateTime(game.meta!!.end).toString(DateTimeFormat.shortDateTime())
-                    date.textSize = 15.0F
-                    date.typeface = Typeface.create("sans-serif-light", Typeface.NORMAL)
-                    date.setTextColor(Color.rgb(150,150,150))
-                    date.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT)
-                    cardContentLayout.addView(date)
+                        val date = TextView(cardContentLayout.context)
+                        date.text = DateTime(game.meta!!.end).toString(DateTimeFormat.shortDateTime())
+                        date.textSize = 15.0F
+                        date.typeface = Typeface.create("sans-serif-light", Typeface.NORMAL)
+                        date.setTextColor(Color.rgb(150, 150, 150))
+                        date.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT)
+                        cardContentLayout.addView(date)
 
-                    cardLayout.addView(cardContentLayout)
+                        cardLayout.addView(cardContentLayout)
 
-                    mainContent.addView(cardLayout)
+                        mainContent.addView(cardLayout)
 
+                    }
                 }
-
 
             }
 
