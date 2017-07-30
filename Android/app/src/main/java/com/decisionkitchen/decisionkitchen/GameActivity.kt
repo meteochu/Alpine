@@ -31,7 +31,9 @@ class GameActivity : Activity() {
     private var responses: ArrayList<ArrayList<Int>> = ArrayList<ArrayList<Int>>();
 
     fun render() {
-        if (group != null && groupRef != null && qOrder != null && question != -1 && user != null && gameId != null) {
+        if (question == questions.size) {
+            applicationContext.startActivity(Intent(applicationContext, FinishedActivity::class.java))
+        } else if (group != null && groupRef != null && qOrder != null && question != -1 && user != null && gameId != null) {
             val q = questions[question]
             (findViewById(R.id.question) as TextView).text = q.title
             val optionsLayout: LinearLayout = (findViewById(R.id.options) as LinearLayout)
