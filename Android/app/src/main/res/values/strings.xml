@@ -17,4 +17,7 @@
     <string name="fb_login_protocol_scheme">fb116278865686324</string>
     <string name="title_activity_main">DecisionKitchen</string>
     <string name="no_groups_text">Looks like you don\'t have any groups yet. Why don\'t you try joining one?</string>
+    <string name="no_games_text">Looks like you haven\'t had any meals yet&#8230; Start one now!</string>
+    <string name="not_voted_text">There\'s a group planning session now. Click here to vote!</string>
+    <string name="voted_text">You\'ve already submitted your feedback. Hang tight for a decision!</string>
 </resources>
