@@ -200,15 +200,23 @@ class GroupActivity : Activity() {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 val group = snapshot.getValue(Group::class.java)!!
-                for (game in group.games!!) {
-                    if (game.meta!!.end == null) {
-                        return
+
+                if (group.games != null) {
+                    for (game in group.games!!) {
+                        if (game.meta!!.end == null) {
+                            return
+                        }
                     }
+                    val game = Game(GameMeta(null, ISODateTimeFormat.dateTimeNoMillis().print(DateTime())))
+                    group.games!!.add(game)
+                    ref.setValue(group)
+                    return
                 }
 
-                val game = Game(GameMeta(null, ISODateTimeFormat.dateTime().print(DateTime())))
-                group.games!!.add(game)
-                ref.setValue(group)
+                val al = ArrayList<Game>()
+                al.add(Game(GameMeta(null, ISODateTimeFormat.dateTimeNoMillis().print(DateTime()))))
+                val newGroup = Group(group.password, group.members, group.name, group.restaurants, group.id, al)
+                ref.setValue(newGroup)
             }
 
         })
