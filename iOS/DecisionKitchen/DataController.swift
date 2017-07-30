@@ -166,6 +166,42 @@ class DataController: NSObject {
             callback(false)
         }
     }
+    
+    func createGame(in group: Group, callback: (Game) -> Void) {
+        let databaseRef = Database.database().reference()
+        var group = group
+        let meta = Game.Meta(start: Date())
+        let game = Game(meta: meta, rating: [:], responses: [:], result: nil)
+        if group.games == nil {
+            group.games = []
+        }
+        group.games!.append(game)
+        
+        if let encodedGroup = try? encoder.encode(group),
+            let json = try? JSONSerialization.jsonObject(with: encodedGroup, options: []) {
+            databaseRef.child("groups").child(group.id).setValue(json)
+            callback(game)
+        }
+    }
+    
+    func addGameResponse(response: GameResponse, callback: () -> Void) {
+        let databaseRef = Database.database().reference()
+        var group = response.group
+        var game = response.game
+        let uid = Auth.auth().currentUser!.uid
+        if game.responses == nil {
+            game.responses = [:]
+        }
+        game.responses![uid] = response.createFirebaseObject()
+        if let index = group.games!.index(where: { $0.meta.start == game.meta.start }) {
+            group.games![index] = game
+        }
+        print(group)
+        if let encodedGroup = try? encoder.encode(group),
+            let json = try? JSONSerialization.jsonObject(with: encodedGroup, options: []) {
+            databaseRef.child("groups").child(group.id).setValue(json)
+        }
+    }
 
     func add(_ group: Group) {
         self.groups[group.id] = group

@@ -13,7 +13,6 @@ class GameLobbyViewController: UITableViewController {
     var group: Group! {
         didSet {
             self.users = group.members.map { DataController.shared.users[$0]! }
-            self.response = GameResponse(group: group)
             tableView.reloadData()
         }
     }
@@ -57,9 +56,11 @@ class GameLobbyViewController: UITableViewController {
         guard indexPath.section == 1 else { return }
         tableView.deselectRow(at: indexPath, animated: true)
         guard let indexPaths = tableView.indexPathsForSelectedRows, !indexPaths.isEmpty else { return }
-        let selectedUsers = indexPaths.map { self.users[$0.row] }
-        print(selectedUsers)
-        self.performSegue(withIdentifier: "beginGameStage1", sender: self)
+        
+        DataController.shared.createGame(in: self.group) { game in
+            self.response = GameResponse(group: group, game: game)
+            self.performSegue(withIdentifier: "beginGameStage1", sender: self)
+        }
     }
 
     
@@ -70,8 +71,6 @@ class GameLobbyViewController: UITableViewController {
         if let destination = segue.destination as? GameRestaurantViewController {
             destination.response = self.response
         }
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
     
 

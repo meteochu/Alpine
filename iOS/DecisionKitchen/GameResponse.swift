@@ -20,9 +20,20 @@ class GameResponse: NSObject {
     
     let group: Group
     
-    init(group: Group) {
+    let game: Game
+    
+    init(group: Group, game: Game) {
         self.group = group
+        self.game = game
         super.init()
+    }
+    
+    func createFirebaseObject() -> [[Int]] {
+        return [
+            preferredPriceRange,
+            selectedCategoryIndexes,
+            diningOptions
+        ]
     }
     
 }

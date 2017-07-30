@@ -15,15 +15,19 @@ struct Game: Codable {
     var rating: [UserID: Int]?
     
     // TODO: Update to the current schema.. zzz
-    // var responses: [UserID: [Int]]
+    var responses: [UserID: [[Int]]]?
     
     var result: Result?
     
     struct Meta: Codable {
         
-        var start: Date
+        let start: Date
         
         var end: Date?
+        
+        init(start: Date) {
+            self.start = start
+        }
         
     }
     
