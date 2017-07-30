@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class GroupConversationViewController: CollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -15,6 +16,8 @@ class GroupConversationViewController: CollectionViewController, UICollectionVie
             self.title = group.name
         }
     }
+    
+    var selectedGame: Game?
     
     private lazy var usersHeaderController = ConversationUsersHeaderController()
     
@@ -101,6 +104,7 @@ class GroupConversationViewController: CollectionViewController, UICollectionVie
             if let destination = segue.destination as? UINavigationController,
                 let rootVC = destination.topViewController as? GameLobbyViewController {
                 rootVC.group = self.group
+                rootVC.game = self.selectedGame
             }
         }
         
@@ -125,6 +129,15 @@ class GroupConversationViewController: CollectionViewController, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let maxWidth = self.collectionView!.bounds.width-8
         return CGSize(width: maxWidth, height: 120)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let game = group.games![indexPath.row]
+        if game.responses == nil || !game.responses!.keys.contains(Auth.auth().currentUser!.uid) {
+            // begin game...
+            self.selectedGame = game
+            self.performSegue(withIdentifier: "beginGame", sender: self)
+        }
     }
     
     deinit {

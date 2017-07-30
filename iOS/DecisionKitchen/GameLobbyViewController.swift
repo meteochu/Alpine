@@ -18,6 +18,12 @@ class GameLobbyViewController: TableViewController, CLLocationManagerDelegate {
         }
     }
     
+    var game: Game? {
+        didSet {
+            // ...
+        }
+    }
+    
     var users: [User] = []
     
     var response: GameResponse!
@@ -35,6 +41,19 @@ class GameLobbyViewController: TableViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let game = self.game {
+            // skip and go ahead...
+            let response = GameResponse(group: group, game: game)
+            if let loc = self.location {
+                response.deviceLocation = loc
+            }
+            self.response = response
+            self.performSegue(withIdentifier: "beginGameStage1", sender: self)
+        }
     }
     
     @IBAction func didSelectLeaveButton(_ sender: UIBarButtonItem) {
