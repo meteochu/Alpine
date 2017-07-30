@@ -55,6 +55,10 @@ class MainActivity : AppCompatActivity() {
         return this
     }
 
+    private fun getMainActivity(): MainActivity {
+        return this;
+    }
+
     private fun loadData(user: FirebaseUser?) {
 
         if (user == null) return
@@ -77,7 +81,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-                mAdapter = GroupAdapter(groups, mRecyclerView)
+                mAdapter = GroupAdapter(groups, mRecyclerView, getMainActivity())
                 mRecyclerView!!.adapter = mAdapter;
 
 //                var scrollView:ScrollView = getActivity().findViewById(R.id.groups) as ScrollView
@@ -250,7 +254,7 @@ class MainActivity : AppCompatActivity() {
 
         mLayoutManager!!.setMeasuredDimension(CoordinatorLayout.LayoutParams.MATCH_PARENT, CoordinatorLayout.LayoutParams.MATCH_PARENT)
 
-        mAdapter = GroupAdapter(ArrayList<Group>(), mRecyclerView)
+        mAdapter = GroupAdapter(ArrayList<Group>(), mRecyclerView, getMainActivity())
         mRecyclerView!!.adapter = mAdapter
     }
 

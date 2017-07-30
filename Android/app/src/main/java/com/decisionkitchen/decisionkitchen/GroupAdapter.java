@@ -16,19 +16,21 @@ import java.util.List;
 public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder> {
     private static List<Group> mGroups;
     private static RecyclerView mRecyclerView;
+    private static MainActivity mMainActivity;
 
     private static final View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-          int position = mRecyclerView.getChildLayoutPosition(v);
-          String text = mGroups.get(position).getName();
-          Log.e("ayylmao", "ayylmao");
+            int position = mRecyclerView.getChildLayoutPosition(v);
+            String id = mGroups.get(position).getId();
+            mMainActivity.goTest(id);
         }
     };
 
-    public GroupAdapter(List<Group> groups, RecyclerView recyclerView) {
+    public GroupAdapter(List<Group> groups, RecyclerView recyclerView, MainActivity mainActivity) {
         this.mGroups = groups;
         this.mRecyclerView = recyclerView;
+        this.mMainActivity = mainActivity;
     }
 
     public GroupAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
