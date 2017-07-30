@@ -15,21 +15,27 @@ class GameCategoriesViewController: UICollectionViewController, UICollectionView
     var selectedCategories: [Category] {
         return self.collectionView!.indexPathsForSelectedItems!.map { self.allCategories[$0.item] }
     }
+    
+    var response: GameResponse!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView!.allowsMultipleSelection = true
-//      Question("Delivery of dine-in?", arrayOf("Delivery", "Dine-in"))
         self.collectionView!.register(CategoryItemCell.self)
         if let layout = self.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.estimatedItemSize = CGSize(width: 150, height: 45)
             layout.minimumInteritemSpacing = 8
             layout.minimumLineSpacing = 8
         }
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func didSelectCheckmark(_ sender: UIButton) {
+        var indexes = [Int]()
+        let selected = selectedCategories
+        for idx in 0..<allCategories.count {
+            indexes.append(selected.contains(allCategories[idx]) ? 1 : 0)
+        }
+        response.selectedCategoryIndexes = indexes
         self.performSegue(withIdentifier: "beginGameStage3", sender: self)
     }
     
@@ -59,6 +65,12 @@ class GameCategoriesViewController: UICollectionViewController, UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 8, left: 16, bottom: 16, right: 16)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? GameDiningOptionsViewController {
+            destination.response = response
+        }
     }
     
 }

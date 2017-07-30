@@ -21,6 +21,8 @@ class GameDiningOptionsViewController: UIViewController {
     
     var diningOption: DiningOption = .dineIn
     
+    var response: GameResponse!
+    
     @IBAction func didSelectDiningOptionButton(_ sender: UIButton) {
         if sender.tag == 1 {
             dineInButton.backgroundColor = .purpleTint
@@ -35,7 +37,22 @@ class GameDiningOptionsViewController: UIViewController {
             dineInButton.setTitleColor(.darkGray, for: .normal)
             self.diningOption = .takeOut
         }
-        
     }
+    
+    @IBAction func didSelectCheckmark(_ sender: UIButton) {
+        switch self.diningOption {
+        case .dineIn:
+            response.diningOptions = [1, 0]
+        case .takeOut:
+            response.diningOptions = [0, 1]
+        }
+        self.performSegue(withIdentifier: "beginGameFinal", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print(response)
+        // end
+    }
+    
     
 }

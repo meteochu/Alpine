@@ -13,11 +13,14 @@ class GameLobbyViewController: UITableViewController {
     var group: Group! {
         didSet {
             self.users = group.members.map { DataController.shared.users[$0]! }
+            self.response = GameResponse(group: group)
             tableView.reloadData()
         }
     }
     
     var users: [User] = []
+    
+    var response: GameResponse!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,14 +62,17 @@ class GameLobbyViewController: UITableViewController {
         self.performSegue(withIdentifier: "beginGameStage1", sender: self)
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? GameRestaurantViewController {
+            destination.response = self.response
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }
