@@ -10,13 +10,19 @@ import Foundation
 
 struct Restaurant: Codable {
     
-    var address: String
-    
     var id: String
     
     var name: String
     
-    var order: Order
+    var order: Order?
+    
+    var address: String
+    
+    var city: String
+    
+    var state: String
+    
+    var zip: String
     
 }
 
