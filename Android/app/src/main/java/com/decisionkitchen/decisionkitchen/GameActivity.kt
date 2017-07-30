@@ -2,10 +2,12 @@ package com.decisionkitchen.decisionkitchen
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
@@ -40,13 +42,23 @@ class GameActivity : Activity() {
             optionsLayout.removeAllViews()
 
             for ((index, option) in q.options.withIndex()) {
-                var button = Button(optionsLayout.context)
-                button.text = (if (responses[question][index] == 0) "Select " else "Deselect ") + option
-                button.setOnClickListener {
+                val container = LinearLayout(optionsLayout.context)
+                container.orientation = LinearLayout.HORIZONTAL
+
+                val checkbox = CheckBox(container.context)
+                checkbox.isChecked = responses[question][index] != 0;
+                container.addView(checkbox)
+
+                val text = TextView(container.context)
+                text.text = option
+                container.addView(text)
+
+                container.setOnClickListener {
                     responses[question][index] = 1 - responses[question][index]
                     render()
                 }
-                optionsLayout.addView(button)
+
+                optionsLayout.addView(container)
             }
 
         }
