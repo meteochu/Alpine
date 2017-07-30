@@ -16,7 +16,7 @@ class GroupConversationViewController: UICollectionViewController, UICollectionV
         }
     }
     
-    private lazy var usersHeaderContorller = ConversationUsersHeaderController()
+    private lazy var usersHeaderController = ConversationUsersHeaderController()
     
     override func loadView() {
         super.loadView()
@@ -29,10 +29,10 @@ class GroupConversationViewController: UICollectionViewController, UICollectionV
         usersHeader.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
         usersHeader.heightAnchor.constraint(equalToConstant: 72).isActive = true
         
-        self.addChildViewController(usersHeaderContorller)
-        usersHeaderContorller.view.frame = usersHeader.bounds
-        usersHeaderContorller.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        usersHeader.addSubview(usersHeaderContorller.view)
+        self.addChildViewController(usersHeaderController)
+        usersHeaderController.view.frame = usersHeader.bounds
+        usersHeaderController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        usersHeader.addSubview(usersHeaderController.view)
         usersHeaderContorller.didMove(toParentViewController: self)
         
         let insets = UIEdgeInsets(top: 80, left: 0, bottom: 0, right: 0)
@@ -50,8 +50,10 @@ class GroupConversationViewController: UICollectionViewController, UICollectionV
             DataController.shared.fetchUsers { [weak self] users in
                 guard let aSelf = self else { return }
                 let users = aSelf.group.members.map { DataController.shared.users[$0]! }
-                aSelf.usersHeaderContorller.users = users
+                aSelf.usersHeaderController.users = users
             }
+        } else {
+            self.usersHeaderController.users = Array(DataController.shared.users.values)
         }
         
     }
