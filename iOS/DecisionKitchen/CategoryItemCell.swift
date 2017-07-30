@@ -12,7 +12,7 @@ class CategoryItemCell: UICollectionViewCell {
     
     var category: Category! {
         didSet {
-            self.textLabel.text = category.name
+            self.textLabel.text = category.rawValue
         }
     }
     
@@ -20,7 +20,7 @@ class CategoryItemCell: UICollectionViewCell {
     
     override var isSelected: Bool {
         didSet {
-            self.backgroundColor = self.isSelected ? .darkGray : .white
+            self.backgroundColor = self.isSelected ? .purpleTint : .buttonGrey
             textLabel.textColor  = self.isSelected ? .white : .darkGray
         }
     }
@@ -36,7 +36,9 @@ class CategoryItemCell: UICollectionViewCell {
     }
     
     func commonInit() {
-        self.backgroundColor = .white
+        self.layer.cornerRadius = 8
+        self.layer.masksToBounds = true
+        self.backgroundColor = .buttonGrey
         textLabel.textColor  = .darkGray
         textLabel.font = UIFont.boldSystemFont(ofSize: 17)
         textLabel.textAlignment = .center
@@ -46,6 +48,12 @@ class CategoryItemCell: UICollectionViewCell {
         textLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         textLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         textLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+    }
+    
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        let textSize = self.textLabel.sizeThatFits(layoutAttributes.bounds.size)
+        layoutAttributes.size = CGSize(width: textSize.width + 32, height: 44)
+        return layoutAttributes
     }
     
 }

@@ -8,81 +8,69 @@
 
 import UIKit
 
-class GameCategoriesViewController: UICollectionViewController {
+class GameCategoriesViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    let allCategories = Category.allOptions
+    
+    var selectedCategories: [Category] {
+        return self.collectionView!.indexPathsForSelectedItems!.map { self.allCategories[$0.item] }
+    }
+    
+    var response: GameResponse!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self)
-
-        // Do any additional setup after loading the view.
+        self.collectionView!.allowsMultipleSelection = true
+        self.collectionView!.register(CategoryItemCell.self)
+        if let layout = self.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.estimatedItemSize = CGSize(width: 150, height: 45)
+            layout.minimumInteritemSpacing = 8
+            layout.minimumLineSpacing = 8
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func didSelectCheckmark(_ sender: UIButton) {
+        var indexes = [Int]()
+        let selected = selectedCategories
+        for idx in 0..<allCategories.count {
+            indexes.append(selected.contains(allCategories[idx]) ? 1 : 0)
+        }
+        response.selectedCategoryIndexes = indexes
+        self.performSegue(withIdentifier: "beginGameStage3", sender: self)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return self.allCategories.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionElementKindSectionHeader {
+            return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderCell", for: indexPath)
+        } else {
+            return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FooterButton", for: indexPath)
+        }
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(for: indexPath)
-        //
+        let cell = collectionView.dequeueReusableCell(for: indexPath) as CategoryItemCell
+        cell.category = self.allCategories[indexPath.row]
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 8, left: 16, bottom: 16, right: 16)
     }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? GameDiningOptionsViewController {
+            destination.response = response
+        }
     }
-    */
-
+    
 }
