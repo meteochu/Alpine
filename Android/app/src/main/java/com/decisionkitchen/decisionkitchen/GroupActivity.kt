@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.net.Uri
+import android.opengl.Visibility
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
 import android.text.Layout
@@ -113,7 +114,13 @@ class GroupActivity : Activity() {
                 if (group.games != null) {
                     for (game in group.games) {
                         if (game.meta!!.end == null) {
-                            (findViewById(R.id.create_game) as TextView).setText(R.string.join_vote)
+                            if (game.responses != null && game.responses.containsKey(FirebaseAuth.getInstance().currentUser!!.uid)) {
+                                findViewById(R.id.create_game).visibility = View.GONE
+                                findViewById(R.id.voted).visibility = View.VISIBLE
+                            } else {
+                                (findViewById(R.id.create_game) as TextView).setText(R.string.join_vote)
+                                (findViewById(R.id.textView) as TextView).setText("Enter your vote!")
+                            }
                             continue
                         }
 
