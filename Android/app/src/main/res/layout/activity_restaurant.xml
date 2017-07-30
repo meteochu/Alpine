@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EEE"
+    android:background="#FFF"
     android:gravity="top"
     android:orientation="vertical"
     tools:context="com.decisionkitchen.decisionkitchen.RestaurantActivity">
@@ -39,30 +39,39 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="bottom"
         android:orientation="vertical">
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:paddingTop="65dp">
 
             <LinearLayout
                 android:id="@+id/scrollView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" />
+                android:orientation="vertical">
+
+            </LinearLayout>
 
         </ScrollView>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20pt"
+            android:layout_height="30pt"
+            android:background="@drawable/gradient"
+            android:gravity="bottom"
             android:orientation="vertical">
 
             <Button
                 android:id="@+id/button3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:layout_margin="10dp"
+                android:background="@drawable/com_facebook_auth_dialog_background"
+                android:text="Next" />
+
         </LinearLayout>
     </LinearLayout>
 
