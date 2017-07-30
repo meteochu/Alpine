@@ -21,6 +21,10 @@
 		A1467FC51F2E00D800D4C718 /* GameRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FC41F2E00D800D4C718 /* GameRestaurantViewController.swift */; };
 		A1467FC71F2E050F00D4C718 /* GameCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FC61F2E050F00D4C718 /* GameCategoriesViewController.swift */; };
 		A1467FC91F2E052700D4C718 /* CategoryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FC81F2E052700D4C718 /* CategoryItemCell.swift */; };
+		A1467FCB1F2E43A400D4C718 /* UIColor+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FCA1F2E43A400D4C718 /* UIColor+Theme.swift */; };
+		A1467FCD1F2E493700D4C718 /* GameDiningOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FCC1F2E493700D4C718 /* GameDiningOptionsViewController.swift */; };
+		A1467FCF1F2E4B9900D4C718 /* GameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FCE1F2E4B9900D4C718 /* GameResponse.swift */; };
+		A1467FD11F2E510000D4C718 /* GameResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FD01F2E510000D4C718 /* GameResultViewController.swift */; };
 		A161B06F1F2D393200003C2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161B06E1F2D393200003C2B /* AppDelegate.swift */; };
 		A161B0761F2D393200003C2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A161B0741F2D393200003C2B /* Main.storyboard */; };
 		A161B0781F2D393200003C2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A161B0771F2D393200003C2B /* Assets.xcassets */; };
@@ -60,6 +64,10 @@
 		A1467FC41F2E00D800D4C718 /* GameRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRestaurantViewController.swift; sourceTree = "<group>"; };
 		A1467FC61F2E050F00D4C718 /* GameCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCategoriesViewController.swift; sourceTree = "<group>"; };
 		A1467FC81F2E052700D4C718 /* CategoryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemCell.swift; sourceTree = "<group>"; };
+		A1467FCA1F2E43A400D4C718 /* UIColor+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Theme.swift"; sourceTree = "<group>"; };
+		A1467FCC1F2E493700D4C718 /* GameDiningOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDiningOptionsViewController.swift; sourceTree = "<group>"; };
+		A1467FCE1F2E4B9900D4C718 /* GameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResponse.swift; sourceTree = "<group>"; };
+		A1467FD01F2E510000D4C718 /* GameResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultViewController.swift; sourceTree = "<group>"; };
 		A161B06B1F2D393200003C2B /* DecisionKitchen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DecisionKitchen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A161B06E1F2D393200003C2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A161B0751F2D393200003C2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -152,6 +160,8 @@
 				A1467FBB1F2DF4E100D4C718 /* GameLobbyViewController.swift */,
 				A1467FC41F2E00D800D4C718 /* GameRestaurantViewController.swift */,
 				A1467FC61F2E050F00D4C718 /* GameCategoriesViewController.swift */,
+				A1467FCC1F2E493700D4C718 /* GameDiningOptionsViewController.swift */,
+				A1467FD01F2E510000D4C718 /* GameResultViewController.swift */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -234,6 +244,7 @@
 			children = (
 				A1F9DF611F2D6CEF00D1129F /* Category.swift */,
 				A1F9DF6E1F2D7F4A00D1129F /* Game.swift */,
+				A1467FCE1F2E4B9900D4C718 /* GameResponse.swift */,
 				A1F9DF5D1F2D69FD00D1129F /* Group.swift */,
 				A1F9DF701F2D807C00D1129F /* Order.swift */,
 				A1F9DF6C1F2D7EEA00D1129F /* Restaurant.swift */,
@@ -247,6 +258,7 @@
 			children = (
 				A1467FB51F2DD5CA00D4C718 /* UIImageView+Initials.swift */,
 				A1467FB71F2DD8AF00D4C718 /* UIColor+Random.swift */,
+				A1467FCA1F2E43A400D4C718 /* UIColor+Theme.swift */,
 				A1467FAD1F2DB9DF00D4C718 /* UIImageView++.swift */,
 				A1F9DF631F2D76A100D1129F /* Reusable.swift */,
 			);
@@ -400,11 +412,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1467FCB1F2E43A400D4C718 /* UIColor+Theme.swift in Sources */,
 				A1467FB61F2DD5CA00D4C718 /* UIImageView+Initials.swift in Sources */,
 				A1467FBC1F2DF4E100D4C718 /* GameLobbyViewController.swift in Sources */,
 				A1467FC91F2E052700D4C718 /* CategoryItemCell.swift in Sources */,
 				A161B06F1F2D393200003C2B /* AppDelegate.swift in Sources */,
 				A1F9DF6F1F2D7F4A00D1129F /* Game.swift in Sources */,
+				A1467FCF1F2E4B9900D4C718 /* GameResponse.swift in Sources */,
+				A1467FCD1F2E493700D4C718 /* GameDiningOptionsViewController.swift in Sources */,
 				A114C7231F2D43F20080CD50 /* GroupsViewController.swift in Sources */,
 				A114C7251F2D44100080CD50 /* SettingsViewController.swift in Sources */,
 				A1467FC31F2DF5AD00D4C718 /* UserDetailCell.swift in Sources */,
@@ -414,6 +429,7 @@
 				A1467FB01F2DBA2900D4C718 /* ConversationUsersHeaderLayout.swift in Sources */,
 				A1467FC51F2E00D800D4C718 /* GameRestaurantViewController.swift in Sources */,
 				A1467FB41F2DC51B00D4C718 /* CreateGroupViewController.swift in Sources */,
+				A1467FD11F2E510000D4C718 /* GameResultViewController.swift in Sources */,
 				A1F9DF641F2D76A100D1129F /* Reusable.swift in Sources */,
 				A1B3BA041F2D3DE000BA3871 /* OnboardingViewController.swift in Sources */,
 				A1467FAC1F2DB72900D4C718 /* UserHeaderCell.swift in Sources */,

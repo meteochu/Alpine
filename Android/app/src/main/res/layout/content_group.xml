@@ -77,7 +77,6 @@
                     android:id="@+id/create_game"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="40dp"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/gradient"
                     android:bottomLeftRadius="10dp"
@@ -91,6 +90,18 @@
                     android:textColor="@color/com_facebook_button_background_color_focused"
                     android:topLeftRadius="10dp"
                     android:topRightRadius="10dp" />
+
+                <TextView
+                    android:id="@+id/voted"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="40dp"
+                    android:text="You've voted ❤️"
+                    android:visibility="invisible"
+                    android:textAlignment="center"
+                    android:textSize="14sp" />
+
             </LinearLayout>
 
         </LinearLayout>

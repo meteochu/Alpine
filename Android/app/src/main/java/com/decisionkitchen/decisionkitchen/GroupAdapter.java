@@ -100,6 +100,20 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder> 
 
         TextView blurbView = (TextView) holder.itemView.findViewById(R.id.blurb);
         blurbView.setText(getPreviewText(mGroups.get(position)));
+
+        if (mGroups.get(position).getGames() != null && mGroups.get(position).getGames().get(0).getResult() != null && mGroups.get(position).getRestaurants().get(mGroups.get(position).getGames().get(0).getResult().getRestaurant_id()).getImage() != null) {
+            SimpleDraweeView mSimpleDraweeView = (SimpleDraweeView) holder.itemView.findViewById(R.id.picture);
+            RoundingParams roundingParams = new RoundingParams();
+            roundingParams.setRoundAsCircle(true);
+            mSimpleDraweeView.getHierarchy().setRoundingParams(roundingParams);
+            String imgUrl = mGroups.get(position).getRestaurants().get(mGroups.get(position).getGames().get(0).getResult().getRestaurant_id()).getImage();
+            Log.w("test", imgUrl);
+            mSimpleDraweeView.setImageURI(imgUrl);
+        } else {
+            holder.itemView.findViewById(R.id.picture).setVisibility(View.GONE);
+            holder.itemView.findViewById(R.id.placeholder).setVisibility(View.VISIBLE);
+        }
+
     }
 
     @Override
