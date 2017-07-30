@@ -8,10 +8,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
 
-
-
-
-
 class GroupActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,10 +18,8 @@ class GroupActivity : Activity() {
         val groupListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Get Post object and use the values to update the UI
-                val group : Group? = dataSnapshot.getValue<Group>(Group::class.java)
-                if (group != null) {
-                    Log.w("test", group.password + "test")
-                }
+                val group : Group = dataSnapshot.getValue<Group>(Group::class.java)!!
+                Log.w("test", group.toString())
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
