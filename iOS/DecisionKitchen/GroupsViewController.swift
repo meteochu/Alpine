@@ -22,6 +22,8 @@ class GroupsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.estimatedRowHeight = 44
+        self.tableView.tableFooterView = UIView()
         tableView.register(GroupDetailCell.self)
         guard let _ = Auth.auth().currentUser else {
             return
@@ -62,6 +64,10 @@ class GroupsViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         self.selectedIndex = indexPath.row
         self.performSegue(withIdentifier: "showGroupConversation", sender: self)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

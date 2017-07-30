@@ -18,7 +18,7 @@ class GameDetailCell: UICollectionViewCell {
     var game: Game! {
         didSet {
             self.imageView.image = #imageLiteral(resourceName: "Utensils")
-            dateLabel.text = DateFormatter.localizedString(from: game.meta.end, dateStyle: .medium, timeStyle: .medium)
+            dateLabel.text = DateFormatter.localizedString(from: game.meta.start, dateStyle: .medium, timeStyle: .medium)
             if let restaurant = DataController.shared.restaurants[game.result.restaurantId] {
                 nameLabel.text = restaurant.name
                 addressLabel.text = restaurant.address
