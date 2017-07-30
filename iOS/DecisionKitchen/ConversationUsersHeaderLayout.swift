@@ -1,5 +1,5 @@
 //
-//  GroupConversationFlowLayout.swift
+//  ConversationUsersHeaderLayout.swift
 //  DecisionKitchen
 //
 //  Created by Andy Liang on 2017-07-29.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class GroupConversationFlowLayout: UICollectionViewFlowLayout {
-    
+class ConversationUsersHeaderLayout: UICollectionViewFlowLayout {
+
     override init() {
         super.init()
         self.commonInit()
@@ -22,10 +22,9 @@ class GroupConversationFlowLayout: UICollectionViewFlowLayout {
     
     func commonInit() {
         self.minimumLineSpacing = 4
-        self.minimumInteritemSpacing = 0
-        self.scrollDirection = .vertical
+        self.minimumInteritemSpacing = 4
+        self.scrollDirection = .horizontal
         self.sectionInset = .zero
     }
     
-
 }

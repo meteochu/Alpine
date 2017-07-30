@@ -10,6 +10,10 @@
 		A114C7211F2D43D30080CD50 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A114C7201F2D43D30080CD50 /* TabBarController.swift */; };
 		A114C7231F2D43F20080CD50 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A114C7221F2D43F20080CD50 /* GroupsViewController.swift */; };
 		A114C7251F2D44100080CD50 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A114C7241F2D44100080CD50 /* SettingsViewController.swift */; };
+		A1467FAC1F2DB72900D4C718 /* UserHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FAB1F2DB72900D4C718 /* UserHeaderCell.swift */; };
+		A1467FAE1F2DB9DF00D4C718 /* UIImageView++.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FAD1F2DB9DF00D4C718 /* UIImageView++.swift */; };
+		A1467FB01F2DBA2900D4C718 /* ConversationUsersHeaderLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FAF1F2DBA2900D4C718 /* ConversationUsersHeaderLayout.swift */; };
+		A1467FB21F2DBA7A00D4C718 /* ConversationUsersHeaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FB11F2DBA7A00D4C718 /* ConversationUsersHeaderController.swift */; };
 		A161B06F1F2D393200003C2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161B06E1F2D393200003C2B /* AppDelegate.swift */; };
 		A161B0761F2D393200003C2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A161B0741F2D393200003C2B /* Main.storyboard */; };
 		A161B0781F2D393200003C2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A161B0771F2D393200003C2B /* Assets.xcassets */; };
@@ -27,7 +31,6 @@
 		A1F9DF711F2D807C00D1129F /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9DF701F2D807C00D1129F /* Order.swift */; };
 		A1F9DF741F2D877500D1129F /* GroupDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9DF731F2D877500D1129F /* GroupDetailCell.swift */; };
 		A1F9DF791F2D8A1400D1129F /* GroupConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9DF781F2D8A1400D1129F /* GroupConversationViewController.swift */; };
-		A1F9DF7B1F2D8C0500D1129F /* ConversationUsersHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9DF7A1F2D8C0500D1129F /* ConversationUsersHeaderView.swift */; };
 		A1F9DF801F2D8E6600D1129F /* GameDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9DF7E1F2D8E6600D1129F /* GameDetailCell.swift */; };
 		D007982D02F6F5E8D4D20A06 /* Pods_DecisionKitchen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E68DFAD0CA157FD531C1092 /* Pods_DecisionKitchen.framework */; };
 /* End PBXBuildFile section */
@@ -39,6 +42,10 @@
 		A114C7221F2D43F20080CD50 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		A114C7241F2D44100080CD50 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A114C7281F2D484D0080CD50 /* DecisionKitchen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DecisionKitchen.entitlements; sourceTree = "<group>"; };
+		A1467FAB1F2DB72900D4C718 /* UserHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHeaderCell.swift; sourceTree = "<group>"; };
+		A1467FAD1F2DB9DF00D4C718 /* UIImageView++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView++.swift"; sourceTree = "<group>"; };
+		A1467FAF1F2DBA2900D4C718 /* ConversationUsersHeaderLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationUsersHeaderLayout.swift; sourceTree = "<group>"; };
+		A1467FB11F2DBA7A00D4C718 /* ConversationUsersHeaderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationUsersHeaderController.swift; sourceTree = "<group>"; };
 		A161B06B1F2D393200003C2B /* DecisionKitchen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DecisionKitchen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A161B06E1F2D393200003C2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A161B0751F2D393200003C2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -58,7 +65,6 @@
 		A1F9DF701F2D807C00D1129F /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		A1F9DF731F2D877500D1129F /* GroupDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailCell.swift; sourceTree = "<group>"; };
 		A1F9DF781F2D8A1400D1129F /* GroupConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupConversationViewController.swift; sourceTree = "<group>"; };
-		A1F9DF7A1F2D8C0500D1129F /* ConversationUsersHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationUsersHeaderView.swift; sourceTree = "<group>"; };
 		A1F9DF7E1F2D8E6600D1129F /* GameDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailCell.swift; sourceTree = "<group>"; };
 		C45CCB82D4205F3E2CE9B5C3 /* Pods-DecisionKitchen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DecisionKitchen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DecisionKitchen/Pods-DecisionKitchen.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,7 +137,7 @@
 				A114C7201F2D43D30080CD50 /* TabBarController.swift */,
 				A114C7221F2D43F20080CD50 /* GroupsViewController.swift */,
 				A1F9DF781F2D8A1400D1129F /* GroupConversationViewController.swift */,
-				A1B051181F2D92BF005828CB /* GroupConversationFlowLayout.swift */,
+				A1467FB11F2DBA7A00D4C718 /* ConversationUsersHeaderController.swift */,
 				A1B3BA031F2D3DE000BA3871 /* OnboardingViewController.swift */,
 				A114C7241F2D44100080CD50 /* SettingsViewController.swift */,
 			);
@@ -182,6 +188,7 @@
 		A1F9DF721F2D867700D1129F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				A1467FAD1F2DB9DF00D4C718 /* UIImageView++.swift */,
 				A1F9DF631F2D76A100D1129F /* Reusable.swift */,
 			);
 			name = Extension;
@@ -192,7 +199,9 @@
 			children = (
 				A1F9DF731F2D877500D1129F /* GroupDetailCell.swift */,
 				A1F9DF7E1F2D8E6600D1129F /* GameDetailCell.swift */,
-				A1F9DF7A1F2D8C0500D1129F /* ConversationUsersHeaderView.swift */,
+				A1467FAB1F2DB72900D4C718 /* UserHeaderCell.swift */,
+				A1B051181F2D92BF005828CB /* GroupConversationFlowLayout.swift */,
+				A1467FAF1F2DBA2900D4C718 /* ConversationUsersHeaderLayout.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -333,14 +342,17 @@
 				A161B06F1F2D393200003C2B /* AppDelegate.swift in Sources */,
 				A1F9DF6F1F2D7F4A00D1129F /* Game.swift in Sources */,
 				A114C7231F2D43F20080CD50 /* GroupsViewController.swift in Sources */,
-				A1F9DF7B1F2D8C0500D1129F /* ConversationUsersHeaderView.swift in Sources */,
 				A114C7251F2D44100080CD50 /* SettingsViewController.swift in Sources */,
 				A1F9DF741F2D877500D1129F /* GroupDetailCell.swift in Sources */,
 				A1F9DF711F2D807C00D1129F /* Order.swift in Sources */,
 				A1F9DF5E1F2D69FD00D1129F /* Group.swift in Sources */,
+				A1467FB01F2DBA2900D4C718 /* ConversationUsersHeaderLayout.swift in Sources */,
 				A1F9DF641F2D76A100D1129F /* Reusable.swift in Sources */,
 				A1B3BA041F2D3DE000BA3871 /* OnboardingViewController.swift in Sources */,
+				A1467FAC1F2DB72900D4C718 /* UserHeaderCell.swift in Sources */,
+				A1467FB21F2DBA7A00D4C718 /* ConversationUsersHeaderController.swift in Sources */,
 				A1F9DF801F2D8E6600D1129F /* GameDetailCell.swift in Sources */,
+				A1467FAE1F2DB9DF00D4C718 /* UIImageView++.swift in Sources */,
 				A114C7211F2D43D30080CD50 /* TabBarController.swift in Sources */,
 				A1B051191F2D92BF005828CB /* GroupConversationFlowLayout.swift in Sources */,
 				A1F9DF621F2D6CEF00D1129F /* Category.swift in Sources */,
