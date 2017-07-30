@@ -14,7 +14,8 @@
 		A161B0761F2D393200003C2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A161B0741F2D393200003C2B /* Main.storyboard */; };
 		A161B0781F2D393200003C2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A161B0771F2D393200003C2B /* Assets.xcassets */; };
 		A161B07B1F2D393200003C2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A161B0791F2D393200003C2B /* LaunchScreen.storyboard */; };
-		A1B051171F2D9121005828CB /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B051161F2D9121005828CB /* GameController.swift */; };
+		A17183281F2DB09B001D58AF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17183271F2DB09B001D58AF /* User.swift */; };
+		A1B051171F2D9121005828CB /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B051161F2D9121005828CB /* DataController.swift */; };
 		A1B051191F2D92BF005828CB /* GroupConversationFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B051181F2D92BF005828CB /* GroupConversationFlowLayout.swift */; };
 		A1B3BA041F2D3DE000BA3871 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B3BA031F2D3DE000BA3871 /* OnboardingViewController.swift */; };
 		A1C916301F2D51C7008B703C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1C9162F1F2D51AA008B703C /* GoogleService-Info.plist */; };
@@ -44,7 +45,8 @@
 		A161B0771F2D393200003C2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A161B07A1F2D393200003C2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A161B07C1F2D393200003C2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A1B051161F2D9121005828CB /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
+		A17183271F2DB09B001D58AF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A1B051161F2D9121005828CB /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		A1B051181F2D92BF005828CB /* GroupConversationFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupConversationFlowLayout.swift; sourceTree = "<group>"; };
 		A1B3BA031F2D3DE000BA3871 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		A1C9162F1F2D51AA008B703C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				A161B06E1F2D393200003C2B /* AppDelegate.swift */,
 				A1B3BA021F2D3D7600BA3871 /* Model */,
 				A1F9DF751F2D877C00D1129F /* View */,
+				A17183261F2DADF0001D58AF /* Controller */,
 				A161B0861F2D39B500003C2B /* View Controllers */,
 				A161B0871F2D39BA00003C2B /* Storyboard */,
 				A1F9DF721F2D867700D1129F /* Extension */,
@@ -147,7 +150,6 @@
 			isa = PBXGroup;
 			children = (
 				A161B0771F2D393200003C2B /* Assets.xcassets */,
-				A1B051161F2D9121005828CB /* GameController.swift */,
 				A161B0791F2D393200003C2B /* LaunchScreen.storyboard */,
 				A161B07C1F2D393200003C2B /* Info.plist */,
 				A1C9162F1F2D51AA008B703C /* GoogleService-Info.plist */,
@@ -156,14 +158,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A17183261F2DADF0001D58AF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A1B051161F2D9121005828CB /* DataController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		A1B3BA021F2D3D7600BA3871 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A1F9DF5D1F2D69FD00D1129F /* Group.swift */,
-				A1F9DF6C1F2D7EEA00D1129F /* Restaurant.swift */,
-				A1F9DF701F2D807C00D1129F /* Order.swift */,
-				A1F9DF6E1F2D7F4A00D1129F /* Game.swift */,
 				A1F9DF611F2D6CEF00D1129F /* Category.swift */,
+				A1F9DF6E1F2D7F4A00D1129F /* Game.swift */,
+				A1F9DF5D1F2D69FD00D1129F /* Group.swift */,
+				A1F9DF701F2D807C00D1129F /* Order.swift */,
+				A1F9DF6C1F2D7EEA00D1129F /* Restaurant.swift */,
+				A17183271F2DB09B001D58AF /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -333,7 +344,8 @@
 				A114C7211F2D43D30080CD50 /* TabBarController.swift in Sources */,
 				A1B051191F2D92BF005828CB /* GroupConversationFlowLayout.swift in Sources */,
 				A1F9DF621F2D6CEF00D1129F /* Category.swift in Sources */,
-				A1B051171F2D9121005828CB /* GameController.swift in Sources */,
+				A17183281F2DB09B001D58AF /* User.swift in Sources */,
+				A1B051171F2D9121005828CB /* DataController.swift in Sources */,
 				A1F9DF791F2D8A1400D1129F /* GroupConversationViewController.swift in Sources */,
 				A1F9DF6D1F2D7EEA00D1129F /* Restaurant.swift in Sources */,
 			);
