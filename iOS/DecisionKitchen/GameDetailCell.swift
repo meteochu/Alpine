@@ -17,17 +17,19 @@ class GameDetailCell: UICollectionViewCell {
 
     var game: Game! {
         didSet {
-            self.imageView.image = #imageLiteral(resourceName: "Utensils")
             if let end = game.meta.end {
                 dateLabel.text = DateFormatter.localizedString(from: end, dateStyle: .medium, timeStyle: .medium)
             } else {
                 dateLabel.text = "The game is still ongoing..."
             }
-            if let restaurantId = game.result?.restaurantId, let restaurant = DataController.shared.restaurants[restaurantId] {
+            var imageName: String = "🍕 🍽"
+            if let restaurantId = game.result?.last?[0], let restaurant = DataController.shared.restaurants[restaurantId] {
                 nameLabel.text = restaurant.name
                 addressLabel.text = restaurant.address
+                imageName = restaurant.name  
             }
             self.layoutIfNeeded()
+            self.imageView.setImage(for: imageName)
         }
     }
     
@@ -47,7 +49,7 @@ class GameDetailCell: UICollectionViewCell {
     }
     
     func commonInit() {
-        contentView.backgroundColor = UIColor(white: 0.98, alpha: 1)
+        contentView.backgroundColor = UIColor(white: 0.96, alpha: 1)
         contentView.layer.cornerRadius = 8
         contentView.layer.shadowOffset = CGSize(width: 0, height: 2)
         contentView.layer.shadowRadius = 2
@@ -75,7 +77,7 @@ class GameDetailCell: UICollectionViewCell {
         
         imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
         imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16).isActive = true
-        imageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.25).isActive = true
+        imageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.20).isActive = true
         imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor).isActive = true
         
         nameLabel.topAnchor.constraint(equalTo: imageView.topAnchor).isActive = true

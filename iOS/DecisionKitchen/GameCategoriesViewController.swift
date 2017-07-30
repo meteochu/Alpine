@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameCategoriesViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class GameCategoriesViewController: CollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let allCategories = Category.allOptions
     

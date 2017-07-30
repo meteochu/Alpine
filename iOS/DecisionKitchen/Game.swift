@@ -8,37 +8,45 @@
 
 import Foundation
 
-struct Game: Codable {
+typealias Result = [String]
+class Game: NSObject, Codable {
     
     var meta: Meta
     
     var rating: [UserID: Int]?
     
-    // TODO: Update to the current schema.. zzz
-    // var responses: [UserID: [Int]]
+    var responses: [UserID: Response]?
     
-    var result: Result?
+    var result: [Result]?
     
     struct Meta: Codable {
         
-        var start: Date
+        let start: Date
         
         var end: Date?
         
+        init(start: Date) {
+            self.start = start
+        }
+        
     }
     
-    struct Result: Codable {
+    init(meta: Meta, rating: [UserID: Int]?, response: [UserID: Response]?, result: [Result]?) {
+        self.meta = meta
+        self.rating = rating
+        self.responses = response
+        self.result = result
+        super.init()
+    }
+    
+    struct Response: Codable {
         
-        var restaurantId: String
+        let location: Location
         
-        enum CodingKeys: String, CodingKey {
-            case restaurantId = "restaurant_id"
-        }
+        let value: [[Int]]
         
-        init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            restaurantId = try container.decode(String.self, forKey: .restaurantId)
-        }
     }
     
 }
+
+

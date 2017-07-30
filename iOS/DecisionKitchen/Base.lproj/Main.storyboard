@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13137.5"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -524,7 +525,7 @@ Would you prefer to dine-in or order take out?</string>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3aB-d4-tuX">
-                                <rect key="frame" x="155.5" y="436" width="64" height="64"/>
+                                <rect key="frame" x="155.5" y="468.5" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="QT4-D2-Y90"/>
                                     <constraint firstAttribute="width" secondItem="3aB-d4-tuX" secondAttribute="height" multiplier="1:1" id="ZEu-by-fvG"/>
@@ -532,7 +533,6 @@ Would you prefer to dine-in or order take out?</string>
                                 <state key="normal" title="Button" image="Checkmark"/>
                                 <connections>
                                     <action selector="didSelectCheckmark:" destination="E5B-JI-Ze0" eventType="touchUpInside" id="HhU-7Y-rny"/>
-                                    <action selector="didSelectCheckmark:" destination="8aQ-VU-DHj" eventType="touchUpInside" id="fhX-23-Z2W"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -541,22 +541,75 @@ Would you prefer to dine-in or order take out?</string>
                             <constraint firstItem="t8y-NS-Q48" firstAttribute="leading" secondItem="3fw-JH-LPK" secondAttribute="leading" constant="16" id="0E2-SQ-Jhw"/>
                             <constraint firstAttribute="trailing" secondItem="TAr-Xp-3T2" secondAttribute="trailing" constant="16" id="BtN-cd-CUa"/>
                             <constraint firstItem="t8y-NS-Q48" firstAttribute="top" secondItem="GYd-Wz-qdX" secondAttribute="bottom" constant="64" id="Wen-Zo-IlC"/>
-                            <constraint firstItem="3aB-d4-tuX" firstAttribute="top" secondItem="TAr-Xp-3T2" secondAttribute="bottom" constant="124" id="YF3-bL-OwQ"/>
                             <constraint firstItem="TAr-Xp-3T2" firstAttribute="leading" secondItem="3fw-JH-LPK" secondAttribute="leading" constant="18" id="aYj-wi-AXp"/>
                             <constraint firstItem="3aB-d4-tuX" firstAttribute="centerX" secondItem="3fw-JH-LPK" secondAttribute="centerX" id="jvY-Je-fUQ"/>
                             <constraint firstAttribute="trailing" secondItem="t8y-NS-Q48" secondAttribute="trailing" constant="16" id="nOS-yA-k0a"/>
+                            <constraint firstItem="3aB-d4-tuX" firstAttribute="centerY" secondItem="3fw-JH-LPK" secondAttribute="centerY" multiplier="1.5" id="ubZ-yu-Jfv"/>
                             <constraint firstItem="TAr-Xp-3T2" firstAttribute="top" secondItem="t8y-NS-Q48" secondAttribute="bottom" constant="34" id="wyz-DR-NHX"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Stage 3" id="bb6-BR-3sR"/>
+                    <navigationItem key="navigationItem" title="Stage 3" id="bb6-BR-3sR">
+                        <barButtonItem key="backBarButtonItem" title="#3" id="CIl-Y2-0F9"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="dineInButton" destination="ZHr-bn-kLr" id="33w-8u-cv4"/>
                         <outlet property="takeOutButton" destination="qgo-Wn-gsm" id="HjM-8p-Oiv"/>
+                        <segue destination="OWn-Uj-aHV" kind="show" identifier="beginGameFinal" id="jVe-Ob-uzo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFo-Gx-sjV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7562" y="-106"/>
+        </scene>
+        <!--Submitted!-->
+        <scene sceneID="h3x-RJ-ktM">
+            <objects>
+                <viewController id="OWn-Uj-aHV" customClass="GameResultViewController" customModule="DecisionKitchen" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0Dr-bk-OUk"/>
+                        <viewControllerLayoutGuide type="bottom" id="4Yg-Pj-9zm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" id="70m-oV-pYF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIt-MK-Tmt">
+                                <rect key="frame" x="16" y="290.5" width="343" height="86"/>
+                                <string key="text">Thanks for Submitting!
+We'll let you know when everyone else responds!</string>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hT2-qK-eiF">
+                                <rect key="frame" x="155.5" y="468.5" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="lNe-pH-vdW"/>
+                                    <constraint firstAttribute="width" secondItem="hT2-qK-eiF" secondAttribute="height" multiplier="1:1" id="oUe-cw-2ux"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="Home"/>
+                                <connections>
+                                    <action selector="didSelectHomeButton:" destination="OWn-Uj-aHV" eventType="touchUpInside" id="as6-FD-LYi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hT2-qK-eiF" firstAttribute="centerX" secondItem="70m-oV-pYF" secondAttribute="centerX" id="1br-yv-xUL"/>
+                            <constraint firstItem="aIt-MK-Tmt" firstAttribute="leading" secondItem="70m-oV-pYF" secondAttribute="leading" constant="16" id="5c7-LQ-4gD"/>
+                            <constraint firstItem="aIt-MK-Tmt" firstAttribute="centerY" secondItem="70m-oV-pYF" secondAttribute="centerY" id="OZZ-DX-1zJ"/>
+                            <constraint firstAttribute="trailing" secondItem="aIt-MK-Tmt" secondAttribute="trailing" constant="16" id="gpf-cM-q6A"/>
+                            <constraint firstItem="hT2-qK-eiF" firstAttribute="centerY" secondItem="70m-oV-pYF" secondAttribute="centerY" multiplier="1.5" id="ubf-48-Xc8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Submitted!" id="Mcc-kX-3NO"/>
+                    <connections>
+                        <outlet property="homeButton" destination="hT2-qK-eiF" id="QzO-ug-Uzq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DDk-Mj-MHU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8343.2000000000007" y="-111.0944527736132"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xMW-w4-nnH">
@@ -743,6 +796,7 @@ Would you prefer to dine-in or order take out?</string>
     </scenes>
     <resources>
         <image name="Checkmark" width="120" height="120"/>
+        <image name="Home" width="120" height="120"/>
         <image name="Logo" width="32" height="32"/>
         <image name="Settings" width="32" height="32"/>
     </resources>

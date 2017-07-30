@@ -13,7 +13,7 @@ enum DiningOption {
     case takeOut
 }
 
-class GameDiningOptionsViewController: UIViewController {
+class GameDiningOptionsViewController: BackgroundViewController {
 
     @IBOutlet weak var dineInButton: UIButton!
     
@@ -50,8 +50,9 @@ class GameDiningOptionsViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print(response)
-        // end
+        if let destination = segue.destination as? GameResultViewController {
+            destination.response = response
+        }
     }
     
     

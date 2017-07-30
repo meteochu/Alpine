@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class GroupsViewController: UITableViewController {
+class GroupsViewController: TableViewController {
 
     private lazy var databaseRef = Database.database().reference()
     
@@ -21,7 +21,8 @@ class GroupsViewController: UITableViewController {
     private var fetchToken: UInt?
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()        
+        
         self.tableView.estimatedRowHeight = 44
         self.tableView.tableFooterView = UIView()
         tableView.register(GroupDetailCell.self)

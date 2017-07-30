@@ -7,13 +7,13 @@
 //
 
 import UIKit
+import CoreLocation
 
-class GameLobbyViewController: UITableViewController {
+class GameLobbyViewController: TableViewController, CLLocationManagerDelegate {
 
     var group: Group! {
         didSet {
             self.users = group.members.map { DataController.shared.users[$0]! }
-            self.response = GameResponse(group: group)
             tableView.reloadData()
         }
     }
@@ -22,11 +22,19 @@ class GameLobbyViewController: UITableViewController {
     
     var response: GameResponse!
     
+    var location: Location?
+    
+    private var locationManager: CLLocationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self)
         tableView.register(UserDetailCell.self)
         tableView.allowsMultipleSelection = true
+        
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
     }
     
     @IBAction func didSelectLeaveButton(_ sender: UIBarButtonItem) {
@@ -57,9 +65,15 @@ class GameLobbyViewController: UITableViewController {
         guard indexPath.section == 1 else { return }
         tableView.deselectRow(at: indexPath, animated: true)
         guard let indexPaths = tableView.indexPathsForSelectedRows, !indexPaths.isEmpty else { return }
-        let selectedUsers = indexPaths.map { self.users[$0.row] }
-        print(selectedUsers)
-        self.performSegue(withIdentifier: "beginGameStage1", sender: self)
+        
+        DataController.shared.createGame(in: self.group) { game in
+            let response = GameResponse(group: group, game: game)
+            if let loc = self.location {
+                response.deviceLocation = loc
+            }
+            self.response = response
+            self.performSegue(withIdentifier: "beginGameStage1", sender: self)
+        }
     }
 
     
@@ -70,9 +84,19 @@ class GameLobbyViewController: UITableViewController {
         if let destination = segue.destination as? GameRestaurantViewController {
             destination.response = self.response
         }
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
     
+    // MARK: - Location
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let last = locations.last else {
+            return
+        }
+        self.location = Location(longitude: last.coordinate.longitude, latitude: last.coordinate.latitude)
+        self.response?.deviceLocation = location!
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        // do nothing ¯\_(ツ)_/¯ 
+    }
 
 }

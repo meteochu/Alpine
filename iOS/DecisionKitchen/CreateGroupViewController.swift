@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
+class CreateGroupViewController: TableViewController, UITextFieldDelegate {
     
     private var name: String = ""
     
