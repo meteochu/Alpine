@@ -153,14 +153,26 @@ class DataController: NSObject {
         Database.database().reference().removeObserver(withHandle: handle)
     }
     
-    func createGroup(named name: String, password: String, callback: (Bool) -> Void) {
+    func createOrJoinGroup(named name: String, password: String, callback: (Bool) -> Void) {
         let databaseRef = Database.database().reference()
-        let uuid = UUID().uuidString
-        let group = Group(name: name, password: password, members: [Auth.auth().currentUser!.uid],
+        var group: Group?
+        for aGroup in self.groups.values where aGroup.name == name && aGroup.password == password {
+            // join group
+            group = aGroup
+            break
+        }
+        
+        if let group = group {
+            group.members.append(Auth.auth().currentUser!.uid)
+        } else {
+            let uuid = UUID().uuidString
+            group = Group(name: name, password: password, members: [Auth.auth().currentUser!.uid],
                           restaurants: [:], games: [], id: uuid)
+        }
+        
         if let encodedUser = try? encoder.encode(group),
             let json = try? JSONSerialization.jsonObject(with: encodedUser, options: []) {
-            databaseRef.child("groups").child(uuid).setValue(json)
+            databaseRef.child("groups").child(group!.id).setValue(json)
             callback(true)
         } else {
             callback(false)
@@ -169,7 +181,7 @@ class DataController: NSObject {
     
     func createGame(in group: Group, callback: (Game) -> Void) {
         let databaseRef = Database.database().reference()
-        var group = group
+        let group = group
         let meta = Game.Meta(start: Date())
         let game = Game(meta: meta, rating: [:], response: [:], result: nil)
         if group.games == nil {
@@ -186,7 +198,7 @@ class DataController: NSObject {
     
     func addGameResponse(response: GameResponse, callback: () -> Void) {
         let databaseRef = Database.database().reference()
-        var group = response.group
+        let group = response.group
         let game = response.game
         let uid = Auth.auth().currentUser!.uid
         if game.responses == nil {

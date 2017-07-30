@@ -101,7 +101,7 @@
             </objects>
             <point key="canvasLocation" x="3007.1999999999998" y="-105.69715142428787"/>
         </scene>
-        <!--Create Group-->
+        <!--Create/Join Group-->
         <scene sceneID="fgb-f5-fFg">
             <objects>
                 <tableViewController id="DdB-Aw-WdC" customClass="CreateGroupViewController" customModule="DecisionKitchen" customModuleProvider="target" sceneMemberID="viewController">
@@ -174,7 +174,7 @@
                             <outlet property="delegate" destination="DdB-Aw-WdC" id="Ncw-YC-eLh"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Create Group" id="ZCj-W9-GeW">
+                    <navigationItem key="navigationItem" title="Create/Join Group" id="ZCj-W9-GeW">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="i6a-44-eRr">
                             <connections>
                                 <action selector="didSelectDismiss:" destination="DdB-Aw-WdC" id="9Pb-IP-02z"/>

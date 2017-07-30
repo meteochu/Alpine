@@ -27,7 +27,7 @@ class CreateGroupViewController: TableViewController, UITextFieldDelegate {
     }
     
     @IBAction func didSelectSaveButton(_ sender: UIBarButtonItem) {
-        DataController.shared.createGroup(named: name, password: password) { _ in
+        DataController.shared.createOrJoinGroup(named: name, password: password) { _ in
             self.dismiss(animated: true, completion: nil)
         }
     }
