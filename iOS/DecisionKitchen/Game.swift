@@ -8,6 +8,7 @@
 
 import Foundation
 
+typealias Result = [String]
 class Game: NSObject, Codable {
     
     var meta: Meta
@@ -16,7 +17,7 @@ class Game: NSObject, Codable {
     
     var responses: [UserID: Response]?
     
-    var result: Result?
+    var result: [Result]?
     
     struct Meta: Codable {
         
@@ -30,21 +31,7 @@ class Game: NSObject, Codable {
         
     }
     
-    struct Result: Codable {
-        
-        var restaurantId: String
-        
-        enum CodingKeys: String, CodingKey {
-            case restaurantId = "restaurant_id"
-        }
-        
-        init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            restaurantId = try container.decode(String.self, forKey: .restaurantId)
-        }
-    }
-    
-    init(meta: Meta, rating: [UserID: Int]?, response: [UserID: Response]?, result: Result?) {
+    init(meta: Meta, rating: [UserID: Int]?, response: [UserID: Response]?, result: [Result]?) {
         self.meta = meta
         self.rating = rating
         self.responses = response

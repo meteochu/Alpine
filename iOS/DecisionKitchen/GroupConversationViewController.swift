@@ -46,11 +46,17 @@ class GroupConversationViewController: UICollectionViewController, UICollectionV
         newGamesFooter.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor).isActive = true
         newGamesFooter.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
-        let button = UIButton(type: .plain)
+        let button = UIButton(type: .custom)
         button.contentEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
-        button.setTitle("Start Vote", for: .normal)
+        button.backgroundColor = .purpleTint
+        button.layer.cornerRadius = 8
+        button.layer.masksToBounds = true
+        button.setTitleColor(.white, for: .normal)
+        button.setTitle("Start Vote ", for: .normal)
+        button.contentEdgeInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
         button.sizeToFit()
         newGamesFooter.contentView.addSubview(button)
+        
         button.translatesAutoresizingMaskIntoConstraints = false
         button.centerXAnchor.constraint(equalTo: newGamesFooter.centerXAnchor).isActive = true
         button.bottomAnchor.constraint(equalTo: newGamesFooter.bottomAnchor, constant: -16).isActive = true
