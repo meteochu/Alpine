@@ -2,14 +2,12 @@ package com.decisionkitchen.decisionkitchen
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.annotation.NonNull
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -20,8 +18,6 @@ import com.facebook.login.LoginResult
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.*
-
-import org.json.JSONObject
 
 import java.util.Arrays
 
@@ -126,6 +122,13 @@ class MainActivity : AppCompatActivity() {
             }
             else -> return super.onOptionsItemSelected(item)
         }
+    }
+
+    /** Called when the user touches the button  */
+    fun goTest(view: View) {
+        val intent:Intent = Intent(getBaseContext(), GroupActivity::class.java)
+        intent.putExtra("GROUP_ID", "test")
+        startActivity(intent)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
