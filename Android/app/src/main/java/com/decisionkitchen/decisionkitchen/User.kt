@@ -8,5 +8,7 @@ data public class User(
         val name: String? = null,
         val id: UserID? = null,
         val email: String? = null,
-        val img: String? = null
+        val img: String? = null,
+        val first_name: String? = null,
+        val last_name: String? = null
 );

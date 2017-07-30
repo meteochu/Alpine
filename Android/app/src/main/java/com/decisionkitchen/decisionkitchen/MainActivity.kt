@@ -155,9 +155,11 @@ class MainActivity : AppCompatActivity() {
                                 ref.child(u.uid).child("id").setValue(u.uid)
                                 ref.child(u.uid).child("email").setValue(u.email)
                                 ref.child(u.uid).child("name").setValue(json.get("name"))
+                                ref.child(u.uid).child("first_name").setValue(json.get("first_name"))
+                                ref.child(u.uid).child("last_name").setValue(json.get("last_name"))
                             }});
                             val parameters : Bundle = Bundle();
-                            parameters.putString("fields", "name, picture");
+                            parameters.putString("fields", "name, picture, first_name, last_name");
                             request.parameters = parameters;
                             request.executeAsync();
 
