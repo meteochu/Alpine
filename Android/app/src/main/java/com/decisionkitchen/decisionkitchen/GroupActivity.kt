@@ -25,6 +25,8 @@ import com.facebook.drawee.generic.RoundingParams
 import com.github.kevinsawicki.timeago.TimeAgo
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
+import org.joda.time.format.DateTimeFormatter
+import org.joda.time.format.ISODateTimeFormat
 
 class GroupActivity : Activity() {
 
@@ -184,6 +186,21 @@ class GroupActivity : Activity() {
         val intent:Intent = Intent(getBaseContext(), RestaurantActivity::class.java)
         intent.putExtra("GROUP_ID", getIntent().getStringExtra("GROUP_ID"))
         startActivity(intent)
+
+        val ref = FirebaseDatabase.getInstance().getReference("groups/" + getIntent().getStringExtra("GROUP_ID"))
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                Log.e("error", p0.toString())
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val group = snapshot.getValue(Group::class.java)!!
+                val game = Game(GameMeta(null, ISODateTimeFormat.dateTime().print(DateTime())))
+                group.games!!.add(game)
+                ref.setValue(group)
+            }
+
+        })
     }
 
 }
