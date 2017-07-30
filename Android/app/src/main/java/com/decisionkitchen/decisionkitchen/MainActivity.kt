@@ -55,6 +55,10 @@ class MainActivity : AppCompatActivity() {
         return this
     }
 
+    public fun getUser(): FirebaseUser? {
+        return user;
+    }
+
     private fun getMainActivity(): MainActivity {
         return this;
     }
