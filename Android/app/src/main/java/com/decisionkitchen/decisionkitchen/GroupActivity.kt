@@ -24,8 +24,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.facebook.drawee.generic.RoundingParams
 import com.github.kevinsawicki.timeago.TimeAgo
 import org.joda.time.DateTime
-import java.text.SimpleDateFormat
-
+import org.joda.time.format.DateTimeFormat
 
 class GroupActivity : Activity() {
 
@@ -144,10 +143,7 @@ class GroupActivity : Activity() {
                     cardContentLayout.addView(address)
 
                     val date = TextView(cardContentLayout.context)
-                    Log.w("test", DateTime().toString())
-                    Log.w("test", DateTime(game.meta!!.end).toString())
-                    val offset = DateTime().toDate().time - DateTime(game.meta!!.end).toDate().time
-                    date.text = if (offset < 0) TimeAgo().timeAgo(offset) else TimeAgo().timeUntil(offset)
+                    date.text = DateTime(game.meta!!.end).toString(DateTimeFormat.shortDateTime())
                     date.textSize = 15.0F
                     date.typeface = Typeface.create("sans-serif-light", Typeface.NORMAL)
                     date.setTextColor(Color.rgb(150,150,150))
