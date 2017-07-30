@@ -5,34 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.decisionkitchen.decisionkitchen.MainActivity"
-    tools:showIn="@layout/activity_main"
+    tools:context="com.decisionkitchen.decisionkitchen.GroupActivity"
+    tools:showIn="@layout/activity_group"
     android:orientation="vertical">
 
-    <LinearLayout
+    <HorizontalScrollView
         android:id="@+id/members"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="top"
-        android:orientation="horizontal"></LinearLayout>
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:text="Hello World" />
+    </HorizontalScrollView>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingStart="@dimen/activity_horizontal_margin"
-        android:paddingEnd="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:id="@+id/groups"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="0dp">
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="@android:dimen/notification_large_icon_width"
+                android:visibility="visible"
+                tools:text="Hello World" />
+        </LinearLayout>
     </ScrollView>
+
 </LinearLayout>
