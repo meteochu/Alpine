@@ -7,8 +7,6 @@ package com.decisionkitchen.decisionkitchen
 typealias RestaurantID = String;
 typealias GroupID = String;
 
-data public class Category(val name: String? = null, val type: String? = null, val value: Any? = null)
-
 data public class RestaurantOrder(val id: String? = null, val service: String? = null)
 
 data public class Restaurant(val address: String? = null,
@@ -25,10 +23,9 @@ data public class GameMeta(val end: String? = null, val start: String? = null)
 data public class GameResult(val restaurant_id: RestaurantID? = null)
 
 data public class Game(
-    val categories: ArrayList<Category>? = null,
     val meta: GameMeta? = null,
     val rating: HashMap<UserID, Int>? = null,
-    val responses: HashMap<UserID, ArrayList<Int>>? = null,
+    val responses: HashMap<UserID, ArrayList<ArrayList<Int>>>? = null,
     val result: GameResult? = null)
 
 data public class Group(

@@ -5,35 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF"
-    android:gravity="top"
     android:orientation="vertical"
-    tools:context="com.decisionkitchen.decisionkitchen.RestaurantActivity">
+    tools:context="com.decisionkitchen.decisionkitchen.GameActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/gradient"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="20dp">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Add some restaurants"
+            android:text="How much do you want to spend?"
             android:textAlignment="center"
             android:textColor="@color/cardview_light_background"
             android:textSize="18sp" />
-
-        <com.mancj.materialsearchbar.MaterialSearchBar
-            android:id="@+id/searchbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            app:mt_hint="Search restaurants..."
-            app:mt_maxSuggestionsCount="10"
-            app:mt_placeholder="Search restaurants..."
-            app:mt_speechMode="false" />
     </LinearLayout>
 
     <LinearLayout
@@ -44,16 +33,16 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="65dp">
+            android:layout_height="match_parent">
 
             <LinearLayout
-                android:id="@+id/scrollView"
+                android:id="@+id/options"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
             </LinearLayout>
+
 
         </ScrollView>
 
@@ -70,9 +59,11 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/com_facebook_auth_dialog_background"
+                android:onClick="nextQuestion"
                 android:text="Next" />
 
         </LinearLayout>
     </LinearLayout>
+
 
 </LinearLayout>
