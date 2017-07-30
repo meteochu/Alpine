@@ -16,7 +16,9 @@ import android.graphics.Typeface
 import android.os.Build
 import android.support.v4.content.ContextCompat
 import android.view.Gravity
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
@@ -31,10 +33,7 @@ import org.json.JSONObject
 import com.android.volley.AuthFailureError
 import com.facebook.drawee.generic.RoundingParams
 import com.facebook.drawee.view.SimpleDraweeView
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
 import java.net.URLEncoder
@@ -44,6 +43,7 @@ class RestaurantActivity : Activity() {
 
     private var searchRes : ArrayList<Restaurant>? = null
     private var group : Group? = null
+    private var groupRef: DatabaseReference? = null
 
     private var mFusedLocationClient: FusedLocationProviderClient? = null
     fun checkPermission() {
@@ -102,6 +102,18 @@ class RestaurantActivity : Activity() {
                 address.setPadding(0, 0, 0, 20)
                 cardContentLayout.addView(address)
 
+
+                val added = group!!.restaurants!!.containsKey(restaurant.id);
+
+                if (!added) {
+                    var button = Button(cardContentLayout.context)
+                    button.text = "Add to list"
+                    button.setOnClickListener {
+                        groupRef!!.child("restaurants").child(restaurant.id).setValue(restaurant);
+                    }
+                    cardContentLayout.addView(button)
+                }
+
                 cardLayout.addView(cardContentLayout)
 
                 scrollView.addView(cardLayout)
@@ -119,7 +131,7 @@ class RestaurantActivity : Activity() {
 
 
         val database = FirebaseDatabase.getInstance()
-        val groupRef = database.getReference("groups/" + getIntent().getStringExtra("GROUP_ID"))
+        groupRef = database.getReference("groups/" + getIntent().getStringExtra("GROUP_ID"))
 
         val groupListener = object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {
@@ -131,7 +143,7 @@ class RestaurantActivity : Activity() {
             }
         }
 
-        groupRef.addValueEventListener(groupListener)
+        groupRef!!.addValueEventListener(groupListener)
 
         val queue = Volley.newRequestQueue(this)
         val tokenRequest = object : StringRequest(Request.Method.POST, "https://api.yelp.com/oauth2/token",
@@ -161,6 +173,7 @@ class RestaurantActivity : Activity() {
 
                                 override fun onSearchConfirmed(text: CharSequence?) {
                                     searchbar.disableSearch()
+                                    searchbar.setPlaceHolder(text)
                                     val searchRequest = object : StringRequest(Request.Method.GET,
                                             "https://api.yelp.com/v3/businesses/search?term=" + URLEncoder.encode(text.toString())
                                                     + "&latitude=" + location.latitude
