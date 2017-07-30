@@ -87,7 +87,7 @@
                     android:paddingRight="20dp"
                     android:paddingTop="5dp"
                     android:onClick="createGame"
-                    android:text="Start Vote"
+                    android:text="@string/start_vote"
                     android:textColor="@color/com_facebook_button_background_color_focused"
                     android:topLeftRadius="10dp"
                     android:topRightRadius="10dp" />

@@ -112,6 +112,11 @@ class GroupActivity : Activity() {
 
                 if (group.games != null) {
                     for (game in group.games) {
+                        if (game.meta!!.end == null) {
+                            (findViewById(R.id.create_game) as TextView).setText(R.string.join_vote)
+                            continue
+                        }
+                        
 
                         val restaurant = group.restaurants!![game.result!!.restaurant_id]!!
 
@@ -195,6 +200,12 @@ class GroupActivity : Activity() {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 val group = snapshot.getValue(Group::class.java)!!
+                for (game in group.games!!) {
+                    if (game.meta!!.end == null) {
+                        return
+                    }
+                }
+
                 val game = Game(GameMeta(null, ISODateTimeFormat.dateTime().print(DateTime())))
                 group.games!!.add(game)
                 ref.setValue(group)
