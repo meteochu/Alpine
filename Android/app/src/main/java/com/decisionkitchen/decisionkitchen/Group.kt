@@ -6,7 +6,6 @@ package com.decisionkitchen.decisionkitchen
 
 typealias RestaurantID = String;
 typealias GroupID = String;
-typealias UserID = String;
 
 data public class Category(val name: String? = null, val type: String? = null, val value: Any? = null)
 

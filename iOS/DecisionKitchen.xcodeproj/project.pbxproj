@@ -14,6 +14,8 @@
 		A161B0761F2D393200003C2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A161B0741F2D393200003C2B /* Main.storyboard */; };
 		A161B0781F2D393200003C2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A161B0771F2D393200003C2B /* Assets.xcassets */; };
 		A161B07B1F2D393200003C2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A161B0791F2D393200003C2B /* LaunchScreen.storyboard */; };
+		A1B051171F2D9121005828CB /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B051161F2D9121005828CB /* GameController.swift */; };
+		A1B051191F2D92BF005828CB /* GroupConversationFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B051181F2D92BF005828CB /* GroupConversationFlowLayout.swift */; };
 		A1B3BA041F2D3DE000BA3871 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B3BA031F2D3DE000BA3871 /* OnboardingViewController.swift */; };
 		A1C916301F2D51C7008B703C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1C9162F1F2D51AA008B703C /* GoogleService-Info.plist */; };
 		A1F9DF5E1F2D69FD00D1129F /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9DF5D1F2D69FD00D1129F /* Group.swift */; };
@@ -23,6 +25,9 @@
 		A1F9DF6F1F2D7F4A00D1129F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9DF6E1F2D7F4A00D1129F /* Game.swift */; };
 		A1F9DF711F2D807C00D1129F /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9DF701F2D807C00D1129F /* Order.swift */; };
 		A1F9DF741F2D877500D1129F /* GroupDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9DF731F2D877500D1129F /* GroupDetailCell.swift */; };
+		A1F9DF791F2D8A1400D1129F /* GroupConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9DF781F2D8A1400D1129F /* GroupConversationViewController.swift */; };
+		A1F9DF7B1F2D8C0500D1129F /* ConversationUsersHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9DF7A1F2D8C0500D1129F /* ConversationUsersHeaderView.swift */; };
+		A1F9DF801F2D8E6600D1129F /* GameDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9DF7E1F2D8E6600D1129F /* GameDetailCell.swift */; };
 		D007982D02F6F5E8D4D20A06 /* Pods_DecisionKitchen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E68DFAD0CA157FD531C1092 /* Pods_DecisionKitchen.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +44,8 @@
 		A161B0771F2D393200003C2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A161B07A1F2D393200003C2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A161B07C1F2D393200003C2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1B051161F2D9121005828CB /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
+		A1B051181F2D92BF005828CB /* GroupConversationFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupConversationFlowLayout.swift; sourceTree = "<group>"; };
 		A1B3BA031F2D3DE000BA3871 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		A1C9162F1F2D51AA008B703C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A1F9DF5D1F2D69FD00D1129F /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
@@ -48,6 +55,9 @@
 		A1F9DF6E1F2D7F4A00D1129F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		A1F9DF701F2D807C00D1129F /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		A1F9DF731F2D877500D1129F /* GroupDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailCell.swift; sourceTree = "<group>"; };
+		A1F9DF781F2D8A1400D1129F /* GroupConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupConversationViewController.swift; sourceTree = "<group>"; };
+		A1F9DF7A1F2D8C0500D1129F /* ConversationUsersHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationUsersHeaderView.swift; sourceTree = "<group>"; };
+		A1F9DF7E1F2D8E6600D1129F /* GameDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailCell.swift; sourceTree = "<group>"; };
 		C45CCB82D4205F3E2CE9B5C3 /* Pods-DecisionKitchen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DecisionKitchen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DecisionKitchen/Pods-DecisionKitchen.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +127,8 @@
 			children = (
 				A114C7201F2D43D30080CD50 /* TabBarController.swift */,
 				A114C7221F2D43F20080CD50 /* GroupsViewController.swift */,
+				A1F9DF781F2D8A1400D1129F /* GroupConversationViewController.swift */,
+				A1B051181F2D92BF005828CB /* GroupConversationFlowLayout.swift */,
 				A1B3BA031F2D3DE000BA3871 /* OnboardingViewController.swift */,
 				A114C7241F2D44100080CD50 /* SettingsViewController.swift */,
 			);
@@ -135,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				A161B0771F2D393200003C2B /* Assets.xcassets */,
+				A1B051161F2D9121005828CB /* GameController.swift */,
 				A161B0791F2D393200003C2B /* LaunchScreen.storyboard */,
 				A161B07C1F2D393200003C2B /* Info.plist */,
 				A1C9162F1F2D51AA008B703C /* GoogleService-Info.plist */,
@@ -167,6 +180,8 @@
 			isa = PBXGroup;
 			children = (
 				A1F9DF731F2D877500D1129F /* GroupDetailCell.swift */,
+				A1F9DF7E1F2D8E6600D1129F /* GameDetailCell.swift */,
+				A1F9DF7A1F2D8C0500D1129F /* ConversationUsersHeaderView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -307,14 +322,19 @@
 				A161B06F1F2D393200003C2B /* AppDelegate.swift in Sources */,
 				A1F9DF6F1F2D7F4A00D1129F /* Game.swift in Sources */,
 				A114C7231F2D43F20080CD50 /* GroupsViewController.swift in Sources */,
+				A1F9DF7B1F2D8C0500D1129F /* ConversationUsersHeaderView.swift in Sources */,
 				A114C7251F2D44100080CD50 /* SettingsViewController.swift in Sources */,
 				A1F9DF741F2D877500D1129F /* GroupDetailCell.swift in Sources */,
 				A1F9DF711F2D807C00D1129F /* Order.swift in Sources */,
 				A1F9DF5E1F2D69FD00D1129F /* Group.swift in Sources */,
 				A1F9DF641F2D76A100D1129F /* Reusable.swift in Sources */,
 				A1B3BA041F2D3DE000BA3871 /* OnboardingViewController.swift in Sources */,
+				A1F9DF801F2D8E6600D1129F /* GameDetailCell.swift in Sources */,
 				A114C7211F2D43D30080CD50 /* TabBarController.swift in Sources */,
+				A1B051191F2D92BF005828CB /* GroupConversationFlowLayout.swift in Sources */,
 				A1F9DF621F2D6CEF00D1129F /* Category.swift in Sources */,
+				A1B051171F2D9121005828CB /* GameController.swift in Sources */,
+				A1F9DF791F2D8A1400D1129F /* GroupConversationViewController.swift in Sources */,
 				A1F9DF6D1F2D7EEA00D1129F /* Restaurant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,6 +476,7 @@
 				CODE_SIGN_ENTITLEMENTS = DecisionKitchen/DecisionKitchen.entitlements;
 				DEVELOPMENT_TEAM = TSCXJ4KWQ4;
 				INFOPLIST_FILE = DecisionKitchen/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.decisionkitchen.DecisionKitchen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -471,6 +492,7 @@
 				CODE_SIGN_ENTITLEMENTS = DecisionKitchen/DecisionKitchen.entitlements;
 				DEVELOPMENT_TEAM = TSCXJ4KWQ4;
 				INFOPLIST_FILE = DecisionKitchen/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.decisionkitchen.DecisionKitchen;
 				PRODUCT_NAME = "$(TARGET_NAME)";

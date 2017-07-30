@@ -43,7 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         // deep linking...
-        print(#function, url)
         let handled = SDKApplicationDelegate.shared.application(app, open: url, options: options)
         return handled
     }
