@@ -41,7 +41,7 @@ class UserHeaderCell: UICollectionViewCell {
     }
     
     func commonInit() {
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         nameLabel.font = .systemFont(ofSize: 13)
         nameLabel.textColor = .darkText
