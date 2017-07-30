@@ -1,9 +1,13 @@
 package com.decisionkitchen.decisionkitchen
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.support.design.widget.CoordinatorLayout
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -19,6 +23,10 @@ data class Question (val title: String, val options: Array<String>);
 
 class GameActivity : Activity() {
 
+    private var mRecyclerView: RecyclerView? = null
+    private var mAdapter: RecyclerView.Adapter<GameAdapter.ViewHolder>? = null
+    private var mLayoutManager: RecyclerView.LayoutManager? = null
+
     private var group : Group? = null
     private var groupRef: DatabaseReference? = null
     private var question: Int = -1
@@ -32,36 +40,31 @@ class GameActivity : Activity() {
     )
     private var responses: ArrayList<ArrayList<Int>> = ArrayList<ArrayList<Int>>();
 
+    public fun getContext(): Context {
+        return this
+    }
+
+    public fun getGameActivity(): GameActivity {
+        return this
+    }
+
     fun render() {
         if (question == questions.size) {
             applicationContext.startActivity(Intent(applicationContext, FinishedActivity::class.java))
         } else if (group != null && groupRef != null && qOrder != null && question != -1 && user != null && gameId != null) {
             val q = questions[question]
             (findViewById(R.id.question) as TextView).text = q.title
-            val optionsLayout: LinearLayout = (findViewById(R.id.options) as LinearLayout)
-            optionsLayout.removeAllViews()
 
-            for ((index, option) in q.options.withIndex()) {
-                val container = LinearLayout(optionsLayout.context)
-                container.orientation = LinearLayout.HORIZONTAL
-
-                val checkbox = CheckBox(container.context)
-                checkbox.isChecked = responses[question][index] != 0;
-                container.addView(checkbox)
-
-                val text = TextView(container.context)
-                text.text = option
-                container.addView(text)
-
-                container.setOnClickListener {
-                    responses[question][index] = 1 - responses[question][index]
-                    render()
-                }
-
-                optionsLayout.addView(container)
+            var options:List<String> = ArrayList<String>()
+            for (question in q.options) {
+                options += question
             }
 
-        }
+                mAdapter = GameAdapter(options, responses[question], mRecyclerView, getGameActivity(), q.title)
+                mRecyclerView!!.adapter = mAdapter
+
+            }
+
     }
 
     fun nextQuestion() {
@@ -119,5 +122,19 @@ class GameActivity : Activity() {
         }
 
         groupRef!!.addValueEventListener(groupListener)
+
+        mRecyclerView = findViewById(R.id.checkbox_recycler) as RecyclerView
+        mRecyclerView!!.setHasFixedSize(true)
+
+        val rParams: LinearLayout.LayoutParams = LinearLayout.LayoutParams(CoordinatorLayout.LayoutParams.MATCH_PARENT, CoordinatorLayout.LayoutParams.MATCH_PARENT)
+        mRecyclerView!!.layoutParams = rParams
+
+        mLayoutManager = LinearLayoutManager(getContext())
+        mRecyclerView!!.layoutManager = mLayoutManager
+
+        mLayoutManager!!.setMeasuredDimension(CoordinatorLayout.LayoutParams.MATCH_PARENT, CoordinatorLayout.LayoutParams.MATCH_PARENT)
+
+        mAdapter = GameAdapter(ArrayList<String>(), ArrayList<Int>(), mRecyclerView, getGameActivity(), ""  )
+        mRecyclerView!!.adapter = mAdapter
     }
 }
