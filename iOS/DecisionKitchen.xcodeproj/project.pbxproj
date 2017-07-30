@@ -14,6 +14,7 @@
 		A1467FAE1F2DB9DF00D4C718 /* UIImageView++.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FAD1F2DB9DF00D4C718 /* UIImageView++.swift */; };
 		A1467FB01F2DBA2900D4C718 /* ConversationUsersHeaderLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FAF1F2DBA2900D4C718 /* ConversationUsersHeaderLayout.swift */; };
 		A1467FB21F2DBA7A00D4C718 /* ConversationUsersHeaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FB11F2DBA7A00D4C718 /* ConversationUsersHeaderController.swift */; };
+		A1467FB41F2DC51B00D4C718 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FB31F2DC51B00D4C718 /* CreateGroupViewController.swift */; };
 		A161B06F1F2D393200003C2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161B06E1F2D393200003C2B /* AppDelegate.swift */; };
 		A161B0761F2D393200003C2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A161B0741F2D393200003C2B /* Main.storyboard */; };
 		A161B0781F2D393200003C2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A161B0771F2D393200003C2B /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		A1467FAD1F2DB9DF00D4C718 /* UIImageView++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView++.swift"; sourceTree = "<group>"; };
 		A1467FAF1F2DBA2900D4C718 /* ConversationUsersHeaderLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationUsersHeaderLayout.swift; sourceTree = "<group>"; };
 		A1467FB11F2DBA7A00D4C718 /* ConversationUsersHeaderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationUsersHeaderController.swift; sourceTree = "<group>"; };
+		A1467FB31F2DC51B00D4C718 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		A161B06B1F2D393200003C2B /* DecisionKitchen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DecisionKitchen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A161B06E1F2D393200003C2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A161B0751F2D393200003C2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				A114C7221F2D43F20080CD50 /* GroupsViewController.swift */,
 				A1F9DF781F2D8A1400D1129F /* GroupConversationViewController.swift */,
 				A1467FB11F2DBA7A00D4C718 /* ConversationUsersHeaderController.swift */,
+				A1467FB31F2DC51B00D4C718 /* CreateGroupViewController.swift */,
 				A1B3BA031F2D3DE000BA3871 /* OnboardingViewController.swift */,
 				A114C7241F2D44100080CD50 /* SettingsViewController.swift */,
 			);
@@ -347,6 +350,7 @@
 				A1F9DF711F2D807C00D1129F /* Order.swift in Sources */,
 				A1F9DF5E1F2D69FD00D1129F /* Group.swift in Sources */,
 				A1467FB01F2DBA2900D4C718 /* ConversationUsersHeaderLayout.swift in Sources */,
+				A1467FB41F2DC51B00D4C718 /* CreateGroupViewController.swift in Sources */,
 				A1F9DF641F2D76A100D1129F /* Reusable.swift in Sources */,
 				A1B3BA041F2D3DE000BA3871 /* OnboardingViewController.swift in Sources */,
 				A1467FAC1F2DB72900D4C718 /* UserHeaderCell.swift in Sources */,

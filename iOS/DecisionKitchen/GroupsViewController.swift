@@ -18,6 +18,8 @@ class GroupsViewController: UITableViewController {
     
     private var selectedIndex: Int = 0
     
+    private var fetchToken: UInt?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(GroupDetailCell.self)
@@ -25,7 +27,7 @@ class GroupsViewController: UITableViewController {
             return
         }
         
-        DataController.shared.fetchGroups { groups in
+        fetchToken = DataController.shared.fetchGroups { groups in
             if let groups = groups {
                 self.groups = groups
             }
@@ -67,6 +69,12 @@ class GroupsViewController: UITableViewController {
             if let destination = segue.destination as? GroupConversationViewController {
                 destination.group = self.groups[selectedIndex]
             }
+        }
+    }
+    
+    deinit {
+        if let token = fetchToken {
+            DataController.shared.stop(handle: token)
         }
     }
     

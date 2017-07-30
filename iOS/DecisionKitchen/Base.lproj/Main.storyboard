@@ -99,7 +99,7 @@
         <!--Create Group-->
         <scene sceneID="fgb-f5-fFg">
             <objects>
-                <tableViewController id="DdB-Aw-WdC" sceneMemberID="viewController">
+                <tableViewController id="DdB-Aw-WdC" customClass="CreateGroupViewController" customModule="DecisionKitchen" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="U44-Vd-djI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -113,6 +113,23 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YR2-WF-FPp" id="uYk-j5-jpp">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Group Name.." minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="d5F-7i-Mwa">
+                                                    <rect key="frame" x="16" y="4" width="343" height="35.5"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textFieldValueDidChange:" destination="DdB-Aw-WdC" eventType="editingChanged" id="dPl-ny-4yo"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="d5F-7i-Mwa" firstAttribute="leading" secondItem="uYk-j5-jpp" secondAttribute="leading" constant="16" id="1na-zE-2Ka"/>
+                                                <constraint firstAttribute="trailing" secondItem="d5F-7i-Mwa" secondAttribute="trailing" constant="16" id="Qud-3M-bql"/>
+                                                <constraint firstAttribute="bottom" secondItem="d5F-7i-Mwa" secondAttribute="bottom" constant="4" id="cjG-lO-nKE"/>
+                                                <constraint firstItem="d5F-7i-Mwa" firstAttribute="top" secondItem="uYk-j5-jpp" secondAttribute="top" constant="4" id="h2p-qM-lRG"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -124,8 +141,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Create Group" id="ZCj-W9-GeW">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="i6a-44-eRr"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="13T-ca-O4L"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="i6a-44-eRr">
+                            <connections>
+                                <action selector="didSelectDismiss:" destination="DdB-Aw-WdC" id="9Pb-IP-02z"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="13T-ca-O4L">
+                            <connections>
+                                <action selector="didSelectSaveButton:" destination="DdB-Aw-WdC" id="dyw-AS-Dlc"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7h8-4f-zVF" userLabel="First Responder" sceneMemberID="firstResponder"/>

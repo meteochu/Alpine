@@ -12,15 +12,22 @@ private let reuseIdentifier = "Cell"
 
 class ConversationUsersHeaderController: UICollectionViewController {
     
-    var users: [User] = [] {
+    var group: Group? {
+        didSet {
+            self.beginFetchingUsers()
+        }
+    }
+    
+    private var users: [User] = [] {
         didSet {
             self.collectionView!.reloadData()
         }
     }
+    
+    var fetchToken: UInt?
 
     convenience init() {
-        self.init(collectionViewLayout: ConversationUsersHeaderLayout())
-        
+        self.init(collectionViewLayout: ConversationUsersHeaderLayout())  
     }
     
     override func viewDidLoad() {
@@ -44,6 +51,17 @@ class ConversationUsersHeaderController: UICollectionViewController {
         super.viewWillTransition(to: size, with: coordinator)
         self.collectionView!.collectionViewLayout.invalidateLayout()
     }
+    
+    // fetching...
+    func beginFetchingUsers() {
+        guard let groupId = group?.id else { return }
+        fetchToken = DataController.shared.fetchGroup(with: groupId, callback: { [weak self] group in
+            if let group = group {
+                self?.users = group.members.map { DataController.shared.users[$0]! }
+            }
+        })
+        
+    }
 
 
     // MARK: UICollectionViewDataSource
@@ -66,6 +84,12 @@ class ConversationUsersHeaderController: UICollectionViewController {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let maxHeight = self.collectionView!.frame.height
         return CGSize(width: maxHeight, height: maxHeight)
+    }
+    
+    deinit {
+        if let token = fetchToken {
+            DataController.shared.stop(handle: token)
+        }
     }
     
 

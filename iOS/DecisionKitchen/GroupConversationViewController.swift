@@ -17,6 +17,7 @@ class GroupConversationViewController: UICollectionViewController, UICollectionV
     }
     
     private lazy var usersHeaderController = ConversationUsersHeaderController()
+    private var fetchToken: UInt?
     
     override func loadView() {
         super.loadView()
@@ -27,7 +28,7 @@ class GroupConversationViewController: UICollectionViewController, UICollectionV
         usersHeader.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         usersHeader.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         usersHeader.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
-        usersHeader.heightAnchor.constraint(equalToConstant: 72).isActive = true
+        usersHeader.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         self.addChildViewController(usersHeaderController)
         usersHeaderController.view.frame = usersHeader.bounds
@@ -35,7 +36,7 @@ class GroupConversationViewController: UICollectionViewController, UICollectionV
         usersHeader.addSubview(usersHeaderController.view)
         usersHeaderController.didMove(toParentViewController: self)
         
-        let insets = UIEdgeInsets(top: 80, left: 0, bottom: 0, right: 0)
+        let insets = UIEdgeInsets(top: 108, left: 0, bottom: 0, right: 0)
         self.collectionView!.contentInset = insets
         self.collectionView!.scrollIndicatorInsets = insets
         self.collectionView!.alwaysBounceVertical = true
@@ -46,16 +47,9 @@ class GroupConversationViewController: UICollectionViewController, UICollectionV
         self.collectionView!.register(GameDetailCell.self)
         self.collectionView!.reloadData()
         
-        if DataController.shared.users.isEmpty {
-            DataController.shared.fetchUsers { [weak self] users in
-                guard let aSelf = self else { return }
-                let users = aSelf.group.members.map { DataController.shared.users[$0]! }
-                aSelf.usersHeaderController.users = users
-            }
-        } else {
-            self.usersHeaderController.users = Array(DataController.shared.users.values)
+        fetchToken = DataController.shared.fetchUsers { [weak self] _ in
+            self?.usersHeaderController.group = self?.group
         }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,18 +69,24 @@ class GroupConversationViewController: UICollectionViewController, UICollectionV
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return group.games.count
+        return group.games?.count ?? 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath) as GameDetailCell
-        cell.game = group.games[indexPath.row]
+        cell.game = group.games![indexPath.row]
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let maxWidth = self.collectionView!.bounds.width-32
         return CGSize(width: maxWidth, height: 120)
+    }
+    
+    deinit {
+        if let token = fetchToken {
+            DataController.shared.stop(handle: token)
+        }
     }
     
 }

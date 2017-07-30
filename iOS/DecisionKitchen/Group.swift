@@ -18,9 +18,9 @@ struct Group: Codable {
     
     var members: [UserID]
     
-    var restaurants: [String: Restaurant]
+    var restaurants: [String: Restaurant]?
     
-    var games: [Game]
+    var games: [Game]?
     
     var id: String
     
