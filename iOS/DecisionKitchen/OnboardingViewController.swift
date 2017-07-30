@@ -22,7 +22,6 @@ class OnboardingViewController: UIViewController, LoginButtonDelegate {
     }
     
     func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
-        print(#function)
         switch result {
         case .success(_, _, let token):
             let credential = FacebookAuthProvider.credential(withAccessToken: token.authenticationToken)
