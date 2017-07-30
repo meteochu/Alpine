@@ -18,14 +18,18 @@ class GroupsViewController: UITableViewController {
     
     private var selectedIndex: Int = 0
     
+    private var fetchToken: UInt?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.estimatedRowHeight = 44
+        self.tableView.tableFooterView = UIView()
         tableView.register(GroupDetailCell.self)
         guard let _ = Auth.auth().currentUser else {
             return
         }
         
-        DataController.shared.fetchGroups { groups in
+        fetchToken = DataController.shared.fetchGroups { groups in
             if let groups = groups {
                 self.groups = groups
             }
@@ -62,11 +66,21 @@ class GroupsViewController: UITableViewController {
         self.performSegue(withIdentifier: "showGroupConversation", sender: self)
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showGroupConversation" {
             if let destination = segue.destination as? GroupConversationViewController {
                 destination.group = self.groups[selectedIndex]
             }
+        }
+    }
+    
+    deinit {
+        if let token = fetchToken {
+            DataController.shared.stop(handle: token)
         }
     }
     

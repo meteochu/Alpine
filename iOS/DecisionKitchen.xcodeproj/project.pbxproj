@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A114C7211F2D43D30080CD50 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A114C7201F2D43D30080CD50 /* TabBarController.swift */; };
 		A114C7231F2D43F20080CD50 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A114C7221F2D43F20080CD50 /* GroupsViewController.swift */; };
 		A114C7251F2D44100080CD50 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A114C7241F2D44100080CD50 /* SettingsViewController.swift */; };
 		A1467FAC1F2DB72900D4C718 /* UserHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FAB1F2DB72900D4C718 /* UserHeaderCell.swift */; };
 		A1467FAE1F2DB9DF00D4C718 /* UIImageView++.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FAD1F2DB9DF00D4C718 /* UIImageView++.swift */; };
 		A1467FB01F2DBA2900D4C718 /* ConversationUsersHeaderLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FAF1F2DBA2900D4C718 /* ConversationUsersHeaderLayout.swift */; };
 		A1467FB21F2DBA7A00D4C718 /* ConversationUsersHeaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FB11F2DBA7A00D4C718 /* ConversationUsersHeaderController.swift */; };
+		A1467FB41F2DC51B00D4C718 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FB31F2DC51B00D4C718 /* CreateGroupViewController.swift */; };
+		A1467FB61F2DD5CA00D4C718 /* UIImageView+Initials.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FB51F2DD5CA00D4C718 /* UIImageView+Initials.swift */; };
+		A1467FB81F2DD8AF00D4C718 /* UIColor+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FB71F2DD8AF00D4C718 /* UIColor+Random.swift */; };
 		A161B06F1F2D393200003C2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161B06E1F2D393200003C2B /* AppDelegate.swift */; };
 		A161B0761F2D393200003C2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A161B0741F2D393200003C2B /* Main.storyboard */; };
 		A161B0781F2D393200003C2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A161B0771F2D393200003C2B /* Assets.xcassets */; };
@@ -38,7 +40,6 @@
 /* Begin PBXFileReference section */
 		3E68DFAD0CA157FD531C1092 /* Pods_DecisionKitchen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DecisionKitchen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9933283CA4CF7B2D3C4AC1AA /* Pods-DecisionKitchen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DecisionKitchen.release.xcconfig"; path = "Pods/Target Support Files/Pods-DecisionKitchen/Pods-DecisionKitchen.release.xcconfig"; sourceTree = "<group>"; };
-		A114C7201F2D43D30080CD50 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A114C7221F2D43F20080CD50 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		A114C7241F2D44100080CD50 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A114C7281F2D484D0080CD50 /* DecisionKitchen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DecisionKitchen.entitlements; sourceTree = "<group>"; };
@@ -46,6 +47,9 @@
 		A1467FAD1F2DB9DF00D4C718 /* UIImageView++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView++.swift"; sourceTree = "<group>"; };
 		A1467FAF1F2DBA2900D4C718 /* ConversationUsersHeaderLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationUsersHeaderLayout.swift; sourceTree = "<group>"; };
 		A1467FB11F2DBA7A00D4C718 /* ConversationUsersHeaderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationUsersHeaderController.swift; sourceTree = "<group>"; };
+		A1467FB31F2DC51B00D4C718 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
+		A1467FB51F2DD5CA00D4C718 /* UIImageView+Initials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Initials.swift"; sourceTree = "<group>"; };
+		A1467FB71F2DD8AF00D4C718 /* UIColor+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Random.swift"; sourceTree = "<group>"; };
 		A161B06B1F2D393200003C2B /* DecisionKitchen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DecisionKitchen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A161B06E1F2D393200003C2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A161B0751F2D393200003C2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -134,10 +138,10 @@
 		A161B0861F2D39B500003C2B /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A114C7201F2D43D30080CD50 /* TabBarController.swift */,
 				A114C7221F2D43F20080CD50 /* GroupsViewController.swift */,
 				A1F9DF781F2D8A1400D1129F /* GroupConversationViewController.swift */,
 				A1467FB11F2DBA7A00D4C718 /* ConversationUsersHeaderController.swift */,
+				A1467FB31F2DC51B00D4C718 /* CreateGroupViewController.swift */,
 				A1B3BA031F2D3DE000BA3871 /* OnboardingViewController.swift */,
 				A114C7241F2D44100080CD50 /* SettingsViewController.swift */,
 			);
@@ -188,6 +192,8 @@
 		A1F9DF721F2D867700D1129F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				A1467FB51F2DD5CA00D4C718 /* UIImageView+Initials.swift */,
+				A1467FB71F2DD8AF00D4C718 /* UIColor+Random.swift */,
 				A1467FAD1F2DB9DF00D4C718 /* UIImageView++.swift */,
 				A1F9DF631F2D76A100D1129F /* Reusable.swift */,
 			);
@@ -339,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1467FB61F2DD5CA00D4C718 /* UIImageView+Initials.swift in Sources */,
 				A161B06F1F2D393200003C2B /* AppDelegate.swift in Sources */,
 				A1F9DF6F1F2D7F4A00D1129F /* Game.swift in Sources */,
 				A114C7231F2D43F20080CD50 /* GroupsViewController.swift in Sources */,
@@ -347,13 +354,14 @@
 				A1F9DF711F2D807C00D1129F /* Order.swift in Sources */,
 				A1F9DF5E1F2D69FD00D1129F /* Group.swift in Sources */,
 				A1467FB01F2DBA2900D4C718 /* ConversationUsersHeaderLayout.swift in Sources */,
+				A1467FB41F2DC51B00D4C718 /* CreateGroupViewController.swift in Sources */,
 				A1F9DF641F2D76A100D1129F /* Reusable.swift in Sources */,
 				A1B3BA041F2D3DE000BA3871 /* OnboardingViewController.swift in Sources */,
 				A1467FAC1F2DB72900D4C718 /* UserHeaderCell.swift in Sources */,
 				A1467FB21F2DBA7A00D4C718 /* ConversationUsersHeaderController.swift in Sources */,
 				A1F9DF801F2D8E6600D1129F /* GameDetailCell.swift in Sources */,
 				A1467FAE1F2DB9DF00D4C718 /* UIImageView++.swift in Sources */,
-				A114C7211F2D43D30080CD50 /* TabBarController.swift in Sources */,
+				A1467FB81F2DD8AF00D4C718 /* UIColor+Random.swift in Sources */,
 				A1B051191F2D92BF005828CB /* GroupConversationFlowLayout.swift in Sources */,
 				A1F9DF621F2D6CEF00D1129F /* Category.swift in Sources */,
 				A17183281F2DB09B001D58AF /* User.swift in Sources */,

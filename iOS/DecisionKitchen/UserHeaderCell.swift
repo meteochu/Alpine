@@ -55,11 +55,11 @@ class UserHeaderCell: UICollectionViewCell {
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         
         imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 36).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 36).isActive = true
-        imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 4).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 64).isActive = true
+        imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
         
-        nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 4).isActive = true
+        nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8).isActive = true
         nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 4).isActive = true
         nameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -4).isActive = true
     }

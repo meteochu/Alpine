@@ -24,7 +24,7 @@ struct Game: Codable {
         
         var start: Date
         
-        var end: Date
+        var end: Date?
         
     }
     
