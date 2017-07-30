@@ -101,7 +101,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder> 
         TextView blurbView = (TextView) holder.itemView.findViewById(R.id.blurb);
         blurbView.setText(getPreviewText(mGroups.get(position)));
 
-        if (mGroups.get(position).getGames().size() > 0 && mGroups.get(position).getGames().get(0).getResult() != null && mGroups.get(position).getRestaurants().get(mGroups.get(position).getGames().get(0).getResult().getRestaurant_id()).getImage() != null) {
+        if (mGroups.get(position).getGames() != null && mGroups.get(position).getGames().get(0).getResult() != null && mGroups.get(position).getRestaurants().get(mGroups.get(position).getGames().get(0).getResult().getRestaurant_id()).getImage() != null) {
             SimpleDraweeView mSimpleDraweeView = (SimpleDraweeView) holder.itemView.findViewById(R.id.picture);
             RoundingParams roundingParams = new RoundingParams();
             roundingParams.setRoundAsCircle(true);
