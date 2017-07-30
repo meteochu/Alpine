@@ -25,25 +25,11 @@ class GroupsViewController: UITableViewController {
             return
         }
         
-        databaseRef.child("groups").observeSingleEvent(of: .value, with: { snapshot in
-            if let object = snapshot.value as? [String: Any] {
-                do {
-                    let decoder = JSONDecoder()
-                    decoder.dateDecodingStrategy = .iso8601
-                    for (key, value) in object {
-                        let data = try JSONSerialization.data(withJSONObject: value, options: [])
-                        var group = try decoder.decode(Group.self, from: data)
-                        group.name = key
-                        self.groups.append(group)
-                        GameController.shared.addRestaurants(from: group)
-                    }
-                    self.tableView.reloadData()
-                } catch {
-                    print(error)
-                }
+        DataController.shared.fetchGroups { groups in
+            if let groups = groups {
+                self.groups = groups
             }
-        }) { error in
-            print(error)
+            self.tableView.reloadData()
         }
     }
     
