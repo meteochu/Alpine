@@ -21,6 +21,9 @@ class GroupsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(GroupDetailCell.self)
+        guard let _ = Auth.auth().currentUser else {
+            return
+        }
         
         databaseRef.child("groups").observeSingleEvent(of: .value, with: { snapshot in
             if let object = snapshot.value as? [String: Any] {
@@ -41,6 +44,13 @@ class GroupsViewController: UITableViewController {
             }
         }) { error in
             print(error)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if Auth.auth().currentUser == nil {
+            self.performSegue(withIdentifier: "presentLoginView", sender: self)
         }
     }
 

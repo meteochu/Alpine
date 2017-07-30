@@ -18,9 +18,7 @@ class TabBarController: UITabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if Auth.auth().currentUser == nil {
-            self.performSegue(withIdentifier: "presentLoginView", sender: self)
-        }
+        
     }
     
 }

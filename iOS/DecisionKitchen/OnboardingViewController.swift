@@ -26,10 +26,23 @@ class OnboardingViewController: UIViewController, LoginButtonDelegate {
         case .success(_, _, let token):
             let credential = FacebookAuthProvider.credential(withAccessToken: token.authenticationToken)
             Auth.auth().signIn(with: credential) { user, error in
-                if let error = error {
+                if let user = user {
+                    let reference = Database.database().reference().child("users")
+                    reference.child(user.uid).child("img").setValue(user.photoURL!.absoluteString)
+                    reference.child(user.uid).child("id").setValue(user.uid)
+                    reference.child(user.uid).child("email").setValue(user.email!)
+                    let fullName = user.displayName!
+                    reference.child(user.uid).child("name").setValue(fullName)
+                    let components = fullName.components(separatedBy: " ")
+                    if components.count == 1 {
+                        reference.child(user.uid).child("first_name").setValue(components.first!)
+                        reference.child(user.uid).child("last_name").setValue("")
+                    } else if components.count > 1 {
+                        reference.child(user.uid).child("first_name").setValue(components.first!)
+                        reference.child(user.uid).child("last_name").setValue(components.last!)
+                    }
+                } else if let error = error {
                     print(error)
-                } else if let user = user {
-                    print(user, user.displayName ?? "NO DISPLAY NAME")
                 }
             }
         default:
@@ -39,7 +52,7 @@ class OnboardingViewController: UIViewController, LoginButtonDelegate {
     }
     
     func loginButtonDidLogOut(_ loginButton: LoginButton) {
-        print("Did Logout")
+        // Action for logout...
     }
     
 }

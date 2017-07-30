@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13137.5"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -57,6 +58,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="FIO-Ox-WoV" kind="show" identifier="showGroupConversation" id="Qcg-vz-PRb"/>
+                        <segue destination="9G1-As-v8i" kind="presentation" identifier="presentLoginView" id="Ci5-sf-w1I"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ue-BL-Dyr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -288,5 +290,8 @@
         <image name="Logo" width="32" height="32"/>
         <image name="Settings" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ci5-sf-w1I"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.64582490820000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
