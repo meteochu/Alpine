@@ -175,7 +175,7 @@ class MainActivity : AppCompatActivity() {
 
             LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "email"))
         } else {
-            loadData(currentUser);
+            loadData(currentUser)
         }
 
         setContentView(R.layout.activity_main)
