@@ -8,17 +8,15 @@ import android.graphics.Typeface
 import android.net.Uri
 import android.opengl.Visibility
 import android.os.Bundle
+import android.support.v4.app.ShareCompat
 import android.support.v7.widget.Toolbar
 import android.text.Layout
 import android.util.Log
-import android.view.Gravity
-import android.view.View
+import android.view.*
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.widget.*
 import com.facebook.drawee.view.SimpleDraweeView
 import com.google.firebase.auth.FirebaseAuth
@@ -28,12 +26,17 @@ import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.format.DateTimeFormatter
 import org.joda.time.format.ISODateTimeFormat
+import java.net.URLEncoder
 
 class GroupActivity : Activity() {
 
     private fun getContext(): Context {
         return this
     }
+
+    private var mShareActionProvider: ShareActionProvider? = null
+
+    private var group: Group? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,10 +53,10 @@ class GroupActivity : Activity() {
         val groupListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-                val group : Group = dataSnapshot.getValue<Group>(Group::class.java)!!
+                group = dataSnapshot.getValue<Group>(Group::class.java)!!
                 val memberScrollView : HorizontalScrollView = findViewById(R.id.members) as HorizontalScrollView
                 memberScrollView.removeAllViews()
-                toolbar.title = group.name
+                toolbar.title = group!!.name
 
                 var loadCount : Int = 0
 
@@ -66,7 +69,7 @@ class GroupActivity : Activity() {
                 val membersLayoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
                 membersLayout.layoutParams = membersLayoutParams
                 membersLayout.orientation = LinearLayout.HORIZONTAL
-                for (member_id in group.members!!) {
+                for (member_id in group!!.members!!) {
                     database.getReference("users/" + member_id).addListenerForSingleValueEvent(object : ValueEventListener {
                         override fun onDataChange(memberSnapshot: DataSnapshot) {
 
@@ -98,7 +101,7 @@ class GroupActivity : Activity() {
 
                             loadCount ++
 
-                            if (loadCount == group.members.size) {
+                            if (loadCount == group!!.members!!.size) {
                                 findViewById(R.id.loader).visibility = View.INVISIBLE
                                 findViewById(R.id.content).visibility = View.VISIBLE
                             }
@@ -112,8 +115,8 @@ class GroupActivity : Activity() {
                 val mainContent : LinearLayout = findViewById(R.id.group_content) as LinearLayout
                 mainContent.removeAllViews()
 
-                if (group.games != null) {
-                    for (game in group.games) {
+                if (group!!.games != null) {
+                    for (game in group!!.games!!) {
                         if (game.meta!!.end == null) {
                             if (game.responses != null && game.responses.containsKey(FirebaseAuth.getInstance().currentUser!!.uid)) {
                                 findViewById(R.id.create_game).visibility = View.GONE
@@ -126,7 +129,7 @@ class GroupActivity : Activity() {
                         }
 
 
-                        val restaurant = group.restaurants!![game.result!!.restaurant_id]!!
+                        val restaurant = group!!.restaurants!![game.result!!.restaurant_id]!!
 
                         val cardLayout = LinearLayout(mainContent.context)
                         cardLayout.orientation = LinearLayout.HORIZONTAL
@@ -230,6 +233,20 @@ class GroupActivity : Activity() {
             }
 
         })
+    }
+
+    override public fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate menu resource file.
+        menuInflater.inflate(R.menu.group_activity_actions, menu);
+        val item = menu.findItem(R.id.share);
+        mShareActionProvider = item.actionProvider as ShareActionProvider;
+        // Create the share Intent
+        val url = "https://decisionkitchen.app/group?name=" + URLEncoder.encode(group!!.name) + "&pass=" + URLEncoder.encode(group!!.password)
+        val shareText = "Join my DecisionKitchen group at " + url;
+        val shareIntent = ShareCompat.IntentBuilder.from(this).setType("text/plain").setText(shareText).getIntent();
+        // Set the share Intent
+        (mShareActionProvider as ShareActionProvider).setShareIntent(shareIntent);
+        return true;
     }
 
 }

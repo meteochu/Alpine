@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.GradientDrawable
+import android.location.Location
 import android.os.Bundle
 import android.support.design.widget.CoordinatorLayout
 import android.support.v7.widget.LinearLayoutManager
@@ -38,6 +39,8 @@ class GameActivity : Activity() {
         Question("What kind of food do you want?", arrayOf("Breakfast & Brunch", "Chinese", "Diners", "Fast Food", "Hot Pot", "Italian", "Japanese", "Korean", "Mongolian", "Pizza", "Steakhouses", "Sushi Bars", "American (Traditional)", "Vegetarian")),
         Question("Delivery of dine-in?", arrayOf("Delivery", "Dine-in"))
     )
+    private var location: Location? = null
+
     private var responses: ArrayList<ArrayList<Int>> = ArrayList<ArrayList<Int>>();
 
     public fun getContext(): Context {
@@ -74,7 +77,8 @@ class GameActivity : Activity() {
         question++
         if (question < questions.size) render()
         else {
-            groupRef!!.child("games").child(gameId.toString()).child("responses").child(user!!.uid).setValue(responses)
+            groupRef!!.child("games").child(gameId.toString()).child("responses").child(user!!.uid)
+                    .setValue(Response(responses, hashMapOf("latitude" to location!!.latitude, "longitude" to location!!.longitude)))
         }
     }
 
@@ -90,6 +94,7 @@ class GameActivity : Activity() {
 
         val database = FirebaseDatabase.getInstance()
         user = FirebaseAuth.getInstance().currentUser;
+        location = getIntent().extras["LOCATION"] as Location
         groupRef = database.getReference("groups/" + getIntent().getStringExtra("GROUP_ID"))
 
         val groupListener = object : ValueEventListener {
