@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Button
 import Firebase
 import FacebookCore
 import UserNotifications
@@ -18,9 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Firebase configuration
         FirebaseApp.configure()
+        // Button SDK
+        Button.allow(toRequestLocationPermission: true)
+        Button.shared().configure(withApplicationId: "app-79b9ba79ca7fb663") { error in
+            // handle error
+        }
         
+        // Notification
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
             if granted {

@@ -34,12 +34,15 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
-		<string>fb-messenger-api</string>
 		<string>fbauth2</string>
-		<string>fbshareextension</string>
+		<string>uber</string>
+		<string>deliverydotcom</string>
+		<string>doordash</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>DecisionKitchen requires your location to order Ubers and delivery food.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>NSLocationWhenInUseUsageDescription</key>

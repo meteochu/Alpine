@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Button
 
 class GameDetailCell: UICollectionViewCell {
     
@@ -14,6 +15,8 @@ class GameDetailCell: UICollectionViewCell {
     private let nameLabel = UILabel()
     private let addressLabel = UILabel()
     private let dateLabel = UILabel()
+    
+    private let dropinButton = BTNDropinButton()
 
     var game: Game! {
         didSet {
@@ -26,7 +29,18 @@ class GameDetailCell: UICollectionViewCell {
             if let restaurantId = game.result?.last?[0], let restaurant = DataController.shared.restaurants[restaurantId] {
                 nameLabel.text = restaurant.name
                 addressLabel.text = restaurant.address
-                imageName = restaurant.name  
+                imageName = restaurant.name
+                dropinButton.isHidden = false
+                let location = BTNLocation()
+                location.setAddressLine(restaurant.address)
+                location.setCity(restaurant.city)
+                location.setState(restaurant.state)
+                location.setZip(restaurant.zip)
+                let context = BTNContext(subjectLocation: location)
+                dropinButton.buttonId = ButtonController.shared.buttonId(for: restaurant)
+                dropinButton.prepare(with: context, completion: { displayable in
+                    print(displayable)
+                })
             }
             self.layoutIfNeeded()
             self.imageView.setImage(for: imageName)
@@ -63,17 +77,20 @@ class GameDetailCell: UICollectionViewCell {
         addressLabel.font = .systemFont(ofSize: 14)
         addressLabel.numberOfLines = 0
         dateLabel.font = .systemFont(ofSize: 12)
+        dropinButton.isHidden = true
         
         self.contentView.addSubview(imageView)
         self.contentView.addSubview(nameLabel)
         self.contentView.addSubview(addressLabel)
         self.contentView.addSubview(dateLabel)
+        self.contentView.addSubview(dropinButton)
         
         contentView.translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         addressLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        dropinButton.translatesAutoresizingMaskIntoConstraints = false
         
         imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
         imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16).isActive = true
@@ -91,6 +108,11 @@ class GameDetailCell: UICollectionViewCell {
         dateLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
         dateLabel.topAnchor.constraint(equalTo: addressLabel.bottomAnchor, constant: 8).isActive = true
         dateLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
+        
+        dropinButton.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
+        dropinButton.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 8).isActive = true
+        dropinButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
+        dropinButton.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor, constant: -16).isActive = true
     }
     
 }

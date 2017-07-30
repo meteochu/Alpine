@@ -25,6 +25,7 @@
 		A1467FCD1F2E493700D4C718 /* GameDiningOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FCC1F2E493700D4C718 /* GameDiningOptionsViewController.swift */; };
 		A1467FCF1F2E4B9900D4C718 /* GameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FCE1F2E4B9900D4C718 /* GameResponse.swift */; };
 		A1467FD11F2E510000D4C718 /* GameResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FD01F2E510000D4C718 /* GameResultViewController.swift */; };
+		A1467FBA1F2DE4C900D4C718 /* ButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1467FB91F2DE4C900D4C718 /* ButtonController.swift */; };
 		A161B06F1F2D393200003C2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161B06E1F2D393200003C2B /* AppDelegate.swift */; };
 		A161B0761F2D393200003C2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A161B0741F2D393200003C2B /* Main.storyboard */; };
 		A161B0781F2D393200003C2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A161B0771F2D393200003C2B /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		A1467FCC1F2E493700D4C718 /* GameDiningOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDiningOptionsViewController.swift; sourceTree = "<group>"; };
 		A1467FCE1F2E4B9900D4C718 /* GameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResponse.swift; sourceTree = "<group>"; };
 		A1467FD01F2E510000D4C718 /* GameResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultViewController.swift; sourceTree = "<group>"; };
+		A1467FB91F2DE4C900D4C718 /* ButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonController.swift; sourceTree = "<group>"; };
 		A161B06B1F2D393200003C2B /* DecisionKitchen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DecisionKitchen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A161B06E1F2D393200003C2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A161B0751F2D393200003C2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 		A17183261F2DADF0001D58AF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A1467FB91F2DE4C900D4C718 /* ButtonController.swift */,
 				A1B051161F2D9121005828CB /* DataController.swift */,
 			);
 			name = Controller;
@@ -430,6 +433,7 @@
 				A1467FBC1F2DF4E100D4C718 /* GameLobbyViewController.swift in Sources */,
 				A1BD8A531F2E697C00B1D287 /* CollectionViewController.swift in Sources */,
 				A1467FC91F2E052700D4C718 /* CategoryItemCell.swift in Sources */,
+				A1467FBA1F2DE4C900D4C718 /* ButtonController.swift in Sources */,
 				A161B06F1F2D393200003C2B /* AppDelegate.swift in Sources */,
 				A1F9DF6F1F2D7F4A00D1129F /* Game.swift in Sources */,
 				A1467FCF1F2E4B9900D4C718 /* GameResponse.swift in Sources */,
