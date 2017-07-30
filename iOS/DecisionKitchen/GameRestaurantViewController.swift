@@ -17,10 +17,12 @@ class GameRestaurantViewController: UIViewController {
     
     @IBAction func didSelectMoneyButton(_ sender: UIButton) {
         if let index = selectedIndexes.index(of: sender.tag) {
-            sender.backgroundColor = UIColor(white: 220/255.0, alpha: 1.0)
+            sender.backgroundColor = .buttonGrey
+            sender.setTitleColor(.darkGray, for: .normal)
             selectedIndexes.remove(at: index)
         } else {
-            sender.backgroundColor = UIColor(red: 165/255.0, green: 75/255.0, blue: 200/255.0, alpha: 1.0)
+            sender.backgroundColor = .purpleTint
+            sender.setTitleColor(.white, for: .normal)
             selectedIndexes.append(sender.tag)
         }
     }
