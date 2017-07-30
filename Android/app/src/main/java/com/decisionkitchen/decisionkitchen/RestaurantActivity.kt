@@ -9,6 +9,7 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.tasks.OnSuccessListener
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
+import android.content.Intent
 import android.support.v4.app.ActivityCompat
 import android.content.pm.PackageManager
 import android.graphics.Color
@@ -161,6 +162,13 @@ class RestaurantActivity : Activity() {
                     mFusedLocationClient!!.lastLocation.addOnSuccessListener(this) { location ->
                         // Got last known location. In some rare situations this can be null.
                         if (location != null) {
+
+                            findViewById(R.id.nextButton).setOnClickListener {
+                                val intent: Intent = Intent(getBaseContext(), GameActivity::class.java)
+                                intent.putExtra("GROUP_ID", getIntent().getStringExtra("GROUP_ID"))
+                                intent.putExtra("LOCATION", location)
+                                startActivity(intent)
+                            }
 
                             val searchbar: MaterialSearchBar = findViewById(R.id.searchbar) as MaterialSearchBar
                             searchbar.enableSearch()
