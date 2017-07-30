@@ -13,7 +13,9 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
 import android.view.LayoutInflater
+import android.widget.HorizontalScrollView
 import android.widget.LinearLayout
+import android.widget.ScrollView
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 
@@ -39,6 +41,7 @@ class GroupActivity : Activity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 val group : Group = dataSnapshot.getValue<Group>(Group::class.java)!!
+                val memberScrollView : HorizontalScrollView = findViewById(R.id.members) as HorizontalScrollView
                 toolbar.title = group.name
 
                 findViewById(R.id.loader).visibility = View.INVISIBLE
@@ -57,7 +60,8 @@ class GroupActivity : Activity() {
                     groupLayout.layoutParams = groupLayoutParams
                     val title = TextView(layout.context)
 
-                    val group = data.getValue(Group::class.java)
+                  /*  val group = data.getValue(Group::class.java)
+
                     title.text = group!!.name
                     title.textSize = 20f
                     title.width
@@ -83,10 +87,10 @@ class GroupActivity : Activity() {
                         override fun onClick(v: View?) {
                             goTest(data.key)
                         }
-                    })
+                    })*/
                 }
-                scrollView.removeAllViews()
-                scrollView.addView(layout)
+                memberScrollView.removeAllViews()
+                memberScrollView.addView(layout)
 
 
             }

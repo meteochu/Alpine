@@ -26,6 +26,7 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.*
 import com.google.firebase.database.*
+import org.json.JSONObject
 
 import java.util.Arrays
 
@@ -149,10 +150,16 @@ class MainActivity : AppCompatActivity() {
                             if (snapshot.hasChild(u.uid))
                                 return
 
-                            ref.child(u.uid).child("img").setValue(u.photoUrl)
-                            ref.child(u.uid).child("id").setValue(u.uid)
-                            ref.child(u.uid).child("email").setValue(u.email)
-                            ref.child(u.uid).child("name").setValue(u.displayName)
+                            val request : GraphRequest = GraphRequest.newMeRequest(token, GraphRequest.GraphJSONObjectCallback { json, response -> run {
+                                ref.child(u.uid).child("img").setValue(json.getJSONObject("picture").getJSONObject("data").get("url"))
+                                ref.child(u.uid).child("id").setValue(u.uid)
+                                ref.child(u.uid).child("email").setValue(u.email)
+                                ref.child(u.uid).child("name").setValue(json.get("name"))
+                            }});
+                            val parameters : Bundle = Bundle();
+                            parameters.putString("fields", "name, picture");
+                            request.parameters = parameters;
+                            request.executeAsync();
 
                         }
 
