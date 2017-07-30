@@ -13,7 +13,7 @@ enum DiningOption {
     case takeOut
 }
 
-class GameDiningOptionsViewController: UIViewController {
+class GameDiningOptionsViewController: BackgroundViewController {
 
     @IBOutlet weak var dineInButton: UIButton!
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameResultViewController: UIViewController {
+class GameResultViewController: BackgroundViewController {
 
     @IBOutlet weak var homeButton: UIButton!
     

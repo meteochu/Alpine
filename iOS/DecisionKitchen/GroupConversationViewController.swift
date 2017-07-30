@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroupConversationViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class GroupConversationViewController: CollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var group: Group! {
         didSet {
@@ -22,6 +22,9 @@ class GroupConversationViewController: UICollectionViewController, UICollectionV
     
     override func loadView() {
         super.loadView()
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "Background"))
+        imageView.tintColor = UIColor(white: 0.05, alpha: 0.1)
+        collectionView!.backgroundView = imageView
         
         // header
         let usersHeader = UIView()

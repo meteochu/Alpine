@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameRestaurantViewController: UIViewController {
+class GameRestaurantViewController: BackgroundViewController {
     
     var restaurant: String = ""
     

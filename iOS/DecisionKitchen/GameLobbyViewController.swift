@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class GameLobbyViewController: UITableViewController, CLLocationManagerDelegate {
+class GameLobbyViewController: TableViewController, CLLocationManagerDelegate {
 
     var group: Group! {
         didSet {
@@ -21,6 +21,8 @@ class GameLobbyViewController: UITableViewController, CLLocationManagerDelegate 
     var users: [User] = []
     
     var response: GameResponse!
+    
+    var location: Location?
     
     private var locationManager: CLLocationManager = CLLocationManager()
     
@@ -65,7 +67,11 @@ class GameLobbyViewController: UITableViewController, CLLocationManagerDelegate 
         guard let indexPaths = tableView.indexPathsForSelectedRows, !indexPaths.isEmpty else { return }
         
         DataController.shared.createGame(in: self.group) { game in
-            self.response = GameResponse(group: group, game: game)
+            let response = GameResponse(group: group, game: game)
+            if let loc = self.location {
+                response.deviceLocation = loc
+            }
+            self.response = response
             self.performSegue(withIdentifier: "beginGameStage1", sender: self)
         }
     }
@@ -85,8 +91,8 @@ class GameLobbyViewController: UITableViewController, CLLocationManagerDelegate 
         guard let last = locations.last else {
             return
         }
-        let location = Location(longitude: last.coordinate.longitude, latitude: last.coordinate.latitude)
-        self.response.deviceLocation = location
+        self.location = Location(longitude: last.coordinate.longitude, latitude: last.coordinate.latitude)
+        self.response?.deviceLocation = location!
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

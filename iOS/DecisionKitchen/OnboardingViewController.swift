@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FacebookLogin
 
-class OnboardingViewController: UIViewController, LoginButtonDelegate {
+class OnboardingViewController: BackgroundViewController, LoginButtonDelegate {
     
     
     override func viewDidLoad() {

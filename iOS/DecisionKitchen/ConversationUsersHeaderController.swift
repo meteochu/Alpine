@@ -8,9 +8,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
-class ConversationUsersHeaderController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class ConversationUsersHeaderController: CollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var group: Group? {
         didSet {

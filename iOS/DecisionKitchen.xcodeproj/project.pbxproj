@@ -34,6 +34,9 @@
 		A1B051191F2D92BF005828CB /* GroupConversationFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B051181F2D92BF005828CB /* GroupConversationFlowLayout.swift */; };
 		A1B3BA041F2D3DE000BA3871 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B3BA031F2D3DE000BA3871 /* OnboardingViewController.swift */; };
 		A1BD8A4D1F2E5C5C00B1D287 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD8A4C1F2E5C5C00B1D287 /* Location.swift */; };
+		A1BD8A511F2E690200B1D287 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD8A501F2E690200B1D287 /* TableViewController.swift */; };
+		A1BD8A531F2E697C00B1D287 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD8A521F2E697C00B1D287 /* CollectionViewController.swift */; };
+		A1BD8A551F2E69BB00B1D287 /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD8A541F2E69BB00B1D287 /* BackgroundViewController.swift */; };
 		A1C916301F2D51C7008B703C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1C9162F1F2D51AA008B703C /* GoogleService-Info.plist */; };
 		A1F9DF5E1F2D69FD00D1129F /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9DF5D1F2D69FD00D1129F /* Group.swift */; };
 		A1F9DF621F2D6CEF00D1129F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9DF611F2D6CEF00D1129F /* Category.swift */; };
@@ -80,6 +83,9 @@
 		A1B051181F2D92BF005828CB /* GroupConversationFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupConversationFlowLayout.swift; sourceTree = "<group>"; };
 		A1B3BA031F2D3DE000BA3871 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		A1BD8A4C1F2E5C5C00B1D287 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		A1BD8A501F2E690200B1D287 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		A1BD8A521F2E697C00B1D287 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		A1BD8A541F2E69BB00B1D287 /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
 		A1C9162F1F2D51AA008B703C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A1F9DF5D1F2D69FD00D1129F /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		A1F9DF611F2D6CEF00D1129F /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -259,6 +265,9 @@
 		A1F9DF721F2D867700D1129F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				A1BD8A521F2E697C00B1D287 /* CollectionViewController.swift */,
+				A1BD8A541F2E69BB00B1D287 /* BackgroundViewController.swift */,
+				A1BD8A501F2E690200B1D287 /* TableViewController.swift */,
 				A1467FB51F2DD5CA00D4C718 /* UIImageView+Initials.swift */,
 				A1467FB71F2DD8AF00D4C718 /* UIColor+Random.swift */,
 				A1467FCA1F2E43A400D4C718 /* UIColor+Theme.swift */,
@@ -419,6 +428,7 @@
 				A1BD8A4D1F2E5C5C00B1D287 /* Location.swift in Sources */,
 				A1467FB61F2DD5CA00D4C718 /* UIImageView+Initials.swift in Sources */,
 				A1467FBC1F2DF4E100D4C718 /* GameLobbyViewController.swift in Sources */,
+				A1BD8A531F2E697C00B1D287 /* CollectionViewController.swift in Sources */,
 				A1467FC91F2E052700D4C718 /* CategoryItemCell.swift in Sources */,
 				A161B06F1F2D393200003C2B /* AppDelegate.swift in Sources */,
 				A1F9DF6F1F2D7F4A00D1129F /* Game.swift in Sources */,
@@ -434,9 +444,11 @@
 				A1467FC51F2E00D800D4C718 /* GameRestaurantViewController.swift in Sources */,
 				A1467FB41F2DC51B00D4C718 /* CreateGroupViewController.swift in Sources */,
 				A1467FD11F2E510000D4C718 /* GameResultViewController.swift in Sources */,
+				A1BD8A511F2E690200B1D287 /* TableViewController.swift in Sources */,
 				A1F9DF641F2D76A100D1129F /* Reusable.swift in Sources */,
 				A1B3BA041F2D3DE000BA3871 /* OnboardingViewController.swift in Sources */,
 				A1467FAC1F2DB72900D4C718 /* UserHeaderCell.swift in Sources */,
+				A1BD8A551F2E69BB00B1D287 /* BackgroundViewController.swift in Sources */,
 				A1467FB21F2DBA7A00D4C718 /* ConversationUsersHeaderController.swift in Sources */,
 				A1F9DF801F2D8E6600D1129F /* GameDetailCell.swift in Sources */,
 				A1467FAE1F2DB9DF00D4C718 /* UIImageView++.swift in Sources */,
