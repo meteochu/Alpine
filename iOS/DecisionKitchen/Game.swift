@@ -10,15 +10,14 @@ import Foundation
 
 struct Game: Codable {
     
-    var categories: [Category]
-    
     var meta: Meta
     
-    var rating: [UserID: Int]
+    var rating: [UserID: Int]?
     
-    var responses: [UserID: [Int]]
+    // TODO: Update to the current schema.. zzz
+    // var responses: [UserID: [Int]]
     
-    var result: Result
+    var result: Result?
     
     struct Meta: Codable {
         
