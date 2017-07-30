@@ -16,7 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@drawable/gradient"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:navigationIcon="?attr/homeAsUpIndicator" />
 
@@ -30,7 +30,7 @@
         <include
             android:id="@+id/content"
             layout="@layout/content_group"
-            android:visibility="invisible" />
+            android:visibility="visible" />
 
         <ProgressBar
             android:id="@+id/loader"
@@ -38,7 +38,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            android:visibility="invisible" />
     </RelativeLayout>
 
 </LinearLayout>

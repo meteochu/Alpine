@@ -51,9 +51,7 @@ class GroupActivity : Activity() {
                 memberScrollView.removeAllViews()
                 toolbar.title = group.name
 
-                findViewById(R.id.loader).visibility = View.INVISIBLE
-                findViewById(R.id.content).visibility = View.VISIBLE
-
+                var loadCount : Int = 0
 
                 val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
@@ -92,6 +90,13 @@ class GroupActivity : Activity() {
                             userLayout.addView(name)
 
                             membersLayout.addView(userLayout)
+
+                            loadCount ++
+
+                            if (loadCount == group.members.size) {
+                                findViewById(R.id.loader).visibility = View.INVISIBLE
+                                findViewById(R.id.content).visibility = View.VISIBLE
+                            }
 
                         }
                         override fun onCancelled(databaseError: DatabaseError) {}
