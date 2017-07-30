@@ -131,20 +131,38 @@ class MainActivity : AppCompatActivity() {
             override fun onComplete(task: Task<AuthResult>) {
                 if (task.isSuccessful) {
 
-                    Toast.makeText(applicationContext, "Google Authentication succeeded.",
-                            Toast.LENGTH_SHORT).show();
+                    Toast.makeText(applicationContext, "Facebook Authentication succeeded.",
+                            Toast.LENGTH_SHORT).show()
+                    user = mAuth.currentUser
 
+                    loadData(user)
 
-                    user = mAuth.currentUser;
+                    val ref = FirebaseDatabase.getInstance().getReference("users")
+                    ref.addListenerForSingleValueEvent(object: ValueEventListener {
+                        override fun onCancelled(p0: DatabaseError) {
+                            Log.e("error", p0.toString())
 
+                        }
 
-                    if(user != null) loadData(user);
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            val u = user!!
+                            if (snapshot.hasChild(u.uid))
+                                return
+
+                            ref.child(u.uid).child("img").setValue(u.photoUrl)
+                            ref.child(u.uid).child("id").setValue(u.uid)
+                            ref.child(u.uid).child("email").setValue(u.email)
+                            ref.child(u.uid).child("name").setValue(u.displayName)
+
+                        }
+
+                    })
 
                 } else {
 
                     // If sign in fails, display a message to the user.
                     Toast.makeText(applicationContext, "Google Authentication failed.",
-                            Toast.LENGTH_SHORT).show();
+                            Toast.LENGTH_SHORT).show()
                 }
 
             }
