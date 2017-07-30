@@ -78,15 +78,17 @@ class MainActivity : AppCompatActivity() {
                         val groupLayoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
                         groupLayout.layoutParams = groupLayoutParams
                         val title = TextView(layout.context)
+
                         val group = data.getValue(Group::class.java)
-                        title.text = data.key
+                        title.text = group!!.name
                         title.textSize = 20f
                         title.width
                         title.setTextColor(Color.BLACK)
                         title.setPadding(0, 5, 0, 15)
                         groupLayout.addView(title)
+
                         val password = TextView(layout.context)
-                        password.text = group!!.password
+                        password.text = group.password
                         password.textSize = 13f
                         password.setPadding(0, 5, 0, 15)
                         password.setTextColor(Color.GRAY)

@@ -49,7 +49,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GroupActivity"></activity>
+        <activity
+            android:name=".GroupActivity"
+            android:label="Loading..."></activity>
     </application>
 
 </manifest>

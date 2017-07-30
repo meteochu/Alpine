@@ -63,15 +63,3 @@ class GroupsViewController: UITableViewController {
 
 }
 
-
-self.selectedIndex = indexPath.row
-self.performSegue(withIdentifier: "showGroupConversation", sender: self)
-}
-
-override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "showGroupConversation" {
-        if let destination = segue.destination as? GroupConversationViewController {
-            destination.group = self.groups[selectedIndex]
-        }
-        
-}
